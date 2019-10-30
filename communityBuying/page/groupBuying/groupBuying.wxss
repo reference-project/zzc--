@@ -1,0 +1,24 @@
+/* page/groupBuying/groupBuying.wxss */
+.ground-buying-page{
+  font-family: PingFangSC-Semibold;
+  padding-bottom: 30rpx;
+  background-color: rgba(248, 248, 248, 0.75);
+  min-height: 100vh;
+}
+.swiper-container{
+  position: relative;
+  height: 384rpx;
+  padding: 60rpx 25rpx 0;
+}
+.swiper-bg{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 750rpx;
+  height: 260rpx;
+  z-index: -1;
+  background-color: red;
+}
+.group-buying-lists{
+  margin-top: 20rpx;
+}

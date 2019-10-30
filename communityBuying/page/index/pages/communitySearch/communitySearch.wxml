@@ -1,0 +1,65 @@
+<!--page/index/pages/communitySearch/communitySearch.wxml-->
+<view class='P-community-search'>
+  <view class='header-container'>
+    <!-- <view class='input-box'>
+      <image src='/imgs/icon-search-active.png'></image>
+      <input confirm-type="搜索" bindconfirm="onSearchHandler" bindinput='onSearchInputHandler' value='{{state.searchValue}}' placeholder='请输入小区名称'></input>
+    </view> -->
+    <view class='header-content'>
+      <view class='city-choose' catchtap='onGoToLoCityHandler'>
+        <image src='/imgs/icon-search-black.png' class='icon-address'></image>
+        <view class='city-choose-name'>{{state.locationObj.city?state.locationObj.city:"选择城市"}}</view>
+        <image src='/imgs/icon-arrow-bottom.png' class='icon-arrow-bottom'></image>
+      </view>
+      <!-- <view class='line-vertical'></view> -->
+      <view class='input-content' catchtap='onGoToComSearchHandler'>
+        <!-- <image src='/imgs/icon-search-default.png' class='icon-search'></image> -->
+        <input class='input-text' confirm-type="搜索" bindconfirm="onSearchHandler" bindinput='onSearchInputHandler' value='{{state.searchValue}}' placeholder='输入小区名称搜索社区'></input>
+      </view>
+    </view>
+  </view>
+
+  <!-- <view class='hot-community-lists result' wx:if="{{data.coms && data.coms.length>0}}">
+    <view class='hot-community-item' wx:for="{{data.coms}}" wx:key="{{index}}" catchtap='onSelectComHandler' data-index='{{index}}'>
+      <view class='hot-community-item-name'>{{item.name}}</view>
+      <view class='hot-community-item-address'>{{item.address}}</view>
+    </view>
+  </view>
+  <view class='empty-result' wx:if="{{data.coms && data.coms.length==0}}">
+    暂无该小区～
+  </view> -->
+
+  <!-- <view class='line-bottom' wx:if="{{data.coms && data.coms.length == 0}}"></view> -->
+
+  <view class='hot-community-lists' wx:if="{{data.coms && data.coms.length>0}}">
+    <!-- <view class='hot-community-text'>热门小区</view> -->
+    <!-- <view class='hot-community-item' wx:for="{{data.hotComs}}" wx:key="{{index}}" catchtap='onSelectComHandler' data-type='hot' data-index='{{index}}'>
+      <view class='hot-community-item-name'>{{item.name}}</view>
+      <view class='hot-community-item-address'>{{item.address}}</view>
+    </view> -->
+
+    <view class='community-item' wx:for="{{data.coms}}" wx:key="{{index}}" data-index='{{index}}' catchtap='onSelectComHandler'>
+      <view class='community-item-left'>
+        <image src='{{item.avatar}}'></image>
+      </view>
+        <view class='community-item-right'>
+        <view class='community-item-right-top'>
+          <view class='community-item-name'>{{item.community_name}}</view>
+          <view class='community-item-distance' wx:if="{{item.distance}}">距离约{{item.distance}}km</view>
+        </view>
+        <view class='community-item-right-middle'>
+          <view class='community-item-address'>{{item.address}}</view>
+          <image src='/imgs/icon-arrow-default.png'></image>
+        </view>
+        <view class='community-item-right-bottom'>
+        团长: <text>{{item.contact}}</text>
+        </view>
+      </view>
+    </view>
+
+  </view>
+  <view class='hot-community-empty' wx:if="{{data.coms && data.coms.length == 0}}">
+    <image src='/imgs/icon-community-empty.png'></image>
+    <view class='hot-community-empty-text'>没有搜索到社区～</view>
+  </view>
+</view>

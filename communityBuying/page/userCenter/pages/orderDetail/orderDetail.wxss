@@ -1,0 +1,838 @@
+/* page/userCenter/pages/orderDetail/orderDetail.wxss */
+
+.P-order-detail {
+  /* overflow: hidden; */
+  min-height: 100vh;
+  background-color: rgba(248, 248, 248, 0.75);
+  font-family: PingFangSC-Medium;
+  padding-bottom: 140rpx;
+}
+
+.detail-heeader{
+   width: 100%;
+   height: 190rpx;
+   position: relative;
+}
+.detail-bg{
+   width: 750rpx;
+   height: 190rpx;
+   position: absolute;
+   top: 0;
+   left: 0;
+   z-index:0;
+   
+}
+.detail-bg .detail-bg-image{
+   width: 750rpx;
+   height: 190rpx;
+}
+.detail-zindex-top{
+  width: 750rpx;
+  height: 190rpx;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+}
+
+.P-order-detail.isIphoneX {
+  padding-bottom: 210rpx;
+}
+
+.status-top-tips {
+  height: 80rpx;
+  display: flex;
+  align-items: center;
+  padding: 0 30rpx;
+  font-family: PingFangSC-Regular;
+  font-size: 24rpx;
+  color: #282828;
+  background-color: #ffe849;
+}
+
+.black {
+  color: #333;
+}
+
+.status-top-tips image {
+  width: 44rpx;
+  height: 44rpx;
+  margin-right: 8rpx;
+}
+
+.header-tips {
+  display: flex;
+  align-items: center;
+  color: #1e6fff;
+  padding: 56rpx 0rpx 0 56rpx;
+  font-size: 28rpx;
+  line-height: 28rpx;
+  text-align: center;
+  overflow: hidden;
+  justify-content: space-between;
+  position: relative;
+}
+.header-tips .icon-left{
+   position: absolute;
+   width: 128rpx;
+   height: 128rpx;
+   right: 51rpx;
+   top:31rpx;
+   z-index: 3;
+}
+.icon-left-image{
+    width: 128rpx;
+   height: 128rpx;
+}
+
+/* .gray {
+  color: #979797;
+}
+
+.red {
+  color: #ff5e53;
+} */
+
+.header-tips-left {
+  /* display: flex;
+  flex-direction: row;
+  align-items: center; */
+  text-align: left;
+}
+.subtitle{
+   font-size:26rpx;
+  font-family:PingFangSC-Regular;
+  font-weight:400;
+  color:rgba(40,40,40,1);
+  line-height:26rpx;
+}
+.header-tips-left .header-tips-status{
+  font-size:36rpx;
+  font-family:PingFangSC-Semibold;
+  font-weight:600;
+  color:rgba(40,40,40,1);
+  line-height:36rpx;
+  margin-bottom: 16rpx;
+
+}
+
+.header-tips-right>button {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  font-size: 28rpx;
+  color: #333;
+}
+
+.header-tips-right image {
+  width: 45rpx;
+  height: 45rpx;
+}
+
+.header-tips-icon {
+  width: 60rpx;
+  height: 60rpx;
+  margin-right: 30rpx;
+}
+
+.address-container {
+  padding: 20rpx 0;
+  background-color: #fff;
+}
+
+.address-container.margin {
+  margin-top: 20rpx;
+}
+
+.address-info-item {
+  padding-bottom: 30rpx;
+}
+
+.address-user-tips {
+  padding-top: 30rpx;
+  border-top: 1rpx solid #eaeaea;
+}
+
+.address-item-title-box {
+  padding-left: 30rpx;
+  position: relative;
+}
+.store-name{
+   font-size:30rpx;
+  font-family:PingFangSC-Semibold;
+  font-weight:600;
+  color:rgba(51,51,51,1);
+  padding-left:30rpx;
+  margin-top: 42rpx;
+}
+.address-item-title{
+  font-family: PingFangSC-Medium;
+  font-size: 30rpx;
+  font-weight:400;
+  color:rgba(51,51,51,1);
+}
+.address-item-title-box image {
+  width: 16rpx;
+  height: 30rpx;
+  margin-right: 10rpx;
+}
+
+.address-info-detail {
+  margin-top: 17rpx;
+  font-family: PingFangSC-Medium;
+  font-size: 30rpx;
+  color: #666;
+  line-height: 40rpx;
+  padding: 0 30rpx;
+}
+
+.address-chater {
+  margin-top: 20rpx;
+  display: flex;
+  align-items: center;
+  padding: 0 36rpx;
+}
+
+.address-chater-detail {
+  flex: 1;
+  width: 1rpx;
+  font-family: PingFangSC-Regular;
+  font-size: 30rpx;
+  color: #666;
+  overflow: hidden;
+  word-break: break-all;
+}
+
+.address-chater-name {
+  margin-left: 20rpx;
+}
+
+.address-chater-phone {
+  flex: 1;
+  text-align: right;
+  margin-right: 30rpx;
+  font-family: PingFangSC-Regular;
+  font-size: 30rpx;
+  color: #666;
+}
+
+.address-chater-call {
+  display: flex;
+  align-items: center;
+  font-family: PingFangSC-Regular;
+  font-size: 22rpx;
+  color: #1e6fff;
+}
+
+.address-chater-call image {
+  width: 28rpx;
+  height: 28rpx;
+  margin-right: 10rpx;
+}
+
+.address-user-detail {
+  margin-top: 40rpx;
+  padding: 0 30rpx;
+  font-family:PingFangSC-Semibold;
+  font-size: 30rpx;
+  color:rgba(51,51,51,1);
+  line-height: 30rpx;
+  font-weight:500;
+}
+
+.order-pro-lists {
+  margin-top: 20rpx;
+  padding-top: 30rpx;
+  /* padding: 20rpx 20rpx 30rpx; */
+  background-color: #fff;
+}
+
+.order-pro-title {
+  position: relative;
+  font-family: PingFangSC-Regular;
+  font-size: 28rpx;
+  color: #333;
+  line-height: 30rpx;
+  padding: 0rpx 22rpx 30rpx 22rpx;
+  /* padding: 10rpx 10rpx 30rpx; */
+}
+.order-pro-conent{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.order-pro-left{
+    font-size:30rpx;
+    font-family:PingFangSC-Regular;
+    font-weight:400;
+    color:rgba(51,51,51,1);
+}
+.order-pro-left-status{
+   font-size:28rpx;
+   font-weight:500;
+   color:rgba(255,197,0,1);
+}
+.order-pro-left-status.cancel{
+   color:rgba(204,204,204,1);
+}
+.order-pro-right{
+  font-size:28rpx;
+  font-family:PingFangSC-Regular;
+  font-weight:400;
+  color:rgba(170,170,170,1);
+}
+.item-info-container {
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  padding: 30rpx 10rpx 20rpx;
+  border-top: 1rpx solid #eaeaea;
+}
+
+.item-info-container image {
+  width: 160rpx;
+  height: 160rpx;
+  background-color: #fafafa;
+  border-radius: 16rpx;
+}
+
+.item-info-content {
+  flex: 1;
+  height: 160rpx;
+  padding: 10rpx 20rpx 10rpx;
+  box-sizing: border-box;
+}
+
+.order-item-info-title-box {
+  display: flex;
+  align-items: center;
+  font-family: PingFangSC-Medium;
+  font-size: 30rpx;
+  color: #333;
+  line-height: 30rpx;
+}
+
+.order-item-info-title {
+  flex: 1;
+  width: 1rpx;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-right: 10rpx;
+}
+
+.order-item-info-sku {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 20rpx;
+  font-size: 22rpx;
+  line-height: 22rpx;
+  color: #999;
+  font-family: PingFangSC-Regular;
+}
+.order-type-content{
+  margin-top: 20rpx;
+  display: flex;
+  align-items: center;
+  font-size: 28rpx;
+  line-height: 28rpx;
+}
+.pro-tips{
+  display: inline-block;
+  width: auto;
+  height: 34rpx;
+  margin-right: 10rpx;
+  border-radius: 8rpx;
+  text-align: center;
+}
+.pro-tips.booking{
+  font-family: PingFangSC-Medium;
+  font-size: 22rpx;
+  background-color: #fde7e5;
+  width: 74rpx;
+  line-height: 34rpx;
+  color: #fd6058;
+}
+
+.order-pro-item{
+   padding: 30rpx;
+}
+.goods-logo{
+   width: 132rpx;
+   height: 132rpx;
+}
+.order-pro-list{
+  width: 690rpx;
+  height: 176rpx;
+  background:rgba(250,250,250,1);
+  border-radius:10rpx;
+  margin-bottom: 18rpx;
+  box-sizing: border-box;
+  padding: 22rpx;
+  display: flex;
+  justify-content: space-between;
+}
+.order-pro-list-center{
+   width: 370rpx;
+}
+.order-pro-list-center .order-pro-list-title{
+   font-size:28rpx;
+    font-family:PingFangSC-Regular;
+    font-weight:400;
+    color:rgba(51,51,51,1);
+}
+.order-pro-list-center .order-pro-list-info{
+   font-size:24rpx;
+  font-family:PingFangSC-Regular;
+  font-weight:400;
+  color:rgba(153,153,153,1);
+  margin-top: 16rpx;
+}
+.order-pro-list-right{
+  font-size:28rpx;
+  font-family:PingFangSC-Regular;
+  font-weight:400;
+  color:rgba(51,51,51,1);
+}
+.sku-name{
+  margin-right: 16rpx;
+}
+.order-pro-time{
+  display: flex;
+  justify-content: flex-start;
+  height: 40rpx;
+  align-items: center;
+}
+.order-pro-time .iconfont{
+    color:rgba(153,153,153,1);
+    margin-right: 6rpx;
+}
+.time-title{
+  font-size:24rpx;
+  font-family:PingFangSC-Regular;
+  font-weight:400;
+  color:rgba(153,153,153,1);
+}
+
+/* .order-pro-item-status{
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  font-family: PingFangSC-Regular;
+} */
+.order-status{
+  text-align: center;
+  line-height: 60rpx;
+  font-size: 28rpx;
+  border-radius: 30rpx;
+}
+.order-status.refund{
+  color: #ccc;
+}
+.order-status.active{
+  color: #ff5e53;
+}
+
+.item-info-price {
+  margin-top: 20rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: PingFangSC-Medium;
+  font-size: 32rpx;
+  color: #333;
+  line-height: 32rpx;
+  padding: 30rpx 10rpx;
+}
+
+/* .item-info-price.really {
+  margin-top: 20rpx;
+} */
+
+.pro-price {
+  color: #333;
+}
+
+.pro-fee {
+  font-size: 22rpx;
+  color: #999;
+  line-height: 28rpx;
+  vertical-align: middle;
+}
+
+.order-pro-actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.btn-change {
+  width: 120rpx;
+  height: 50rpx;
+  line-height: 50rpx;
+  text-align: center;
+  background-color: #ff8459;
+  color: #fff;
+  font-size: 24rpx;
+  border-radius: 100rpx;
+  margin-left: 20rpx;
+}
+
+.chat-container {
+  display: flex;
+  background-color: #fff;
+}
+
+.chat-btn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28rpx;
+  color: #ff8459;
+}
+
+.chat-btn image {
+  width: 44rpx;
+  height: 44rpx;
+  margin-right: 20rpx;
+}
+
+.order-info-container {
+  margin-top: 20rpx;
+  background-color: #fff;
+  padding: 30rpx 20rpx;
+  font-size: 24rpx;
+  line-height: 24rpx;
+  color: #999;
+}
+
+.order-info-container.top {
+  margin-top: 0rpx;
+}
+
+.order-info-container text {
+  color: #666;
+}
+
+text.btn-copy {
+  margin-left: 40rpx;
+  color: #1e6fff;
+}
+text.order-btn-copy{
+  display: inline-block;
+  width:74rpx;
+  height:33rpx;
+  border-radius:17rpx;
+  text-align: center;
+  line-height: 33rpx;
+  border:1rpx solid rgba(221,221,221,1);
+  margin-left: 25rpx;
+  color: #9B9B9B; 
+  font-size: 22rpx;
+  font-family:PingFangSC-Regular;
+  font-weight:400;
+
+} 
+
+.order-info-number {
+  margin-top: 20rpx;
+}
+
+.order-info-number text {
+  margin-left: 30rpx;
+}
+
+.order-pay-way {
+  margin-top: 20rpx;
+}
+
+.order-create-time {
+  margin-top: 20rpx;
+}
+
+.order-create-time text {
+  margin-left: 30rpx;
+}
+
+.order-finish-time {
+  margin-top: 20rpx;
+}
+
+.order-finish-time text {
+  margin-left: 30rpx;
+}
+
+.order-footer-container {
+  background-color: #fff;
+  height: 100rpx;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.order-footer-container.isIphoneX {
+  padding: 0 20rpx 72rpx;
+}
+
+/* .expedite-delivery{
+  width: 174rpx;
+  height: 80rpx;
+  border-radius: 100rpx;
+  background-color: #ccc;
+  font-size: 38rpx;
+  color: #FFFFFF;
+  line-height: 80rpx;
+  text-align: center;
+} */
+
+.btn-default {
+  /* width: 200rpx; */
+  flex: 1;
+  height: 100rpx;
+  line-height: 100rpx;
+  text-align: center;
+  /* border-radius: 100rpx;
+  border: 2rpx solid #979797; */
+  font-weight:500;
+  color:rgba(40,40,40,1);
+  font-size: 32rpx;
+  font-family: PingFangSC-Medium;
+  box-sizing: border-box;
+}
+.form-btn{
+  flex: 1;
+  background:linear-gradient(151deg,rgba(254,227,53,1) 0%,rgba(254,219,2,1) 100%);
+   height: 100rpx;
+  line-height: 100rpx;
+}
+
+.btn-active {
+  width:100%;
+   height: 100rpx;
+  line-height: 100rpx;
+  text-align: center;
+  font-size: 32rpx;
+  font-weight:500;
+  color:rgba(40,40,40,1);
+  font-family: PingFangSC-Medium;
+  background:linear-gradient(151deg,rgba(254,227,53,1) 0%,rgba(254,219,2,1) 100%);
+}
+
+.btn-primary {
+  flex: 1;
+  height: 100rpx;
+  line-height: 100rpx;
+  text-align: center;
+  background:linear-gradient(151deg,rgba(254,227,53,1) 0%,rgba(254,219,2,1) 100%);
+  font-size: 32rpx;
+  font-weight:500;
+  color:rgba(40,40,40,1);
+  font-family: PingFangSC-Medium;
+}
+.btn-expedite-delivery{
+  flex: 1;
+  font-size:32rpx;
+  font-family:PingFangSC-Medium;
+  font-weight:500;
+  color:rgba(40,40,40,1);
+  height: 100rpx;
+  line-height: 100rpx;
+  text-align: center;
+}
+
+.order-footer-container view {
+
+}
+
+.order-footer-container view:first-child {
+  margin-left: 0rpx;
+}
+
+.btn-share-content{
+  position: fixed;
+  right: 30rpx;
+  bottom: 220rpx;
+  width: 160rpx;
+  height: 157rpx;
+}
+.btn-share-content image{
+  width: 160rpx;
+  height: 157rpx;
+}
+/* 分享到群，确认按钮 */
+.share-group-container{
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0,0,0,0.60);
+}
+.share-group-content{
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+  text-align: center;
+}
+.share-group-inner{
+  width: 644rpx;
+  background: #FFFFFF;
+  border-radius: 10rpx 6rpx 6rpx 6rpx;
+  padding: 86rpx 0 47rpx;
+}
+.icon-share-package{
+  width: 295rpx;
+  height: 223rpx;
+}
+.share-group-title{
+  font-family: PingFangSC-Semibold;
+  font-size: 40rpx;
+  line-height: 56rpx;
+  color: #FE5339;
+}
+.share-group-btn{
+  margin: 44rpx auto 0;
+  background: #FE5339;
+  box-shadow: 0 7rpx 27rpx 0 rgba(254,83,57,0.50);
+  border-radius: 40rpx;
+  width: 545rpx;
+  height: 81rpx;
+  text-align: center;
+  line-height: 81rpx;
+  font-family: PingFangSC-Semibold;
+  font-size: 34rpx;
+  color: #FFFFFF;
+}
+.share-group-desc{
+  margin-top: 10rpx;
+  font-family: PingFangSC-Medium;
+  font-size: 26rpx;
+  line-height: 38rpx;
+  color: #646464;
+}
+.share-group-close{
+  margin-top: 63rpx;
+}
+.share-group-close image{
+  width: 61rpx;
+  height: 61rpx;
+}
+.item-info-item{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 20rpx;
+  padding: 30rpx 10rpx;
+  font-family:PingFangSC-Medium;
+  font-size:32rpx;
+  line-height: 32rpx;
+}
+.item-info-item-left{
+  display: flex;
+  align-items: center;
+}
+.item-info-item-left image{
+  width: 24rpx;
+  height: 28rpx;
+  margin-right: 10rpx;
+}
+.item-info-item-text{
+  color:#333;
+}
+.item-info-item-right{
+  color: #ff5e53;
+}
+.order-message-container{
+   width: 100%;
+   height: 244rpx;
+   background: #fff;
+   margin-top: 20rpx;
+   box-sizing: border-box;
+   padding-top: 39rpx;
+}
+.btn-default-delet{
+    background:linear-gradient(146deg,rgba(254,227,53,1) 0%,rgba(255,191,58,1) 100%);
+}
+.left-icon{
+   width: 10rpx;
+   height: 30rpx;
+   background:linear-gradient(146deg,rgba(254,227,53,1) 0%,rgba(255,191,58,1) 100%);
+   border-radius: 2rpx;
+   position: absolute;
+   left: 0;
+   top: 0;
+   z-index: 2;
+}
+.order-message-header{
+  position: relative;
+   padding-left: 30rpx;
+   font-size: 30rpx;
+   color: #333333;
+   font-family:PingFangSC-Regular;
+   font-weight:400; 
+   line-height:30rpx;
+}
+.order-message-content{
+   padding-left: 30rpx;
+   margin-top: 53rpx;
+}
+.order-number,.order-time{
+  font-size: 24rpx;
+   color: #666666;
+   font-weight:400;
+   height: 40rpx;
+   line-height: 40rpx;
+}
+.instructions{
+   color: #999999;
+   margin-right: 30rpx;
+}
+.order-re-pocket-container{
+   width: 100%;
+   background: #fff;
+   margin-top: 20rpx;
+   box-sizing: border-box;
+   padding: 30rpx;
+}
+.order-re-pocket{
+  width: 100%;
+  height: 80rpx;
+  line-height: 80rpx;
+  border-bottom:1rpx solid #EEEEEE;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.order-re-pocket:last-child{
+  border-bottom:0;
+}
+.order-re-pocket-left{
+   font-size:30rpx;
+  font-family:PingFangSC-Regular;
+  font-weight:400;
+  color:rgba(51,51,51,1);
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.icon-red-package{
+   width: 24rpx;
+   height: 28rpx;
+   margin-right: 12rpx;
+}
+.order-re-pocket-rgiht{
+   font-size:28rpx;
+  font-family:PingFangSC-Regular;
+  font-weight:400;
+  color:rgba(40,40,40,1);
+}
+.order-re-pocket-rgiht.font-red{
+    color:#FF5040;
+}

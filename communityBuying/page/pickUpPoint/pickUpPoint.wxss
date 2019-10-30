@@ -1,0 +1,88 @@
+/* page/pickUpPoint/pickUpPoint.wxss */
+
+.status-top-tips{
+  height: 80rpx;
+  display: flex;
+  align-items: center;
+  padding: 0 30rpx;
+  font-family: PingFangSC-Regular;
+  font-size: 24rpx;
+  color: #FF5E53;
+  background-color: rgba(255,232,73, 0.2);
+}
+.status-top-tips image{
+  width: 44rpx;
+  height: 44rpx;
+  margin-right: 8rpx;
+}
+.bottom-line{
+  height: 20rpx;
+  opacity: 0.8;
+  background: #F8F8F8;
+}
+
+.pick-up-recommend-container{
+  padding: 20rpx 15rpx;
+}
+.pick-up-recommend-title{
+  width: 150rpx;
+  height: 42rpx;
+  text-align: center;
+  line-height: 42rpx;
+  background: #FFE849;
+  border-radius: 30rpx;
+  font-family: PingFangSC-Regular;
+  font-size: 22rpx;
+  color: #1E6FFF;
+}
+
+.pick-up-choose-container{
+  padding: 0 15rpx;
+}
+.pick-up-others-title{
+  padding-top: 30rpx;
+  font-family: PingFangSC-Regular;
+  font-size: 28rpx;
+  color: #999999;
+  line-height: 28rpx;
+}
+.pick-up-item{
+  border-top: 1rpx solid #eaeaea;
+  padding: 40rpx 15rpx 30rpx;
+}
+.pick-up-item:first-child{
+  border: 0rpx;
+}
+.pick-up-address-detail{
+  font-family: PingFangSC-Medium;
+  font-size: 30rpx;
+  color: #666666;
+  line-height: 40rpx;
+}
+.pick-up-user-info{
+  margin-top: 20rpx;
+  font-family: PingFangSC-Regular;
+  font-size: 30rpx;
+  color: #666666;
+  line-height: 30rpx;
+  display: flex;
+  align-items: center;
+}
+.pick-up-user-name{
+  margin-left: 30rpx;
+  margin-right: 60rpx;
+}
+.pick-up-empty{
+  padding-top: 100rpx;
+}
+.pick-up-empty-text{
+  text-align: center;
+  font-size: 22rpx;
+  line-height: 22rpx;
+  color: #999;
+}
+.pick-up-empty-text text{
+  color: #FF5E53;
+  font-size: 24rpx;
+  margin-left: 10rpx;
+}

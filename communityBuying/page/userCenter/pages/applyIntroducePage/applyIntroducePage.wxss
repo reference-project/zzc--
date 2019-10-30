@@ -1,0 +1,103 @@
+/* page/userCenter/pages/applyIntroducePage/applyIntroducePage.wxss */
+.P-apply-introduce{
+  font-family: PingFangSC-Medium;
+  padding-bottom: 120rpx;
+}
+.P-apply-introduce.isIphoneX{
+  padding-bottom: 200rpx;
+}
+.intro-items{
+  padding: 25rpx 30rpx;
+}
+.intro-item{
+  padding-top: 40rpx;
+}
+.intro-item-title{
+  position: relative;
+  width: 304rpx;
+  height: 64rpx;
+  text-align: center;
+  line-height: 64rpx;
+  font-family: PingFangSC-Semibold;
+  font-size: 28rpx;
+  color: #1E6FFF;
+}
+.intro-item-title image{
+  width: 304rpx;
+  height: 64rpx;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: -1;
+}
+.intro-item-value{
+  margin-top: 48rpx;
+  font-family: PingFangSC-Medium;
+  font-size: 24rpx;
+  color: #333333;
+  line-height: 36rpx;
+}
+.intro-item-item{
+  display: flex;
+  margin-top: 40rpx;
+  align-items: center;
+  font-family: PingFangSC-Medium;
+  font-size: 24rpx;
+  color: #666666;
+  line-height: 24rpx;
+}
+.intro-item-item.more-line{
+  line-height: 40rpx;
+}
+.circle-blue{
+  width: 20rpx;
+  height: 20rpx;
+  background: #4B8AF4;
+  border-radius: 50%;
+  margin-right: 20rpx;
+}
+.intro-item-item-value{
+  flex: 1;
+  width: 1rpx;
+}
+
+
+.intro-logo-container{
+  margin-top: 86rpx;
+  text-align: center;
+  font-size: 0rpx;
+}
+.intro-logo-container image{
+  width: 366rpx;
+}
+.chat-tips{
+  margin-top: 20rpx;
+  opacity: 0.9;
+  font-family: PingFangSC-Medium;
+  font-size: 22rpx;
+  color: #333333;
+  line-height: 22rpx;
+}
+.footer-container{
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #fff;
+  z-index: 100;
+  height: 98rpx;
+}
+.isIphoneX{
+  padding-bottom: 72rpx;
+}
+.btn-apply{
+  width: 600rpx;
+  height: 80rpx;
+  margin: 10rpx auto 0;
+  background-image: linear-gradient(270deg, #FF0700 0%, #FF9363 100%);
+  border-radius: 100rpx;
+  font-size: 38rpx;
+  color: #FFFFFF;
+  text-align: center;
+  line-height: 80rpx;
+}

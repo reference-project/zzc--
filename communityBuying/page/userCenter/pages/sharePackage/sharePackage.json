@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "packageItem": "../../../../components/packageItem/packageItem",
+    "alertingTips": "../../../../components/alertingTips/alertingTips"
+  }
+}

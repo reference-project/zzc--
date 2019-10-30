@@ -1,0 +1,50 @@
+<!--pages/login/login.wxml-->
+
+<view class='get-userInfo' wx:if="{{state.firstStepStatus}}">
+    <view class='big-picture'>
+      <image src='/imgs/icon-logo-circle.png' mode='widthFix'></image>
+    </view>
+    <view class='userInfo-tips'>
+      <view class='tips-title'>壹手仓鲜品欢迎您</view>
+      <view class='limit'>需要允许授权才可以使用壹手仓所有服务</view>
+    </view>
+    <button open-type="getUserInfo" bindgetuserinfo="userInfoHandler" class='submit'>点击授权</button>
+</view>
+
+
+<view class='phone-login' wx:if="{{state.secondStepStatus}}">
+  <view class='info-items'>
+    <view class='info-item'>
+      <view class='info-item-text'>
+        <image src='/imgs/icon-buyer-address-tips.png'></image>
+        <text>手机号</text>
+      </view>
+      <view class='info-item-input'>
+        <input placeholder='请输入您的手机号' placeholder-class='placeholder-class' bindinput='onInputMobileHandler'></input>
+        <view class="red-tips" wx:if="{{state.phoneWrongStatus}}">格式错误</view>
+      </view>
+      
+      <button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" class='btn-allow-phone'>一键授权</button>
+    </view>
+    <view class='info-item'>
+      <view class='info-item-text'>
+        <image src='/imgs/icon-buyer-address-tips.png'></image>
+        <text>验证码</text>
+      </view>
+      <view class='info-item-input'>
+        <input placeholder='请输入短信验证码'  placeholder-class='placeholder-class' bindinput='onInputCodeHandler'></input>
+        <view class="red-tips" wx:if="{{state.codeWrongStatus}}">格式错误</view>
+      </view>
+      <view class='send-code'>
+        <view  catchtap='onSendCodeHandler' wx:if="{{state.secondTime == 0}}">获取验证码</view>
+        <text wx:else>{{state.secondTime}}s</text>
+      </view>
+    </view>
+  </view>
+  <form report-submit bindsubmit="{{state.canPhoneSubmit && state.canCodeSubmit?'formSubmit':''}}">
+      <button form-type='submit' class='btn-submit phone {{!state.canPhoneSubmit || !state.canCodeSubmit?"disabled":""}}'>绑定手机号</button>
+    </form>
+</view>
+
+
+<alertingTips alertingStatus="{{state.alertingStatus}}" alertingWords="{{state.alertingWords}}"></alertingTips>

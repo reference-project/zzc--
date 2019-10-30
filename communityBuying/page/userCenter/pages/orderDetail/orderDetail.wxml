@@ -1,0 +1,570 @@
+<!--page/userCenter/pages/orderDetail/orderDetail.wxml-->
+<!--  导入wxs文件 -->
+<wxs module="toolFr" src="../../../../utils/filter.wxs"></wxs>
+<view class='P-order-detail {{state.isIphoneX?"isIphoneX":""}}' wx:if="{{data.orderDetail.no}}">
+ 
+ 
+<view class="detail-heeader">
+   <view class="detail-bg">
+       <image class="detail-bg-image" src="/imgs/detail-bg.png"></image>
+    </view>
+    <!-- -1-已取消-->
+  <view wx:if='{{data.orderDetail.status==-1}}' class="detail-zindex-top">
+    <view class='header-tips'>
+      <view class="icon-left">
+            <image class="icon-left-image" src="/imgs/icon-cancelled.png"></image>
+        </view>
+      <view class='header-tips-left'>
+        <view class='header-tips-status'>已取消</view>
+        <view class="subtitle">期待您下次购物</view>
+      </view>
+
+    </view>
+  </view>
+
+  <!-- 0-待支付 -->
+  <view wx:if='{{data.orderDetail.status==0}}' class="detail-zindex-top">
+
+      <view class='header-tips'>
+        <view class="icon-left">
+            <image class="icon-left-image" src="/imgs/icon-obligations.png"></image>
+        </view>
+      <view class='header-tips-left'>
+        <view class='header-tips-status'>待付款</view>
+        <view class="subtitle">请在{{data.countDown}}内付款</view>
+      </view>
+    </view>
+    <!-- <view class='status-top-tips black'>
+      <view>请在
+        <text class='red'>{{data.countDown}}</text>内付款，时间结束后订单将会</view>
+    </view>
+    <view class='header-tips red'>
+      <view class='header-tips-left'>
+        <!-- <image class='header-tips-icon' src='/imgs/icon-order-payment-active.png'></image> -->
+        <!-- <view class='header-tips-status'>待付款</view>
+      </view> -->
+      <!-- <view class='header-tips-right'>
+        <button open-type='contact'>
+          <image src='/imgs/icon-customer-active.png'></image>
+          联系客服
+        </button>
+      </view> 
+    </view> -->
+  </view>
+
+  <!-- 2-已支付（待发货/配送)-->
+  <view wx:if='{{data.orderDetail.status==2}}' class="detail-zindex-top">
+      <view class='header-tips'>
+        <view class="icon-left">
+            <image class="icon-left-image" src="/imgs/icon-paid.png"></image>
+        </view>
+      <view class='header-tips-left'>
+        <view class='header-tips-status'>已付款</view>
+        <view class="subtitle">请关注具体商品配送时间</view>
+      </view>
+    </view>
+
+    <!-- <view class='status-top-tips'>
+      <image src='/imgs/icon-clock-tips.png' class='icon-clock-tips'></image>
+      <view>您的宝贝正在备货中，有任何问题可联系客服哦</view>
+    </view>
+    <view class='header-tips'>
+      <view class='header-tips-left'>
+        <view class='header-tips-status'>已付款，正在备货</view>
+      </view>
+    </view> -->
+  </view>
+
+  <!-- 3-配送中-->
+  <view wx:if='{{data.orderDetail.status==3}}' class="detail-zindex-top">
+    <view class='header-tips'>
+        <view class="icon-left">
+            <image class="icon-left-image" src="/imgs/details-distribution.png"></image>
+        </view>
+      <view class='header-tips-left'>
+        <view class='header-tips-status'>配送中</view>
+        <view class="subtitle">商品已出库，司机正在配送中</view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 4-交易完成-->
+  <view wx:if='{{data.orderDetail.status===4}}' class="detail-zindex-top">
+    <view class='header-tips'>
+      <view class="icon-left">
+            <image class="icon-left-image" src="/imgs/icon-completed.png"></image>
+        </view>
+      <view class='header-tips-left'>
+        <view class='header-tips-status'>已完成</view>
+        <view class="subtitle">感谢您的光临，欢迎您再来</view>
+      </view>
+     </view>
+    <!-- <view class='status-top-tips'>
+     <image src='/imgs/icon-clock-tips.png' class='icon-clock-tips'></image> 
+      <view>交易已完成，售后问题请联系客服哦</view>
+    </view> -->
+  </view>
+
+  <!-- 5-已退款-->
+  <view wx:if='{{data.orderDetail.status==5}}' class="detail-zindex-top">
+    <view class="header-tips">
+        <view class="icon-left">
+              <image class="icon-left-image" src="/imgs/icon-paid.png"></image>
+        </view>
+        <view class="header-tips-left">
+           <view class='header-tips-status'>已退款</view>
+           <view class="subtitle">已退款，售后问题请联系客服哦</view>
+        </view>
+    </view>
+  </view>
+
+    <!-- 6-待自提-->
+  <view wx:if='{{data.orderDetail.status===6}}' class="detail-zindex-top">
+    <view class='header-tips'>
+      <view class="icon-left">
+            <image class="icon-left-image" src="/imgs/icon-take delivery.png"></image>
+        </view>
+      <view class='header-tips-left'>
+        <view class='header-tips-status'>待自提</view>
+        <view class="subtitle">到货啦，请尽快到自提点取货哦</view>
+      </view>
+     </view>
+    <!-- <view class='status-top-tips'>
+     <image src='/imgs/icon-clock-tips.png' class='icon-clock-tips'></image> 
+      <view>交易已完成，售后问题请联系客服哦</view>
+    </view> -->
+  </view>
+
+
+</view>
+  <!-- <view class='order-info-container top'>
+    <view class='order-info-number'>订单编号
+      <text>{{data.orderDetail.no}}</text>
+      <text class='btn-copy' catchtap='onCopyHandler' data-no="{{data.orderDetail.no}}">复制</text>
+    </view>
+    <view class='order-create-time'>下单时间
+      <text>{{data.orderDetail.create_time}}</text>
+    </view>
+    <view class='order-finish-time' wx:if='{{data.orderDetail.status===4 && data.orderDetail.arrive_time}}'>订单完成
+      <text>{{data.orderDetail.arrive_time}}</text>
+    </view>
+  </view> -->
+
+
+  <view class='address-container margin'>
+    <view class='address-info-item'>
+      <view class='address-item-title-box'>
+         <view class="left-icon" style="top:4rpx;"></view>
+        <view class='address-item-title'>自提地址</view>
+      </view>
+      <view class="store-name">{{data.orderDetail.store_name?data.orderDetail.store_name:"暂无店名  !"}}<text>(团长：{{data.orderDetail.merchant_name?data.orderDetail.merchant_name:"暂无团长!"}})</text></view>
+      <view class='address-info-detail'>{{data.orderDetail.store_address?data.orderDetail.store_address:"暂无提货地址!"}}
+      </view>
+      <view class='address-chater'>
+        <!-- <view class='address-chater-detail'>
+          小区团长:
+          <text class='address-chater-name'>{{data.orderDetail.agent_mask?data.orderDetail.agent_mask:"暂无团长!"}}</text>
+        </view> -->
+        <view class='address-chater-call' catchtap='onCallHandler' data-phone="{{data.orderDetail.agent_mobile}}" wx:if='{{data.orderDetail.agent_mobile_mask}}'>
+          <text class='address-chater-phone'>{{data.orderDetail.agent_mobile_mask}}</text>
+          <image src='/imgs/icon-call-active.png'></image>
+          <view>联系团长</view>
+        </view>
+      </view>
+    </view>
+    <view class='address-user-tips'>
+      <view class='address-item-title-box'>
+          <view class="left-icon" style="top:4rpx;"></view>
+        <view class='address-item-title'>提货人信息</view>
+      </view>
+      <view class='address-user-detail'>{{data.orderDetail.receiver}}
+        <text catchtap='onCallHandler' data-phone="{{data.orderDetail.mobile}}">{{data.orderDetail.mobile}}</text>
+      </view>
+      <view class='address-user-detail'>{{data.orderDetail.remark}}</view>
+    </view>
+  </view>
+
+
+
+  <!--次日达商品-->
+  <view class='order-pro-lists' wx:if="{{data.orderDetail.goods_umber1>0}}" wx:for="{{data.orderDetail.list_data[0]}}" wx:key="{{index}}" wx:for-item="itemName">
+    <view class='order-pro-title'>
+      <view class="left-icon"></view>
+      <view class="order-pro-conent">
+        <view class="order-pro-left"> 次日达商品 </view>
+         <!-- <view class="order-pro-right">{{data.orderDetail.goods_umber1}}件商品</view> -->
+         <view class="order-pro-left-status cancel" wx:if="{{itemName[0].status==-1}}">已取消</view>
+         <view class="order-pro-left-status" wx:elif="{{itemName[0].status==4}}">已完成</view>
+          <view class="order-pro-left-status" wx:elif="{{itemName[0].status==0}}">待付款</view>
+          <view class="order-pro-left-status" wx:elif="{{itemName[0].status==2}}">待发货</view>
+          <view class="order-pro-left-status" wx:elif="{{itemName[0].status==3}}">配送中</view>
+          <view class="order-pro-left-status" wx:elif="{{itemName[0].status==6}}">待自提</view>
+          <view class="order-pro-left-status cancel" wx:elif="{{itemName[0].status==5}}">已退款</view>
+          <view class="order-pro-left-status" wx:elif="{{itemName[0].status==1}}">待付款</view>
+       </view>
+    </view>
+    <view class='order-pro-item'>
+       <view class="order-pro-list" wx:for="{{itemName}}" wx:key="{{index}}">
+           <image class="goods-logo" src='{{item.goods_logo?item.goods_logo:""}}'></image>
+           <view class="order-pro-list-center">
+              <view class="order-pro-list-title">
+                 {{item.goods_name}}
+              </view>
+              <view class="order-pro-list-info">
+              <text class="sku-name">{{item.sku_name}}</text>
+              <text>x{{item.number}}</text>
+              </view>
+           </view>
+           <view class="order-pro-list-right">
+             ¥ {{item.amount/100}}
+           </view>
+       </view>
+
+        <!--取消时间--->
+      <block wx:if="{{itemName[0].status==-1}}">
+       <view class="order-pro-time" wx:if="{{data.orderDetail.cancel_time}}">
+           <view class='iconfont icon-endtime'></view>
+          <view class="time-title">取消时间{{data.orderDetail.cancel_time}}</view>
+       </view>
+      </block>
+
+      <!--退款时间--->
+      <block wx:if="{{itemName[0].status==5}}">
+       <view class="order-pro-time" wx:if="{{itemName[0].refund_time}}">
+           <view class='iconfont icon-endtime'></view>
+          <view class="time-title">退款时间{{itemName[0].refund_time}}</view>
+       </view>
+      </block>
+
+      <!--完成时间--->
+      <block wx:if="{{itemName[0].status===4}}">
+       <view class="order-pro-time" wx:if="{{itemName[0].arrive_time}}">
+           <view class='iconfont icon-endtime'></view>
+          <view class="time-title">成交时间{{itemName[0].arrive_time}}</view>
+       </view>
+      </block>
+
+       <!--待自提--->
+      <block wx:if="{{itemName[0].status==6}}">
+       <view class="order-pro-time" wx:if="{{itemName[0].reach_time}}">
+         <view class='iconfont icon-songhuo'></view>
+          <view class="time-title">送达时间{{itemName[0].reach_time}}</view>
+       </view>
+      </block>
+
+      <!--配送中--->
+      <block wx:if="{{itemName[0].status==3}}">
+       <view class="order-pro-time" wx:if="{{itemName[0].expected_reach_time}}">
+         <view class='iconfont icon-songhuo'></view>
+          <view class="time-title">预计送达时间{{itemName[0].expected_reach_time}}</view>
+       </view>
+      </block>
+
+      <!--预计发货--->
+      <block wx:if="{{itemName[0].status==2}}">
+       <view class="order-pro-time" wx:if="{{itemName[0].expected_deliver_time}}">
+         <view class='iconfont icon-songhuo'></view>
+          <view class="time-title">预计发货时间{{itemName[0].expected_deliver_time}}</view>
+       </view>
+      </block>
+
+      
+      <!-- <view wx:for="{{data.orderDetail.items}}" wx:key="{{index}}">
+        <view class='item-info-container'>
+          <image src='{{item.goods_logo?item.goods_logo:""}}'></image>
+          <view class='item-info-content'>
+            <view class='order-item-info-title-box'>
+              <view class='order-item-info-title'>{{item.goods_name}}</view>
+              <view class='order-item-info-price'>¥ {{item.price/100}}</view>
+            </view>
+            <view class='order-item-info-sku'>
+              <view class='order-item-info-sku-name'>{{item.sku_name}}</view>
+              <view class='order-item-info-sku-num'>x{{item.number}}</view>
+            </view>
+            <view class='order-type-content'>
+              <view class='pro-tips booking' wx:if="{{item.activity_type==2}}">预售</view>
+              <view class='order-pro-item-status' wx:if="{{item.status >= 2 && (item.refund_mark == 1 || item.activity_type==2)}}">
+                <view class='order-status active' wx:if="{{item.refund_mark == 1}}">[已退款]</view>
+                <view class='order-status active' wx:if="{{item.refund_mark == 0 && item.activity_type==2 && status == 2}}">[待发货]</view>
+                <view class='order-status active' wx:if="{{item.refund_mark == 0 && item.activity_type==2 && status == 3}}">[配送中]</view>
+                <view class='order-status active' wx:if="{{item.refund_mark == 0 && item.activity_type==2 && status == 4}}">[交易成功]</view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view> -->
+      
+      <!-- <view class='item-info-price'>
+        <view class='pro-price-text'>订单总价</view>
+        <text class='pro-price'>¥{{data.orderDetail.total_price/100}}</text>
+      </view>
+      <view class='item-info-item' wx:if="{{data.orderDetail.red_envelop_deduction_amount}}">
+        <view class='item-info-item-left'>
+          <image src='/imgs/icon-red-package.png' class=''></image>
+          <view class='item-info-item-text'>红包抵扣</view>
+        </view>
+        <view class='item-info-item-right'>-¥{{data.orderDetail.red_envelop_deduction_amount/100}}</view>
+      </view> -->
+      <!-- <view class='item-info-price really'>
+        <view class='pro-price-text'>实付金额</view>
+        <text class=''>¥{{data.orderDetail.pay_price/100}}</text>
+      </view> -->
+      <!-- <view class='order-pro-actions'>
+        <view class='btn-change' catchtap='onGoToLogisticsHandler' wx:if="{{item.tracking_number}}" data-trade-no='{{item.tracking_number}}'>查看物流</view>
+        <view class='btn-change' catchtap='onGoToReturnPageHandler' wx:if="{{data.orderDetail.order_status == 4}}" data-index="{{index}}" data-has-return='{{item.has_after_sale}}' data-current-item='{{item}}'>售后</view>
+      </view> -->
+    </view>
+  </view>
+
+   <!--预售商品-->
+   <view class='order-pro-lists' wx:if="{{data.orderDetail.goods_umber2>0}}" wx:for="{{data.orderDetail.list_data[1]}}" wx:key="{{index}}" wx:for-item="itemName">
+    <view class='order-pro-title'>
+      <view class="left-icon"></view>
+      <view class="order-pro-conent">
+        <view class="order-pro-left"> 预售商品 </view>
+        <!-- <view class="order-pro-right">{{toolFr.accumulationFn(itemName)}}件商品</view> -->
+        <view class="order-pro-left-status cancel" wx:if="{{itemName[0].status==-1}}">已取消</view>
+         <view class="order-pro-left-status" wx:elif="{{itemName[0].status==4}}">已完成</view>
+          <view class="order-pro-left-status" wx:elif="{{itemName[0].status==0}}">待付款</view>
+          <view class="order-pro-left-status" wx:elif="{{itemName[0].status==2}}">待发货</view>
+          <view class="order-pro-left-status" wx:elif="{{itemName[0].status==3}}">配送中</view>
+          <view class="order-pro-left-status" wx:elif="{{itemName[0].status==6}}">待自提</view>
+          <view class="order-pro-left-status cancel" wx:elif="{{itemName[0].status==5}}">已退款</view>
+          <view class="order-pro-left-status" wx:elif="{{itemName[0].status==1}}">待付款</view>
+       </view>
+    </view>
+    <view class='order-pro-item'>
+       <view class="order-pro-list" wx:for="{{itemName}}" wx:key="{{index}}">
+           <image class="goods-logo" src='{{item.goods_logo?item.goods_logo:""}}'></image>
+           <view class="order-pro-list-center">
+              <view class="order-pro-list-title">
+                 {{item.goods_name}}
+              </view>
+              <view class="order-pro-list-info">
+              <text class="sku-name">{{item.sku_name}}</text>
+              <text>x{{item.number}}</text>
+              </view>
+           </view>
+           <view class="order-pro-list-right">
+             ¥ {{item.amount/100}}
+           </view>
+       </view>
+
+            <!--取消时间--->
+      <block wx:if="{{itemName[0].status==-1}}">
+       <view class="order-pro-time" wx:if="{{data.orderDetail.cancel_time}}">
+           <view class='iconfont icon-endtime'></view>
+          <view class="time-title">取消时间{{data.orderDetail.cancel_time}}</view>
+       </view>
+      </block>
+
+     <!--待自提--->
+      <block wx:if="{{itemName[0].status==6}}">
+       <view class="order-pro-time" wx:if="{{itemName[0].reach_time}}">
+         <view class='iconfont icon-songhuo'></view>
+          <view class="time-title">送达时间{{itemName[0].reach_time}}</view>
+       </view>
+      </block>
+
+      <!--配送中--->
+      <block wx:if="{{itemName[0].status==3}}">
+       <view class="order-pro-time" wx:if="{{itemName[0].expected_reach_time}}">
+         <view class='iconfont icon-songhuo'></view>
+          <view class="time-title">预计送达时间{{itemName[0].expected_reach_time}}</view>
+       </view>
+      </block>
+
+      <!--预计发货--->
+      <block wx:if="{{itemName[0].status==2}}">
+       <view class="order-pro-time" wx:if="{{itemName[0].expected_deliver_time}}">
+         <view class='iconfont icon-songhuo'></view>
+          <view class="time-title">预计发货时间{{itemName[0].expected_deliver_time}}</view>
+       </view>
+      </block>
+
+      <!--完成时间--->
+      <block wx:if="{{itemName[0].status==4}}">
+       <view class="order-pro-time" wx:if="{{itemName[0].arrive_time}}">
+         <view class='iconfont icon-endtime'></view>
+          <view class="time-title">成交时间{{itemName[0].arrive_time}}</view>
+       </view>
+      </block>
+
+      <!-- <block wx:if="{{data.orderDetail.status===4}}">
+       <view class="order-pro-time">
+          <!-- <view class='iconfont icon-songhuo'></view> 
+         <view class='iconfont icon-endtime'></view>
+          <view class="time-title">成交时间{{data.orderDetail.deliver_time}}</view>
+       </view>
+      </block> -->
+
+
+      <!-- <view wx:for="{{data.orderDetail.items}}" wx:key="{{index}}">
+        <view class='item-info-container'>
+          <image src='{{item.goods_logo?item.goods_logo:""}}'></image>
+          <view class='item-info-content'>
+            <view class='order-item-info-title-box'>
+              <view class='order-item-info-title'>{{item.goods_name}}</view>
+              <view class='order-item-info-price'>¥ {{item.price/100}}</view>
+            </view>
+            <view class='order-item-info-sku'>
+              <view class='order-item-info-sku-name'>{{item.sku_name}}</view>
+              <view class='order-item-info-sku-num'>x{{item.number}}</view>
+            </view>
+            <view class='order-type-content'>
+              <view class='pro-tips booking' wx:if="{{item.activity_type==2}}">预售</view>
+              <view class='order-pro-item-status' wx:if="{{item.status >= 2 && (item.refund_mark == 1 || item.activity_type==2)}}">
+                <view class='order-status active' wx:if="{{item.refund_mark == 1}}">[已退款]</view>
+                <view class='order-status active' wx:if="{{item.refund_mark == 0 && item.activity_type==2 && status == 2}}">[待发货]</view>
+                <view class='order-status active' wx:if="{{item.refund_mark == 0 && item.activity_type==2 && status == 3}}">[配送中]</view>
+                <view class='order-status active' wx:if="{{item.refund_mark == 0 && item.activity_type==2 && status == 4}}">[交易成功]</view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view> -->
+      
+      <!-- <view class='item-info-price'>
+        <view class='pro-price-text'>订单总价</view>
+        <text class='pro-price'>¥{{data.orderDetail.total_price/100}}</text>
+      </view>
+      <view class='item-info-item' wx:if="{{data.orderDetail.red_envelop_deduction_amount}}">
+        <view class='item-info-item-left'>
+          <image src='/imgs/icon-red-package.png' class=''></image>
+          <view class='item-info-item-text'>红包抵扣</view>
+        </view>
+        <view class='item-info-item-right'>-¥{{data.orderDetail.red_envelop_deduction_amount/100}}</view>
+      </view> -->
+      <!-- <view class='item-info-price really'>
+        <view class='pro-price-text'>实付金额</view>
+        <text class=''>¥{{data.orderDetail.pay_price/100}}</text>
+      </view> -->
+      <!-- <view class='order-pro-actions'>
+        <view class='btn-change' catchtap='onGoToLogisticsHandler' wx:if="{{item.tracking_number}}" data-trade-no='{{item.tracking_number}}'>查看物流</view>
+        <view class='btn-change' catchtap='onGoToReturnPageHandler' wx:if="{{data.orderDetail.order_status == 4}}" data-index="{{index}}" data-has-return='{{item.has_after_sale}}' data-current-item='{{item}}'>售后</view>
+      </view> -->
+    </view>
+  </view>
+
+
+
+
+
+  <!-- <view class='chat-container'>
+    <button open-type='contact' class='chat-btn'>
+      <image src='/imgs/icon-customer-active.png'></image>
+      联系客服
+    </button>
+    <view class='chat-btn' catchtap='onCallHandler' data-phone='4000585825'>
+      <image src='/imgs/icon-phone-active.png'></image>
+      拨打电话
+    </view>
+  </view> -->
+  <!-- <view class='order-info-container' wx:if="{{false}}">
+    <view class='order-info-freight'>订单运费
+      <text>¥{{data.orderDetail.freight/100}}</text>
+    </view>
+    <view class='order-info-number'>订单编号
+      <text>{{data.orderDetail.no}}</text>
+      <text class='btn-copy' catchtap='onCopyHandler' data-no="{{data.orderDetail.no}}">复制</text>
+    </view>
+    <view class='order-pay-way'>支付方式
+      <text>{{data.orderDetail.pay_type}}</text>
+    </view>
+    <view class='order-create-time'>下单时间
+      <text>{{data.orderDetail.create_time}}</text>
+    </view>
+    <view class='order-create-time' wx:if="{{data.orderDetail.confirm_time>0}}">订单完成
+      <text>{{data.orderDetail.confirm_time_util}}</text>
+    </view>
+  </view> -->
+
+    <!--红包信息-->
+    <view class="order-re-pocket-container">
+       <view class="order-re-pocket">
+         <view class="order-re-pocket-left">
+           商品金额
+         </view>
+         <view class="order-re-pocket-rgiht">
+           ￥{{data.orderDetail.total_price/100}}
+         </view>
+       </view>
+       <view class="order-re-pocket" wx:if="{{data.orderDetail.red_envelop_deduction_amount}}">
+          <view class="order-re-pocket-left">
+           <image src='/imgs/icon-red-package.png' class="icon-red-package"></image>
+           <view class="red-world-name">红包</view>
+         </view>
+         <view class="order-re-pocket-rgiht">
+           -¥{{data.orderDetail.red_envelop_deduction_amount/100}}
+         </view>
+       </view>
+       <view class="order-re-pocket">
+          <view class="order-re-pocket-left">
+           实付金额
+         </view>
+         <view class="order-re-pocket-rgiht font-red">
+           ￥{{data.orderDetail.pay_price/100}}
+         </view>
+       </view>
+    </view>
+
+
+   <!--订单信息-->
+   <view class="order-message-container">
+        <view class="order-message-header">
+        <view class="left-icon"></view>
+        订单详情
+        </view>
+        <view class="order-message-content">
+           <view class="order-number">
+           <text class="instructions">订单编号</text>
+           <text>{{data.orderDetail.no}}</text>
+             <text class='order-btn-copy' catchtap='onCopyHandler' data-no="{{data.orderDetail.no}}">复制</text>
+           </view>
+            <view class="order-time">
+            <text class="instructions">下单时间</text>
+            <text>{{data.orderDetail.create_time}}</text>
+            </view>
+        </view>
+   </view>
+
+
+  <view class='order-footer-container {{state.isIphoneX?"isIphoneX":""}}' wx:if="{{data.orderDetail.status===0||data.orderDetail.status===6||data.orderDetail.status==4||data.orderDetail.status==5}}">
+    <view class='btn-default' data-order-id='{{data.orderDetail.no}}' catchtap='onCancelOrderHandler' wx:if="{{data.orderDetail.status === 0}}">取消订单</view>
+    <view class='btn-default btn-default-delet' data-order-id='{{data.orderDetail.no}}' catchtap='onDeleteOrderHandler' wx:if="{{data.orderDetail.status == 4 || data.orderDetail.status == 5}}">删除订单</view>
+    <block wx:if="{{data.orderDetail.status===6}}">
+      <view class='expedite-delivery btn-expedite-delivery'>
+       <button open-type='contact'>
+         联系客服
+       </button>
+      </view> 
+      <view class='btn-primary' data-order-id='{{data.orderDetail.no}}' catchtap='onSureReciveHandler'>确认收货</view>
+    </block>
+    <!-- <view class='cancel-order' wx:if="{{data.orderDetail.order_status == 2}}">取消订单</view> -->
+    <form report-submit bindsubmit="formSubmit" wx:if="{{data.orderDetail.status === 0}}" class="form-btn">
+      <button formType="submit" class='btn-active' data-order-id='{{data.orderDetail.no}}'>立即付款</button>
+    </form>
+  </view>
+
+  <alertingTips alertingStatus="{{state.alertingStatus}}" alertingWords="{{state.alertingWords}}"></alertingTips>
+
+  <comfirmTips actionObj="{{state.actionObj}}" bindonsure="{{state.actionObj.submitHandler}}" bindoncancel="{{state.actionObj.cancelHandler}}" wx:if="{{state.comfirmBoxStatus}}"></comfirmTips>
+
+<view class='btn-share-content' catchtap='onChangeShareGroupStatusHandler' wx:if="{{(data.orderDetail.status == 2 || data.orderDetail.status == 3 || data.orderDetail.status == 4) && data.orderDetail.shared == 1 && data.orderDetail.red_package_status}}">
+    <image src='/imgs/icon-share-order-btn.png'></image>
+  </view>
+
+  <view class='share-group-container' wx:if="{{state.shareGroupStatus}}">
+    <view class='share-group-content'>
+      <view class='share-group-inner'>
+        <image src='/imgs/icon-share-package.png' class='icon-share-package'></image>
+        <view class='share-group-title'>恭喜获得分享红包</view>
+        <view class='share-group-desc'>您有一个红包待分享，快发给您的小伙伴吧~</view>
+        <button open-type='share' class='share-group-btn'>立即分享</button>
+      </view>
+      <view class='share-group-close' catchtap='onChangeShareGroupStatusHandler'>
+        <image src='/imgs/icon-close-package-shadow.png'></image>
+      </view>
+    </view>
+  </view>
+</view>

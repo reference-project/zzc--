@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "loadMore": "../../../../components/loadMore/loadMore",
+    "comfirmTips": "../../../../components/comfirmTips/comfirmTips",
+    "alertingTips": "../../../../components/alertingTips/alertingTips"
+  }
+}

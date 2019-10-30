@@ -1,0 +1,172 @@
+<!--page/userCenter/pages/applyPage/applyPage.wxml-->
+<view class='P-apply'>
+  <view class='apply-info' wx:if="{{data.firstStep}}">
+    <view class='header-title'>还差一步就可以啦~~</view>
+
+    <view class='info-items'>
+      <view class='info-item'>
+        <view class='info-item-text'>
+          <image src='/imgs/icon-buyer-address-tips.png'></image>
+          <text>手机号</text>
+        </view>
+        <view class='info-item-input'>
+          <input placeholder='请输入您的手机号' placeholder-class='placeholder-class' bindinput='onInputMobileHandler'></input>
+          <view class="red-tips" wx:if="{{state.phoneWrongStatus}}">格式错误</view>
+        </view>
+        
+        <button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" class='btn-allow-phone'>一键授权</button>
+      </view>
+      <view class='info-item'>
+        <view class='info-item-text'>
+          <image src='/imgs/icon-buyer-address-tips.png'></image>
+          <text>验证码</text>
+        </view>
+        <view class='info-item-input'>
+          <input placeholder='请输入短信验证码'  placeholder-class='placeholder-class' bindinput='onInputCodeHandler'></input>
+          <view class="red-tips" wx:if="{{state.codeWrongStatus}}">格式错误</view>
+        </view>
+        <view class='send-code'>
+          <!-- <button wx:if="{{data.timer == 0}}"  open-type="getUserInfo" bindgetuserinfo="userInfoHandler">获取验证码</button> -->
+          <view  catchtap='onClickSendCodeHandler' wx:if="{{data.timer == 0}}">获取验证码</view>
+          <!-- <text wx:if="{{timer == 0}}" catchtap='onSendCodeHandler'>获取验证码</text> -->
+          <text wx:else>{{data.timer}}s</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- <view class='protocol-container'>
+      <view class='select-checkbox {{data.agreeStatus?"active":""}}' catchtap='onAgreeProtocolHandler'></view>
+      <view>同意</view>
+      <view class='protocol-content'>《壹手仓用户协议》</view>
+    </view> -->
+
+    <!-- <button  open-type="getUserInfo" bindgetuserinfo="userInfoHandler" class='btn-submit'>我要开店</button> -->
+    <form report-submit bindsubmit="{{state.canPhoneSubmit && state.canCodeSubmit?'formSubmit':''}}">
+      <button form-type='submit' class='btn-submit phone {{!state.canPhoneSubmit || !state.canCodeSubmit?"disabled":""}}'>绑定手机号</button>
+    </form>
+  </view>
+  
+  <view class='shop-container' wx:if="{{data.secondStep}}">
+    <view class='header-title'>还差一步就可以啦~~</view>
+    <view class='info-items'>
+      <view class='info-item'>
+        <view class='info-item-text'>店主姓名</view>
+        <input placeholder='请输入您的姓名' class='info-item-input' placeholder-class='placeholder-class' bindinput='onInputChatNameHandler'></input>
+      </view>
+      <view class='info-item'>
+        <view class='info-item-text'>所在地区</view>
+        <picker class='info-item-input' mode="multiSelector" bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange" value="{{data.multiIndex}}" range="{{data.multiArray}}">
+
+          <view class='select-box' wx:if="{{data.provinceObj && data.provinceObj.name}}">
+            <view class='select-box-text'><text wx:if="{{data.provinceObj}}">{{data.provinceObj.name}}</text><text wx:if="{{data.cityObj }}">{{data.cityObj.name}}</text><text wx:if="{{data.countyObj}}">{{data.countyObj.name}}</text></view>
+            <image class='icon-arrow-right' src='/imgs/icon-arrow-default.png'></image>
+          </view>
+
+          <view class='select-box' wx:else >
+            <view class='select-box-text'>请选择所在地区</view>
+            <image class='icon-arrow-right' src='/imgs/icon-arrow-default.png'></image>
+          </view>
+          
+          <!-- <view class="picker">
+            当前选择：{{multiArray[0][multiIndex[0]]}}，{{multiArray[1][multiIndex[1]]}}，{{multiArray[2][multiIndex[2]]}}
+          </view> -->
+        </picker>
+      </view>
+      <view class='info-item'>
+        <view class='info-item-text'>小区名称</view>
+        <picker class='info-item-input' mode="selector" bindchange="bindSingalPickerChange"  value="{{data.comIndex}}" range="{{data.comsArr}}">
+
+          <view class='select-box' wx:if="{{data.selectCom && data.selectCom.name}}">
+            <view class='select-box-text'>{{data.selectCom.name}}</view>
+            <image class='icon-arrow-right' src='/imgs/icon-arrow-default.png'></image>
+          </view>
+
+          <view class='select-box' wx:else >
+            <view class='select-box-text'>请选择小区</view>
+            <image class='icon-arrow-right' src='/imgs/icon-arrow-default.png'></image>
+          </view>
+          
+          <!-- <view class="picker">
+            当前选择：{{multiArray[0][multiIndex[0]]}}，{{multiArray[1][multiIndex[1]]}}，{{multiArray[2][multiIndex[2]]}}
+          </view> -->
+        </picker>
+      </view>
+
+      <view class='info-item'>
+        <view class='info-item-text'>门店名称</view>
+        <input placeholder='请输入您的门店名称' class='info-item-input' placeholder-class='placeholder-class' bindinput='onInputShopNameHandler'></input>
+      </view>
+      
+      <view class='info-item'>
+        <view class='info-item-text'>门店地址</view>
+        <input placeholder='请输入详细地址' class='info-item-input' placeholder-class='placeholder-class' bindinput='onInputAddressDetailHandler'></input>
+      </view>
+    </view>
+    
+
+    <!-- <view class='protocol-container'>
+      <view class='select-checkbox {{data.isTrueStatus?"active":""}}' catchtap='onAgreeTrueHandler'></view>
+      <view class='protocol-content'>以上信息全部属实</view>
+    </view> -->
+
+    <view catchtap='onAddShopDetailHandler' class='btn-submit add-shop {{data.isTrueStatus?"":"disabled"}}'>确认</view>
+
+  </view>
+
+  <view class='apply-success-container' wx:if="{{data.successStatus}}">
+    <view class='apply-success-status' wx:if="{{data.userInfo.merchant && data.userInfo.merchant.stores && data.userInfo.merchant.stores[0] && data.userInfo.merchant.stores[0].status == 1}}">
+      <view class='image-status-box'>
+        <image src='/imgs/icon-apply-success.png'></image>
+        <view class='image-status-box-text'>审核通过</view>
+      </view>
+      <!-- <view class='shop-info'>
+        <view class='shop-info-item'>
+          <view class='shop-info-item-text'>店铺名称</view>
+          <view class='shop-info-item-value'>吃藕小店</view>
+        </view>
+        <view class='shop-info-item'>
+          <view class='shop-info-item-text'>店铺ID</view>
+          <view class='shop-info-item-value'>3342678953</view>
+        </view>
+      </view> -->
+      <view class='btn-go-home' catchtap='onGoToHomeHandler'>进入商城首页</view>
+      <view class='apply-success-bottom-tips'>
+        <view class='circle'></view>
+        <view>欢迎您加入壹手仓鲜品大家庭</view>
+      </view>
+    </view>
+    <view class='apply-success-status' wx:if="{{data.userInfo.merchant && data.userInfo.merchant.stores && data.userInfo.merchant.stores[0] && data.userInfo.merchant.stores[0].status == 0}}">
+      <view class='image-status-box'>
+        <image src='/imgs/icon-apply-looking.png'></image>
+        <view class='image-status-box-text'>提交申请成功，请耐心等待审核</view>
+      </view>
+      <view class='shop-info'>
+        <view class='looking-tips'>请您耐心等候我们的联系，壹手仓大家族欢迎您</view>
+      </view>
+      <view class='btn-go-home looking' catchtap='onGoToHomeHandler'>进入商城首页</view>
+    </view>
+    <view class='apply-success-status' wx:if="{{data.userInfo.merchant && data.userInfo.merchant.stores && data.userInfo.merchant.stores[0] && data.userInfo.merchant.stores[0].status == 2}}">
+      <view class='image-status-box'>
+        <image src='/imgs/icon-apply-looking.png'></image>
+        <view class='image-status-box-text'>审核未通过</view>
+      </view>
+      <view class='shop-info'>
+        <view class='looking-tips'>请核对信息再次申请或联系客服</view>
+      </view>
+      <view class='btn-go-home looking' catchtap='onGoToHomeHandler'>进入商城首页</view>
+    </view>
+    <view class='apply-success-status' wx:if="{{data.userInfo.merchant && data.userInfo.merchant.stores && data.userInfo.merchant.stores[0] && data.userInfo.merchant.stores[0].status == 3}}">
+      <view class='image-status-box'>
+        <image src='/imgs/icon-apply-looking.png'></image>
+        <view class='image-status-box-text'>门店被注销了</view>
+      </view>
+      <view class='shop-info'>
+        <view class='looking-tips'>请核对信息再次申请或联系客服</view>
+      </view>
+      <view class='btn-go-home looking' catchtap='onGoToHomeHandler'>进入商城首页</view>
+    </view>
+  </view>
+
+  <alertingTips alertingStatus="{{state.alertingStatus}}" alertingWords="{{state.alertingWords}}"></alertingTips>
+
+</view>

@@ -1,0 +1,100 @@
+<!--page/userCenter/pages/withdrawIntroPage/withdrawIntroPage.wxml-->
+<view class='P-withdraw-intro'>
+
+  <view class='recommend-lists-title' wx:if="{{!state.selectClassId}}">
+    <image src='/imgs/icon-home-bg-left.png'></image>
+    <text>结算说明</text>
+    <image src='/imgs/icon-home-bg-right.png'></image>
+  </view>
+
+  <view class='withdraw-intro-title'>
+    帐户余额的增加，用户在订单确认收货后的第2天，该订单产生的收益将自动转入到您的可提现金额中。
+  </view>
+
+  <view class='image-box'>
+    <image src='/imgs/icon-time-intro.png'></image>
+  </view>
+  <view class='intro-items'>
+
+    <view class='intro-item'>
+      <view class='intro-item-title'>
+        <view>结算规则</view>
+      </view>
+      <view class='intro-item-list'>
+        <view class='intro-item-list-item'>
+          <view class='intro-item-list-item-title'>
+            <view class='icon-cicle'></view>
+            <view>仅支持微信实名认证的用户提现</view>
+          </view>
+        </view>
+        <view class='intro-item-list-item'>
+          <view class='intro-item-list-item-title'>
+            <view class='icon-cicle'></view>
+            <view>提现金额会在72小时内转到您微信零钱中</view>
+          </view>
+        </view>
+        <view class='intro-item-list-item'>
+          <view class='intro-item-list-item-title'>
+            <view class='icon-cicle'></view>
+            <view>最低提现金额1元</view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <view class='intro-item'>
+      <view class='intro-item-title'>
+        <view>结算方式</view>
+      </view>
+      <view class='intro-item-list'>
+        <view class='intro-item-list-item'>
+          <view class='intro-item-list-item-title'>
+            <view class='icon-cicle'></view>
+            <view>微信自动付款到用户的微信零钱</view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <view class='intro-item'>
+      <view class='intro-item-title'>
+        <view>名词解释</view>
+      </view>
+      <view class='intro-item-list'>
+        <view class='intro-item-list-item'>
+          <view class='intro-item-list-item-title'>
+            <view class='icon-cicle'></view>
+            <view>预估收入</view>
+          </view>
+          <view class='intro-item-list-item-value'>用户通过店主分享的商品下单后，该笔订单所产生的收益。每个商品的收益都不一样，店主可以在销售订单列表查看对应的收入。</view>
+          <view class='intro-item-list-item-others'>注：预估收入不包括已取消订单、售后订单产生的收益。</view>
+        </view>
+        <view class='intro-item-list-item big'>
+          <view class='intro-item-list-item-title'>
+            <view class='icon-cicle'></view>
+            <view>订单状态-已结算</view>
+          </view>
+          <view class='intro-item-list-item-value'>用户确认收货后的第10天订单</view>
+        </view>
+        <view class='intro-item-list-item big'>
+          <view class='intro-item-list-item-title'>
+            <view class='icon-cicle'></view>
+            <view>订单状态-已付款</view>
+          </view>
+          <view class='intro-item-list-item-value'>用户已支付订单，但未确认收货</view>
+        </view>
+        <view class='intro-item-list-item big'>
+          <view class='intro-item-list-item-title'>
+            <view class='icon-cicle'></view>
+            <view>订单状态-已失效</view>
+          </view>
+          <view class='intro-item-list-item-value'>用户主动取消或支付超时自动关闭的订单</view>
+        </view>
+      </view>
+      
+    </view>
+
+  </view>
+
+
+</view>

@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "swiperItems": "../../../components/swiperItems/swiperItems",
+    "groupBuyingItem": "../../../components/groupBuyingItem/groupBuyingItem",
+    "loadMore": "../../../components/loadMore/loadMore"
+  }
+}

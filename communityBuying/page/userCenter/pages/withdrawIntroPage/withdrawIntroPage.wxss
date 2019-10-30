@@ -1,0 +1,96 @@
+/* page/userCenter/pages/withdrawIntroPage/withdrawIntroPage.wxss */
+
+.recommend-lists-title{
+  font-size: 38rpx;
+  color: #FF301D;
+  line-height: 38rpx;
+  padding: 30rpx 0 0rpx;
+  margin-top: 20rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.recommend-lists-title image{
+  width: 30rpx;
+  height: 15rpx;
+}
+.recommend-lists-title text{
+  margin: 0 10rpx;
+}
+
+.withdraw-intro-title{
+  width: 653rpx;
+  margin: 58rpx auto 0;
+  text-indent: 40rpx;
+  font-family: PingFangSC-Medium;
+  font-size: 24rpx;
+  color: #666666;
+  line-height: 36rpx;
+}
+.image-box{
+  text-align: center;
+  margin-top: 30rpx;
+}
+.image-box image{
+  width: 460rpx;
+  height: 78rpx;
+}
+/* .intro-items{
+  margin-top: 42rpx;
+} */
+.intro-item{
+  margin-top: 40rpx;
+}
+.intro-item-title{
+  font-family: PingFangSC-Regular;
+  font-size: 28rpx;
+  color: #fff;
+  width: 148rpx;
+  height: 42rpx;
+  line-height: 42rpx;
+  background-color: #ff5e53;
+  border-radius: 20rpx;
+  margin-left: 40rpx;
+  text-align: center;
+}
+.intro-item-list{
+  margin-top: 6rpx;
+  border: 1rpx solid transparent;
+}
+.intro-item-list-item{
+  margin-top: 24rpx;
+  padding: 0 40rpx 0 65rpx;
+}
+.intro-item-list-item.big{
+  margin-top: 30rpx;
+}
+.intro-item-list-item-title{
+  display: flex;
+  align-items: center;
+  font-family: PingFangSC-Regular;
+  font-size: 26rpx;
+  color: #333;
+  line-height: 26rpx;
+}
+.icon-cicle{
+  width: 10rpx;
+  height: 10rpx;
+  background-color: #ff5e53;
+  border-radius: 50%;
+  margin-right: 10rpx;
+}
+.intro-item-list-item-value{
+  margin-top: 14rpx;
+  font-family: PingFangSC-Regular;
+  font-size: 24rpx;
+  color: #666;
+  line-height: 36rpx;
+  padding-left: 30rpx;
+}
+.intro-item-list-item-others{
+  margin-top: 16rpx;
+  font-family: PingFangSC-Regular;
+  font-size: 24rpx;
+  color: #ff5e53;
+  line-height: 24rpx;
+}

@@ -1,0 +1,96 @@
+<!--page/index/pages/location/location.wxml-->
+<view class='P-location'>
+  <view class='header-container'>
+    <view class='header-bg'>
+      <image src='/imgs/icon-index-top-bg.png'></image>
+    </view>
+    <view class='header-content'>
+      <view class='city-choose' catchtap='onGoToLoCityHandler'>
+        <image src='/imgs/icon-search-black.png' class='icon-address'></image>
+        <view class='city-choose-name'>{{state.locationObj.city?state.locationObj.city:"选择城市"}}</view>
+        <image src='/imgs/icon-arrow-bottom.png' class='icon-arrow-bottom'></image>
+      </view>
+      <!-- <view class='line-vertical'></view> -->
+      <view class='input-content' catchtap='onGoToComSearchHandler'>
+        <!-- <image src='/imgs/icon-search-default.png' class='icon-search'></image> -->
+        <view class='input-text'>输入小区名称搜索社区</view>
+      </view>
+    </view>
+    <view class='current-address'>
+      <block wx:if="{{state.locationObj && !state.communityObj}}">
+        <view class='current-address-text'>当前地址</view>
+        <view class='current-address-value'>{{state.locationObj.city}}</view>
+        <view class='current-address-select-tips'>请选择您的社区</view>
+      </block>
+      <block wx:if="{{state.communityObj}}">
+        <view class='current-address-text'>当前社区</view>
+      </block>
+    </view>
+  </view>
+
+  <view class='has-community-container' wx:if="{{state.communityObj}}">
+    <view class='has-community-content' catchtap='onGoBackHandler'>
+      <image src='{{state.communityObj.avatar}}' class='community-avatar'></image>
+      <view class='has-community-inner'>
+        <view class='community-user'>团长：{{state.communityObj.contact}}</view>
+        <view class='community-name'>{{state.communityObj.community_name}}</view>
+        <view class='community-address'>{{state.communityObj.address}}</view>
+      </view>
+      <image src='/imgs/icon-community-address.png' class='icon-community-address'></image>
+    </view>
+  </view>
+
+  <view class='select-community-container'>
+    <!-- <view class='current-community' wx:if="{{state.locationObj.com}}">
+      <view class='hot-community-text'>当前小区</view>
+      <view class='hot-community-item' catchtap='onGoBackHandler'>
+        <view class='hot-community-item-name'>{{state.locationObj.com.name}}</view>
+        <view class='hot-community-item-address'>{{state.locationObj.com.address}}</view>
+      </view>
+    </view>
+    <view class='line-bottom' wx:if="{{state.locationObj.com}}"></view> -->
+    <view class='hot-community-lists'>
+      <view class='hot-community-title'>
+        <view class='hot-community-line'></view>
+        <view class='hot-community-text' wx:if="{{state.locationObj.city == state.currentLocation.city}}">附近社区</view>
+        <view class='hot-community-text' wx:else>热门社区</view>
+      </view>
+      <view class='community-items' wx:if="{{data.coms}}">
+        <view class='community-item' wx:for="{{data.coms}}" wx:key="{{index}}" data-index='{{index}}' catchtap='onSelectComHandler'>
+          <view class='community-item-left'>
+            <image src='{{item.avatar}}'></image>
+          </view>
+           <view class='community-item-right'>
+            <view class='community-item-right-top'>
+              <view class='community-item-name'>{{item.community_name}}</view>
+              <view class='community-item-distance' wx:if="{{item.distance}}">距离约{{item.distance}}km</view>
+            </view>
+            <view class='community-item-right-middle'>
+              <view class='community-item-address'>{{item.address}}</view>
+              <image src='/imgs/icon-arrow-community-right.png'></image>
+            </view>
+            <view class='community-item-right-bottom'>
+            团长: <text>{{item.contact}}</text>
+            </view>
+          </view>
+        </view>
+        <view class='touch-bottom-tips'>没有合适小区？请在搜索试试哦～</view>
+      </view>
+      <view class='hot-community-empty' wx:if="{{data.coms && data.coms.length == 0}}">
+        <image src='/imgs/icon-community-empty.png'></image>
+        <view class='hot-community-empty-text'>没有更多社区了～</view>
+      </view>
+      <!-- <view class='hot-community-item' wx:for="{{data.coms}}" wx:key="{{index}}" catchtap='onSelectComHandler' data-index='{{index}}'>
+        <view class='hot-community-item-name'>{{item.name}}</view>
+        <view class='hot-community-item-address'>{{item.address}}</view>
+      </view> -->
+    </view>
+  </view>
+
+  <!-- <view class='community-empty-container'>
+    <image src='/imgs/icon-location-empty.png'></image>
+    <view class='community-empty-tips'>当前城市暂未开通服务,请更换城市</view>
+    <view class='community-empty-tips'>申请加盟热线：400-0585-825</view>
+  </view> -->
+  <view wx:if="{{state.needLocation}}" style='text-align:center;'>需要授权地址信息</view>
+</view>

@@ -1,0 +1,11 @@
+<!--components/footerNav/footerNav.wxml-->
+<view class='footer-nav'>
+  <view class='footer-nav-item' catchtap='onGoToDiscount'>
+    <image src='/imgs/icon-boss-active-yellow.png'></image>
+    <view>半价拿</view>
+  </view>
+  <view class='footer-nav-item' catchtap='onGoToUserCenter'>
+    <image src='/imgs/icon-my-active-yellow.png'></image>
+    <view>个人中心</view>
+  </view>
+</view>

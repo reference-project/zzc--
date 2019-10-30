@@ -1,0 +1,10 @@
+<!--pages/canvasTest/canvasTest.wxml-->
+<view class='pengyouquan' catchtap='showHandler'>aaa</view>
+
+<view hidden="{{!showStatus}}">
+  <view catchtap='closeHandler'>guanbi</view>
+  <button type="primary" bindtap="save">保存当前绘图</button>
+  <canvas canvas-id="myCanvas" class='canvas'/> 
+</view>
+
+<canvas style="width: 400rpx; height: 400rpx;border:1px solid red" canvas-id="firstCanvas"></canvas>

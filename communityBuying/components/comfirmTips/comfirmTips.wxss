@@ -1,0 +1,49 @@
+/* components/comfirmTips/comfirmTips.wxss */
+.confirm-delete-container{
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 20;
+}
+.comfirm-delete-content{
+  width: 600rpx;
+  height: 280rpx;
+  background-color: #fff;
+  border-radius: 20rpx;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}
+.comfirm-delete-text{
+  font-size: 28rpx;
+  color: #000000;
+  line-height: 32rpx;
+  margin-top: 62rpx;
+  text-align: center;
+}
+.comfirm-delete-btns{
+  display: flex;
+  justify-content: center;
+  margin-top: 86rpx;
+}
+.delete-confirm,.delete-hesitate{
+  width: 234rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  text-align: center;
+  border-radius: 100rpx;
+  font-size: 28rpx;
+  color: #FFFFFF;
+}
+.delete-confirm{
+  background-color: #FFE7D9;
+  color: #FF0700;
+}
+.delete-hesitate{
+  margin-left: 32rpx;
+  background: linear-gradient(270deg, #FF0700 0%, #FF9363 100%);
+}

@@ -1,0 +1,28 @@
+/* components/alertingTips/alertingTips.wxss */
+.alert{
+  background-color: rgba(27, 27, 27, 0.6);
+  position: fixed;
+  bottom: -100px;
+  color: #fff;
+  font-size: 28rpx;
+  line-height: 48rpx;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2000;
+  padding: 16rpx 30rpx;
+  word-break: break-all;
+}
+@keyframes fadeOutUp {
+  10%,30%,40%,50%{
+    opacity: 1;
+    bottom: 700rpx;
+  }
+  100%{
+    opacity: 0;
+  }
+}
+.alerting{
+  animation-duration: 4s;
+  animation-fill-mode: both;
+  animation-name: fadeOutUp;
+}

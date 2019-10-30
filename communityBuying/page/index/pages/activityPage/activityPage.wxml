@@ -1,0 +1,18 @@
+<!--page/index/pages/activityPage/activityPage.wxml-->
+<view class='activity-page'>
+  <view class='activity-banner'>
+    <image src='' ></image>
+  </view>
+
+  <view class='pro-lists'>
+    <view class='pro-lists-left'>
+      <productItem></productItem>
+      <productItem></productItem>
+    </view>
+    <view class='pro-lists-right'>
+      <productItem></productItem>
+      <productItem></productItem>
+    </view>
+  </view>
+  <loadMore></loadMore>
+</view>

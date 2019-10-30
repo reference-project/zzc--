@@ -1,0 +1,156 @@
+/* page/index/pages/compareCommunity/compareCommunity.wxss */
+
+/* 头部样式 */
+.header-container{
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  /* height: 110rpx; */
+  /* padding: 0 25rpx; */
+  font-family: PingFangSC-Medium;
+  height: 376rpx;
+}
+.header-bg image{
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 290rpx;
+  z-index: 1;
+}
+.header-content{
+  margin: 0 auto;
+  z-index: 2;
+  width: 690rpx;
+  height: 275rpx;
+  background: #FAFAFA;
+  border-radius: 20rpx;
+  box-shadow: 0 16rpx 30rpx 0 rgba(255,197,4,0.28);
+  text-align: center;
+  padding-top: 56rpx;
+  box-sizing: border-box;
+}
+.header-content-title{
+  font-family: PingFangSC-Semibold;
+  font-size: 36rpx;
+  line-height: 50rpx;
+  color: #282828;
+}
+.header-content-reason{
+  margin-top: 16rpx;
+  font-family: PingFangSC-Medium;
+  font-size: 28rpx;
+  line-height: 40rpx;
+  color: #FFAA00;
+}
+.header-content-tips{
+  margin-top: 19rpx;
+  font-family: PingFangSC-Semibold;
+  font-size: 30rpx;
+  line-height: 42rpx;
+  color: #282828;
+}
+
+
+.merchant-items{
+  display: flex;
+  padding: 0 30rpx;
+  margin-top: 40rpx;
+}
+.merchant-item{
+  height: 516rpx;
+  flex: 1;
+  text-align: center;
+  box-sizing: border-box;
+  position: relative;
+}
+.merchant-item:first-child{
+  background: rgba(255,218,43,0.14);
+  border-radius: 12rpx;
+}
+.merchant-item-cur{
+  position: absolute;
+  top: 30rpx;
+  left: 0rpx;
+  width: 88rpx;
+  height: 36rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background:rgba(242,99,90,1);
+  box-shadow:0px 5rpx 10rpx 0rpx rgba(242,99,90,0.2);
+  border-radius:0rpx 100rpx 100rpx 0px;
+}
+.merchant-item-cur-icon{
+  width: 10rpx;
+  height: 10rpx;
+  border-radius: 50%;
+  background-color: #fff;
+  margin-right: 6rpx;
+}
+.merchant-item-cur-text{
+  font-family: PingFangSC-Medium;
+  font-size: 22rpx;
+  color: #fff;
+}
+.merchant-avator-box{
+  margin-top: 33rpx;
+}
+.merchant-avator-box image{
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+}
+.merchant-nickname{
+  margin-top: 15rpx;
+  font-family: PingFangSC-Medium;
+  font-size: 26rpx;
+  line-height: 38rpx;
+  height: 76rpx;
+  overflow: hidden;
+  color: #AEAEAE;
+}
+.merchant-name{
+  margin: 20rpx auto 0;
+  font-family: PingFangSC-Semibold;
+  font-size: 30rpx;
+  line-height: 42rpx;
+  color: #282828;
+  height: 84rpx;
+  width: 212rpx;
+}
+.merchant-distance{
+  height: 34rpx;
+  margin-top: 14rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: PingFangSC-Medium;
+  font-size: 24rpx;
+  color: #999999;
+}
+.merchant-item:first-child .merchant-distance{
+  color: #FFAA00;
+}
+.merchant-distance image{
+  width: 21rpx;
+  height: 24rpx;
+  margin-right: 10rpx;
+}
+.merchant-choose-btn{
+  margin: 49rpx auto;
+  width: 192rpx;
+  height: 64rpx;
+  text-align: center;
+  line-height: 64rpx;
+  box-shadow: 0 16rpx 30rpx 0 rgba(255,197,4,0.28);
+  border-radius: 32rpx;
+  font-family: PingFangSC-Medium;
+  font-size: 26rpx;
+  color: #282828;
+}
+.merchant-item:first-child .merchant-choose-btn{
+  background-image: linear-gradient(145deg, #FEE335 0%, #FFBF3A 100%);
+  box-shadow: 0 6rpx 20rpx 0 rgba(254,227,53,0.79);
+}

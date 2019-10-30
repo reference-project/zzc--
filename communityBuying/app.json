@@ -1,0 +1,93 @@
+{
+  "pages": [
+    "page/tabBar/index/index",
+    "page/tabBar/userCenter/userCenter",
+    "page/cart/cart",
+    "page/groupBuying/groupBuying",
+    "page/productDetail/productDetail",
+    "page/purchase/purchase",
+    "page/pickUpPoint/pickUpPoint",
+    "page/canvasTest/canvasTest"
+  ],
+  "tabBar": {
+    "color": "#9B9CA0",
+    "selectedColor": "#282828",
+    "borderStyle": "black",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "pagePath": "page/tabBar/index/index",
+        "iconPath": "./imgs/icon-home-default.png",
+        "selectedIconPath": "./imgs/icon-home-active.png",
+        "text": "首页"
+      },
+      {
+        "pagePath": "page/cart/cart",
+        "iconPath": "./imgs/icon-cart-default.png",
+        "selectedIconPath": "./imgs/icon-cart-active.png",
+        "text": "购物车"
+      },
+      {
+        "pagePath": "page/tabBar/userCenter/userCenter",
+        "iconPath": "./imgs/icon-user-default.png",
+        "selectedIconPath": "./imgs/icon-user-active.png",
+        "text": "我的"
+      }
+    ]
+  },
+  "subPackages": [
+    {
+      "root": "page/index/",
+      "pages": [
+        "pages/activityPage/activityPage",
+        "pages/searchPage/searchPage",
+        "pages/location/location",
+        "pages/communitySearch/communitySearch",
+        "pages/locationCity/locationCity",
+        "pages/flashSaleList/flashSaleList",
+        "pages/compareCommunity/compareCommunity"
+      ]
+    },
+    {
+      "root": "page/userCenter/",
+      "pages": [
+        "pages/orderList/orderList",
+        "pages/login/login",
+        "pages/orderDetail/orderDetail",
+        "pages/invitePage/invitePage",
+        "pages/logistics/logistics",
+        "pages/returnPage/returnPage",
+        "pages/returnDetailPage/returnDetailPage",
+        "pages/addressList/addressList",
+        "pages/addressEdit/addressEdit",
+        "pages/applyPage/applyPage",
+        "pages/applyIntroducePage/applyIntroducePage",
+        "pages/withdrawPage/withdrawPage",
+        "pages/withdrawIntroPage/withdrawIntroPage",
+        "pages/sellerInfo/sellerInfo",
+        "pages/saleData/saleData",
+        "pages/saleOrderList/saleOrderList",
+        "pages/debug/debug",
+        "pages/redPackage/redPackage",
+        "pages/sharePackage/sharePackage",
+        "pages/closeShop/closeShop"
+      ]
+    }
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle": "black"
+  },
+  "debug": true,
+  "permission": {
+    "scope.userLocation": {
+      "desc": "您的位置信息用于商品提货点定位"
+    }
+  },
+  "navigateToMiniProgramAppIdList": [
+    "wx05fc0deb15e72f0f"
+  ],
+  "sitemapLocation": "sitemap.json"
+}

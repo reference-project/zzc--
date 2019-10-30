@@ -1,0 +1,122 @@
+<!--page/user/pages/orderList/orderList.wxml-->
+<view class='P-oder-list'>
+  <!-- <scroll-view scroll-x="true" class='nav-bar' scroll-into-view="{{state.selectedLabel}}"> -->
+  <scroll-view scroll-x="true" class='nav-bar'>
+    <view class="item {{index == state.selectedFilterItemIndex ? 'active' : ''}}" data-item="{{item}}" catchtap="onNavBarItemPress" wx:key="item-{{index}}" wx:for="{{state.filters}}" data-index="{{index}}" id='{{item.type}}'>
+      <view class='word'>{{item.label}}</view>
+      <view class='nav-active-bottom' wx:if="{{index == state.selectedFilterItemIndex}}"></view>
+      <text class='num' wx:if="{{item.num > 0}}">{{item.num}}</text>
+    </view>
+  </scroll-view>
+
+  <scroll-view scroll-y scroll-top="{{state.scrollTop}}" class='order-items' wx:if="{{data.allData[state.selectedLabel].orders.length > 0 }}" bindscrolltolower="onReachBottom">
+    <view class="order-items-wraper">
+      <!-- <orderItem orderItem="{{item}}" wx:key="{{index}}" bindoncancel="onCancelOrder"  bindonpay="onNowPay" wx:for="{{data.products}}"></orderItem> -->
+      <view class='order-item-container' wx:for="{{data.allData[state.selectedLabel].orders}}" wx:key="{{index}}" data-order-id="{{item.no}}" catchtap='onOrderItemPress'>
+        <view class='order-item-status-box'>
+          <block wx:if="{{item.type==1||item.type==2||item.type==3}}">
+            <view class='order-item-time' wx:if='{{item.status===4}}'>成交时间:
+              <text>{{item.arrive_time}}</text> 
+            </view>
+            <view class='order-item-time' wx:if='{{item.status===5}}'>退款时间:
+              <text>{{item.refund_time}}</text> 
+            </view>
+            <view class='order-item-time' wx:if='{{item.status===3}}'>预计送达时间:
+              <text>{{item.expected_arrive_time}}</text> 
+            </view>
+            <view class='order-item-time' wx:if='{{item.status===2}}'>预计发货时间:
+              <text>{{item.expected_deliver_time}}</text> 
+            </view>
+             <view class='order-item-time' wx:if='{{item.status===0}}'>下单时间:
+              <text>{{item.create_time}}</text> 
+            </view>
+            <view class='order-item-time' wx:if='{{item.status===6}}'>送达时间:
+              <text>{{item.reach_time}}</text> 
+            </view>
+            <view class='order-item-time' wx:if='{{item.status=== -1}}'>取消时间:
+              <text>{{item.cancel_time}}</text> 
+            </view>
+          </block>
+
+          <block  wx:if="{{item.type==0}}">
+            <view class='order-item-time'>下单时间:
+              <text>{{item.create_time}}</text> 
+            </view>
+          </block>
+         
+          <block wx:if="{{item.type==1||item.type==2||item.type==3}}">
+          <view class='order-item-status cancel-font' wx:if='{{item.status===-1}}'>已取消</view>
+          <view class='order-item-status' wx:elif='{{item.status===0}}'>待付款</view>
+          <view class='order-item-status' wx:elif='{{item.status===1}}'>支付中</view>
+          <view class='order-item-status' wx:elif='{{item.status===2}}'>待发货</view>
+          <view class='order-item-status' wx:elif='{{item.status===3}}'>配送中</view>
+          <view class='order-item-status ' wx:elif='{{item.status===4}}'>已完成</view>
+          <view class='order-item-status ' wx:elif='{{item.status===5}}'>已退款</view>
+          <view class='order-item-status ' wx:elif='{{item.status===6}}'>待自提</view>
+          </block>
+          <block wx:if="{{item.type==0}}">
+             <view class='order-item-status' wx:if="{{item.status==4}}">已完成</view>
+              <view class='order-item-status check-detail-font' wx:elif="{{item.status==-1}}">已取消</view>
+              <view class='order-item-status check-detail-font' wx:elif="{{item.status==0}}">待付款</view>
+              <view class='order-item-status check-detail-font' wx:else>查看详情</view>
+          </block>
+        </view>
+        <view class='order-item-pros'>
+          
+          <view class="order-item-product-left">
+            <view class="order-item-product" wx:for="{{item.goods_logos}}" wx:for-item="itemObj" wx:key='goods' wx:for-index="idx" wx:if="{{idx<=2}}">
+                <image src='{{itemObj ? data.qiniuDomain+itemObj:""}}' ></image>
+            </view>
+          </view>
+          <view class="order-item-product-right">
+              <text> 共{{item.goods_num}}件</text>
+          </view>
+
+          <!-- <view class='order-item-info' wx:for="{{item.items}}" wx:for-item="itemObj" wx:key='goods'>
+            <image src='{{itemObj.goods_logo ? data.qiniuDomain+itemObj.goods_logo:""}}'></image>
+            <view class='order-item-info-desc'>
+              <view class='order-item-info-title-box'>
+                <view class='order-item-info-title'>{{itemObj.goods_name}}</view>
+                <view class='order-item-info-price'>¥{{itemObj.amount/100}}</view>
+              </view>
+              <view class='order-item-info-sku'>
+                <view class='order-item-info-sku-name'>{{itemObj.sku_name}}</view>
+                <view class='order-item-info-sku-num'>x{{itemObj.number}}</view>
+              </view>
+            </view>
+          </view> -->
+
+        </view>
+        <view class="order-clum-bottom">
+        <view class='order-item-info-num-price'>
+          合计：
+          <text>¥{{item.pay_price/100}}</text>
+        </view>
+        <view class='order-item-actions' catchtap='onPreventDefaultHandler'>
+          <!-- <view class='btn-default' data-order-id='{{item.no}}' catchtap='onCancelOrderHandler' wx:if='{{item.status===0}}'>取消订单</view> -->
+          <!-- <view class='btn-default' data-order-id='{{item.no}}' catchtap='onDeleteOrderHandler'>删除订单</view> -->
+          <view class='btn-active' data-order-id='{{item.no}}' catchtap='onSureReciveHandler' wx:if='{{item.status===6}}'>确认收货</view>
+
+          <form report-submit bindsubmit="formSubmit" wx:if='{{item.status===0}}'>
+            <button formType="submit" class='btn-active' data-order-id='{{item.no}}'>去付款</button>
+          </form>
+
+        </view>
+      </view>
+      </view>
+      <view class='load-more-container'>
+        <loadMore loadMoreStatus="{{data.totalPage > state.page}}"></loadMore>
+      </view>
+      
+    </view>
+  </scroll-view>
+  
+  <view class='empty-tips' wx:if="{{data.allData[state.selectedLabel].orders.length == 0 && !state.loading}}">
+    <image src='/imgs/no-order.png'></image>
+    <view class='tips'>您还没有相关订单~</view>
+  </view>
+
+  <alertingTips alertingStatus="{{state.alertingStatus}}" alertingWords="{{state.alertingWords}}"></alertingTips>
+
+  <comfirmTips actionObj="{{state.actionObj}}" bindonsure="{{state.actionObj.submitHandler}}" bindoncancel="{{state.actionObj.cancelHandler}}" wx:if="{{state.comfirmBoxStatus}}"></comfirmTips>
+</view>

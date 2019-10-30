@@ -1,0 +1,55 @@
+.skeleton-screen {
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: infinite;
+    animation-name: placeHolderShimmer;
+    animation-timing-function: linear;
+    background: #f6f7f8;
+    background: linear-gradient(to right, #eeeeee 8%, #dddddd 18%, #eeeeee 33%);
+    background-size: 800px 104px;
+    height: 100%;
+    min-height: 1em;
+    position: relative;
+}
+
+@keyframes placeHolderShimmer {
+    0% {
+        background-position: -468px 0
+    }
+    100% {
+        background-position: 468px 0
+    }
+}
+
+ /* 以下自己做的修改 */
+
+.skeleton-screena {
+    animation-duration: 2s;
+    /* 动画时长1s */
+    animation-fill-mode: forwards; 
+    /*当动画完成后，保持最后一个属性值（在最后一个关键帧中定义）*/
+    animation-iteration-count: infinite;
+    /* 动画次数 无限次 */
+    animation-name: placeHolderShimmera;
+    /* 执行动画名称 */
+    animation-timing-function: linear;
+    /* 动画速度，线性匀速 */
+    /* background: #f6f7f8; */
+    background: linear-gradient(to right, #eeeeee 8%, #dddddd 18%, #eeeeee 33%);
+    /* 背景颜色 */
+    background-size: 750px auto;
+    /* 背景大小 */
+    height: 100%;
+    min-height: 1em;
+    position: relative;
+}
+
+@keyframes placeHolderShimmera {
+    /* 修改背景定位 */
+    0% {
+        background-position: -750rpx 0;
+    }
+    100% {
+        background-position: 750rpx 0
+    }
+}

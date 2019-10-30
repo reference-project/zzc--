@@ -1,0 +1,236 @@
+/* page/userCenter/pages/sharePackage/sharePackage.wxss */
+.P-share-package{
+  background-color: #FB7925;
+  min-height: 100vh;
+  padding-bottom:  150rpx;
+  box-sizing: border-box;
+}
+.share-package-inner{
+  padding: 0 20rpx;
+}
+.P-share-package.isIphoneX{
+  padding-bottom:  230rpx;
+}
+.header-bg image{
+  width: 750rpx;
+}
+.login-content{
+  padding: 53rpx 0 36rpx;
+  text-align: center;
+}
+.btn-get-userInfo{
+  margin: 0 auto;
+  width: 573rpx;
+  height: 100rpx;
+  line-height: 100rpx;
+  background: #FFD900;
+  box-shadow: 0 7rpx 27rpx 0 rgba(237, 202, 0, 0.6);
+  border-radius: 50rpx;
+  font-family: PingFangSC-Semibold;
+  font-size: 36rpx;
+  color: #835500;
+}
+.login-content-text{
+  font-family: PingFangSC-Regular;
+  font-size: 26rpx;
+  color: #444444;
+  line-height: 38rpx;
+}
+.login-content-text.margin{
+  margin-top: 42rpx;
+}
+.login-content-text text{
+  color: #ff5e53;
+}
+
+.red-package-content{
+  background-color: rgba(255, 249, 235, 1);
+  padding: 14rpx 25rpx 30rpx;
+}
+.package-tips{
+  font-family: PingFangSC-Regular;
+  font-size: 26rpx;
+  color: #444444;
+  text-align: center;
+  line-height: 32rpx;
+  padding: 40rpx 0 17rpx;
+}
+.package-tips:last-child{
+  padding: 48rpx 0 17rpx;
+}
+.has-pick-package{
+  text-align: center;
+  font-family: PingFangSC-Regular;
+  font-size: 28rpx;
+  line-height: 28rpx;
+  color: #444444;
+}
+
+.get-package-content{
+  margin-top: 20rpx;
+  background-color: rgba(255, 249, 235, 1);
+  border-radius: 6rpx;
+  position: relative;
+  padding: 0 0 78rpx;
+  display: flex;
+}
+.get-package-content-inner{
+  z-index: 3;
+  flex: 1;
+}
+.get-package-title-box{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 46rpx 0 50rpx;
+}
+.get-package-title-line{
+  height: 2rpx;
+  background-color: #ccc;
+  width: 136rpx;
+}
+.get-package-title-text{
+  font-family: PingFangSC-Medium;
+  font-size: 32rpx;
+  color: #444444;
+  margin: 0 32rpx;
+}
+.get-package-item{
+  margin-top: 44rpx;
+  display: flex;
+  align-items: center;
+  padding: 0 47rpx 0 49rpx;
+}
+.get-package-item:first-child{
+  margin-top: 18rpx;
+}
+.get-package-item-avatar{
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+}
+.get-package-item-center{
+  flex: 1;
+  width: 1rpx;
+  overflow: hidden;
+  margin-left: 24rpx;
+  margin-right: 24rpx;
+}
+.get-package-item-user{
+  font-family: PingFangSC-Regular;
+  font-size: 26rpx;
+  line-height: 38rpx;
+  color: #282828;
+}
+.get-package-item-user text{
+  color: #999;
+  margin-left: 20rpx;
+}
+.get-package-item-tips{
+  font-family: PingFangSC-Regular;
+  font-size: 24rpx;
+  line-height: 34rpx;
+  color: #666666;
+  margin-top: 8rpx;
+}
+.get-package-item-right{
+  text-align: right;
+}
+.get-package-money{
+  font-family: PingFangSC-Regular;
+  font-size: 30rpx;
+  color: #ff5e53;
+}
+.get-package-lucky{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 157rpx;
+  height: 42rpx;
+  background: #FFD900;
+  border-radius: 10rpx;
+  font-family: PingFangSC-Semibold;
+  font-size: 24rpx;
+  color: #835500;
+}
+.icon-lucky-active{
+  width: 24rpx;
+  height: 24rpx;
+}
+.get-package-empty{
+  text-align: center;
+  font-family:PingFangSC-Medium;
+  font-size:32rpx;
+  color:#444444;
+}
+
+.activity-desc-content{
+  margin-top: 20rpx;
+  background-color: rgba(255, 249, 235, 1);
+  border-radius: 6rpx;
+  position: relative;
+  height: 569rpx;
+}
+.activity-desc-title-box{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 46rpx 0 50rpx;
+}
+.activity-desc-title-line{
+  height: 2rpx;
+  background-color: #ccc;
+  width: 208rpx;
+}
+.activity-desc-title-text{
+  font-family: PingFangSC-Medium;
+  font-size: 32rpx;
+  color: #444444;
+  margin: 0 32rpx;
+}
+.activity-desc-items{
+  padding: 0 53rpx 80rpx;
+  position: absolute;
+  z-index: 2;
+}
+.activity-desc-item{
+  margin-top: 20rpx;
+  font-family: PingFangSC-Regular;
+  font-size: 28rpx;
+  color: #444444;
+}
+.activity-desc-item:first-child{
+  margin-top: 0rpx;
+}
+.icon-activity-desc{
+  width: 283rpx;
+  height: 280rpx;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+}
+
+.footer-content{
+  position: fixed;
+  bottom: 36rpx;
+  left: 0;
+  right: 0;
+  z-index: 10;
+}
+.footer-btn{
+  width: 684rpx;
+  height: 100rpx;
+  margin: 0 auto;
+  background: #FFD900;
+  box-shadow: 0 7rpx 27rpx 0 rgba(237, 202, 0, 0.6);
+  border-radius: 50rpx;
+  font-family: PingFangSC-Semibold;
+  font-size: 36rpx;
+  color: #835500;
+  text-align: center;
+  line-height: 100rpx;
+}
+.footer-content.isIphoneX{
+  bottom: 108rpx;
+}

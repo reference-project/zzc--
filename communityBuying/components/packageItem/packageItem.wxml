@@ -1,0 +1,57 @@
+<!--components/packageItemShare/packageItemShare.wxml-->
+<view class='red-package-item-container'>
+
+  <view class='red-package-item {{packageType == "newUser"?"newUser":""}} {{packageType == "choose"?"choose":""}} {{!packageItem.available?"disabled":""}}' catchtap='onGoToIndexHandler'>
+    <view class='package-item-left'>
+      <view class='package-item-money'>
+        ¥<text>{{packageItem.amountInt}}</text>{{packageItem.amountFloat?'.'+packageItem.amountFloat:""}}
+      </view>
+      <view class='pack-item-money-tips' wx:if='{{packageType == "newUser"}}'>
+        <image src='/imgs/icon-new-user-logo.png' class='icon-new-user-logo'></image>
+      </view>
+      <view class='pack-item-money-tips' wx:if='{{packageType == "choose"}}'>
+        <view class='pack-item-money-tips-text' wx:if="{{packageItem.min_consumption}}">满{{packageItem.min_consumption/100}}元可用</view>
+        <view class='pack-item-money-tips-text' wx:else>无金额限制</view>
+      </view>
+    </view>
+    <view class='package-item-center'>
+      <view class='package-item-title'>{{packageItem.red_envelop_name}}</view>
+      <view class='package-item-desc-items'>
+        <view class='package-item-desc-item'>
+          <view class='circle-item'></view>
+          <view class='package-item-desc-item-text'>{{packageItem.instruction}}</view>
+        </view>
+        <view class='package-item-desc-item'>
+          <view class='circle-item'></view>
+          <view class='package-item-desc-item-text'>{{packageItem.deadlineUtil}}到期</view>
+        </view>
+      </view>
+    </view>
+    <view class='package-item-right'>
+      <view class='btn-package-use' wx:if='{{packageType !== "choose"}}'>去使用</view>
+      <view class='half-circle top' wx:if='{{packageType == "share"}}'></view>
+      <view class='half-circle bottom' wx:if='{{packageType == "share"}}'></view>
+      <view class='' wx:if='{{packageType == "choose" && packageItem.available}}'>
+        <image src='/imgs/icon-check-default.png' class='icon-check' wx:if="{{packageItem.id !==selectPackageId}}"></image>
+        <image src='/imgs/icon-check-active.png' class='icon-check' wx:else></image>
+      </view>
+    </view>
+
+
+    <view class='half-circle left newUser' wx:if='{{packageType == "newUser"}}'></view>
+    <view class='half-circle right newUser' wx:if='{{packageType == "newUser"}}'></view>
+
+    <view class='half-circle left choose' wx:if='{{packageType == "choose"}}'></view>
+    <view class='half-circle right choose' wx:if='{{packageType == "choose"}}'></view>
+  </view>
+
+  <!-- 购买页选择时，不可选&&选择状态时出现 -->
+  <view class='use-limit-content' wx:if="{{!packageItem.available && packageType == 'choose'}}">
+    <view class='use-limit-top'>
+      <view class='use-limit-title'>不可用原因</view>
+      <!-- <image src='/imgs/icon-arrow-top.png'></image> -->
+    </view>
+    <view class='use-limit-text'>{{packageItem.unavailable_reason}}</view>
+  </view>
+</view>
+

@@ -1,0 +1,58 @@
+<!--page/index/pages/searchPage/searchPage.wxml-->
+<view class='P-search'>
+
+  <view class='header'>
+    <view class='input-box'>
+      <image src='/imgs/icon-search-default.png'></image>
+      <input confirm-type="搜索" bindconfirm="onSearchHandler" bindinput='onSearchInputHandler' value='{{state.searchValue}}' placeholder='请输入关键字'></input>
+    </view>
+  </view>
+
+  <view class='first-step' wx:if="{{state.firstStep}}">
+    <view class='history-content'>
+      <view class='history-title-content'>
+        <view class='history-title'>搜索历史</view>
+        <view class='history-clear' catchtap='onClearHistoryHandler' wx:if="{{state.searchHistories}}">清除</view>
+      </view>
+      <view class='history-items' wx:if="{{state.searchHistories}}">
+        <view class='history-item' wx:for="{{state.searchHistories}}" wx:key="{{index}}" data-key-value="{{item}}" catchtap='onClickBtnItem'>{{item}}</view> 
+      </view>
+      <view class='history-items' wx:else>
+        <view class='history-empty-tips'>你还没有搜索历史哦～</view>
+      </view>
+    </view>
+    
+    <!-- <view class='recommend-content'>
+      <view class='recommend-title'>推荐搜索</view>
+      <view class='recommend-items'>
+        <view class='recommend-item' wx:for="{{2}}" wx:key="{{index}}" data-key-value="{{item}}" catchtap='onClickBtnItem'>dddd</view>
+      </view>
+    </view> -->
+  </view>
+
+  <view class='search-result' wx:if="{{!state.firstStep}}">
+    <block wx:if="{{data.products && data.products.length > 0}}">
+      <view class='pro-lists'>
+        <productItem wx:for="{{data.products}}" wx:key="{{index}}" domain="{{data.qiniuDomain}}" productItem="{{item}}" proType="{{item.is_current_activity||item.type==2?'now':'next'}}"></productItem>
+        <!-- <view class='recommend-lists-left'>
+          <productItem wx:for="{{data.products}}" wx:if="{{index%2 == 0}}" wx:key="{{index}}" productItem="{{item}}" domain="{{data.qiniuDomain}}" bind:onaddtocart="onAddToCartHandler" canDrop="{{state.canDrop}}"></productItem>
+        </view>
+        <view class='recommend-lists-right'>
+          <productItem wx:for="{{data.products}}" wx:if="{{index%2 !== 0}}" wx:key="{{index}}" productItem="{{item}}" domain="{{data.qiniuDomain}}" bind:onaddtocart="onAddToCartHandler" canDrop="{{state.canDrop}}"></productItem>
+        </view> -->
+      </view>
+      <loadMore loadMoreStatus="{{data.totalPage > state.page}}"></loadMore>
+    </block>
+    <view class='pro-list-empty' wx:if="{{data.products.length == 0 && !state.loading}}" >
+      <image src='/imgs/search-nodata.png' class="search-nodata"></image>
+      <view class='pro-list-empty-tips'>该关键字查不到，请换个姿势重新来过～</view>
+    </view>
+  </view>
+
+<view class="search-like-content">
+  <!--猜你喜欢组件-->
+<guessLike likeStyle="{{1}}" likeProData="{{data.likeProData}}" likeProStaus="{{state.likeProStaus}}" likePageStyle="{{'searchPage'}}" bind:parentEventOther='onParentEvent'></guessLike>
+</view>
+
+  <alertingTips alertingStatus="{{state.alertingStatus}}" alertingWords="{{state.alertingWords}}"></alertingTips>
+</view>

@@ -1,0 +1,257 @@
+{
+	"description": "项目配置文件。",
+	"packOptions": {
+		"ignore": []
+	},
+	"setting": {
+		"urlCheck": true,
+		"es6": true,
+		"postcss": true,
+		"minified": false,
+		"newFeature": true,
+		"checkInvalidKey": true
+	},
+	"compileType": "miniprogram",
+	"libVersion": "2.3.1",
+	"appid": "wxc0e25f8bd7d93ef6",
+	"projectname": "communityBuying",
+	"simulatorType": "wechat",
+	"simulatorPluginLibVersion": {},
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"currentL": -1,
+			"list": []
+		},
+		"miniprogram": {
+			"current": 3,
+			"list": [
+				{
+					"id": -1,
+					"name": "searchPage",
+					"pathName": "page/index/pages/searchPage/searchPage",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "activityPage",
+					"pathName": "page/index/pages/activityPage/activityPage",
+					"query": ""
+				},
+				{
+					"id": 2,
+					"name": "productDetail",
+					"pathName": "page/productDetail/productDetail",
+					"query": "queryObj=%7B%22activityId%22%3A14490%2C%22type%22%3A1%2C%22communityObj%22%3A%7B%22id%22%3A292%2C%22name%22%3A%2218813ff%22%2C%22status%22%3A1%2C%22community_name%22%3A%22%E6%9E%97%E5%92%8C%E9%82%A8%22%2C%22longitude%22%3A%22113.36205%22%2C%22latitude%22%3A%2223.12462%22%2C%22address%22%3A%22%E5%B9%BF%E4%B8%9C%E7%9C%81%E5%B9%BF%E5%B7%9E%E5%B8%82%E5%A4%A9%E6%B2%B3%E5%8C%BA%E5%A4%A9%E5%BA%9C%E8%B7%AF1%E5%8F%B7%22%2C%22contact%22%3A%223333%22%2C%22avatar%22%3A%22https%3A%2F%2Fwx.qlogo.cn%2Fmmopen%2Fvi_32%2FibqjrxsibthM6357uB7LrvPpPb6bRDU6aTG1nhaDBVLcIPWCiae7Qcq1VMGoHYtjmX170zHbIDagepCfYnRBXw0iaQ%2F132%22%2C%22adcode%22%3A%22440106%22%7D%7D",
+					"scene": "1037",
+					"referrerInfo": {
+						"appId": "wx05fc0deb15e72f0f",
+						"extraData": "{\"isFormMerchant\":true}"
+					}
+				},
+				{
+					"id": 3,
+					"name": "orderDetail",
+					"pathName": "page/userCenter/pages/orderDetail/orderDetail",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "cart",
+					"pathName": "page/cart/cart",
+					"query": ""
+				},
+				{
+					"id": 5,
+					"name": "purchase",
+					"pathName": "page/purchase/purchase",
+					"query": "queryObj=%7B%22products%22%3A%5B%7B%22id%22%3A2%2C%22adcode%22%3A440100%2C%22activity_goods_id%22%3A4320%2C%22goods_id%22%3A1957%2C%22sku_id%22%3A10784%2C%22selected%22%3A1%2C%22goods_name%22%3A%22%E8%93%AC%E7%9B%9B%E9%A6%99%E6%B8%AF%E6%A9%84%E6%A6%84%E8%8F%9C%20450g%22%2C%22limit_buy%22%3A0%2C%22sku_name%22%3A%22450g%22%2C%22market_price%22%3A1600%2C%22our_price%22%3A1280%2C%22picture%22%3A%22goodsSku%2F20181221%2F230449-yBPbgLOw6f6wQZXX.jpg-200x200%22%2C%22sku_stock%22%3A2%2C%22num%22%3A1%7D%2C%7B%22id%22%3A1%2C%22adcode%22%3A440100%2C%22activity_goods_id%22%3A4319%2C%22goods_id%22%3A1959%2C%22sku_id%22%3A10786%2C%22selected%22%3A1%2C%22goods_name%22%3A%22%E6%B8%85%E6%B0%B4%E7%89%8C%E7%BB%8F%E5%85%B8%E5%92%96%E5%96%B1240g%20%E4%B8%AD%E8%BE%A3%22%2C%22limit_buy%22%3A0%2C%22sku_name%22%3A%22240g%22%2C%22market_price%22%3A2600%2C%22our_price%22%3A1580%2C%22picture%22%3A%22goodsSku%2F20181221%2F231950-lbXHebgtcUUW93zw.jpg-200x200%22%2C%22sku_stock%22%3A3%2C%22num%22%3A3%7D%5D%2C%22isFromCart%22%3Atrue%2C%22isFormProductDetail%22%3Afalse%7D"
+				},
+				{
+					"id": -1,
+					"name": "invitePage",
+					"pathName": "page/userCenter/pages/invitePage/invitePage",
+					"query": ""
+				},
+				{
+					"id": 9,
+					"name": "returnPage",
+					"pathName": "page/userCenter/pages/returnPage/returnPage",
+					"query": "orderDetail=%7B%22order_status%22%3A4%2C%22complete_address%22%3A%22%E5%86%85%E8%92%99%E5%8F%A4%E8%87%AA%E6%B2%BB%E5%8C%BA%E5%91%BC%E5%92%8C%E6%B5%A9%E7%89%B9%E5%B8%82%E6%96%B0%E5%9F%8E%E5%8C%BA%E5%8C%97%E4%BA%AC%E5%8C%97%E4%BA%AC%E5%B8%82%E4%B8%9C%E5%9F%8E%E5%8C%BA111%22%2C%22create_time%22%3A%222018-10-17%2010%3A44%3A15%22%2C%22contact%22%3A%22111%22%2C%22mobile%22%3A%2218813750848%22%2C%22order_id%22%3A%2220181017104415218229%22%2C%22trade_no%22%3A%22201810171044155470529388%22%2C%22freight%22%3A0%2C%22pay_type%22%3A%22%E5%BE%AE%E4%BF%A1%E6%94%AF%E4%BB%98%22%2C%22order_status_desc%22%3A%22%E5%B7%B2%E5%AE%8C%E6%88%90%22%2C%22has_after_sale%22%3A1%2C%22items%22%3A%5B%7B%22id%22%3A234%2C%22goods_name%22%3A%22%E6%B5%8B%E8%AF%95%E4%BA%A7%E5%93%81%22%2C%22sku_name%22%3A%22%E8%8A%B1%E5%A5%BD%E6%9C%88%E5%9C%86%E4%B8%AD%E7%A7%8B%E7%86%9F%E9%A3%9F%E7%A4%BC%E7%9B%92%2010%E5%8C%85%22%2C%22goods_logo%22%3A%22goods%2F20180912%2F194238-DzjMOFPJbpzlG7dj.jpg%22%2C%22number%22%3A1%2C%22real_price%22%3A2%2C%22amount%22%3A2%2C%22tracking_number%22%3A%222354685675%22%2C%22has_after_sale%22%3A1%2C%22application_id%22%3A13%7D%5D%2C%22currentItem%22%3A%7B%22id%22%3A234%2C%22goods_name%22%3A%22%E6%B5%8B%E8%AF%95%E4%BA%A7%E5%93%81%22%2C%22sku_name%22%3A%22%E8%8A%B1%E5%A5%BD%E6%9C%88%E5%9C%86%E4%B8%AD%E7%A7%8B%E7%86%9F%E9%A3%9F%E7%A4%BC%E7%9B%92%2010%E5%8C%85%22%2C%22goods_logo%22%3A%22goods%2F20180912%2F194238-DzjMOFPJbpzlG7dj.jpg%22%2C%22number%22%3A1%2C%22real_price%22%3A2%2C%22amount%22%3A2%2C%22tracking_number%22%3A%222354685675%22%2C%22has_after_sale%22%3A1%2C%22application_id%22%3A13%7D%2C%22qiniuDomain%22%3A%22https%3A%2F%2Fstatic.newkr.net%2F%22%2C%22banEdit%22%3Afalse%7D"
+				},
+				{
+					"id": -1,
+					"name": "userCenter",
+					"pathName": "page/tabBar/userCenter/userCenter",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "specialPrice",
+					"pathName": "page/index/pages/specialPrice/specialPrice",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "addressEdit",
+					"pathName": "page/userCenter/pages/addressEdit/addressEdit",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "addressList",
+					"pathName": "page/userCenter/pages/addressList/addressList",
+					"query": ""
+				},
+				{
+					"id": 12,
+					"name": "orderList",
+					"pathName": "page/userCenter/pages/orderList/orderList",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "applyPage",
+					"pathName": "page/userCenter/pages/applyPage/applyPage",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "applyIntroducePage",
+					"pathName": "page/userCenter/pages/applyIntroducePage/applyIntroducePage",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "login",
+					"pathName": "page/userCenter/pages/login/login",
+					"query": ""
+				},
+				{
+					"id": 19,
+					"name": "withdrawPage",
+					"pathName": "page/userCenter/pages/withdrawPage/withdrawPage",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "withdrawIntroPage",
+					"pathName": "page/userCenter/pages/withdrawIntroPage/withdrawIntroPage",
+					"query": ""
+				},
+				{
+					"id": 22,
+					"name": "returnDetailPage",
+					"pathName": "page/userCenter/pages/returnDetailPage/returnDetailPage",
+					"query": "orderDetail=%7B%22order_status%22%3A4%2C%22complete_address%22%3A%22%E6%B2%B3%E5%8C%97%E7%9C%81%E7%9F%B3%E5%AE%B6%E5%BA%84%E5%B8%82%E9%95%BF%E5%AE%89%E5%8C%BA111%22%2C%22create_time%22%3A%222018-09-27%2009%3A19%3A53%22%2C%22contact%22%3A%221112225%22%2C%22mobile%22%3A%2218813750848%22%2C%22order_id%22%3A%2220180927091953361049%22%2C%22trade_no%22%3A%22201809270919533479160825%22%2C%22freight%22%3A0%2C%22pay_type%22%3A%22%E5%BE%AE%E4%BF%A1%E6%94%AF%E4%BB%98%22%2C%22order_status_desc%22%3A%22%E5%B7%B2%E5%AE%8C%E6%88%90%22%2C%22has_after_sale%22%3A1%2C%22items%22%3A%5B%7B%22id%22%3A173%2C%22goods_name%22%3A%22%E5%A5%BD%E5%90%83%E7%9A%84%E6%B5%8B%E8%AF%950.02%22%2C%22sku_name%22%3A%22%E6%B3%A1%E6%B2%AB%E7%AE%B1%2B%E5%86%B0%E8%A2%8B%E5%8C%85%E8%A3%85%20%E6%B7%B7%E5%90%88%E5%91%B3%E7%89%99%E7%AD%BE%E8%82%89%22%2C%22goods_logo%22%3A%22goods%2F20180919%2F173539-Kf8haNo5i4LP1Zxg.jpg%22%2C%22number%22%3A1%2C%22real_price%22%3A3%2C%22amount%22%3A3%2C%22tracking_number%22%3A%222112321131%22%2C%22has_after_sale%22%3A1%2C%22application_id%22%3A8%7D%5D%2C%22currentItem%22%3A%7B%22id%22%3A173%2C%22goods_name%22%3A%22%E5%A5%BD%E5%90%83%E7%9A%84%E6%B5%8B%E8%AF%950.02%22%2C%22sku_name%22%3A%22%E6%B3%A1%E6%B2%AB%E7%AE%B1%2B%E5%86%B0%E8%A2%8B%E5%8C%85%E8%A3%85%20%E6%B7%B7%E5%90%88%E5%91%B3%E7%89%99%E7%AD%BE%E8%82%89%22%2C%22goods_logo%22%3A%22goods%2F20180919%2F173539-Kf8haNo5i4LP1Zxg.jpg%22%2C%22number%22%3A1%2C%22real_price%22%3A3%2C%22amount%22%3A3%2C%22tracking_number%22%3A%222112321131%22%2C%22has_after_sale%22%3A1%2C%22application_id%22%3A8%7D%2C%22qiniuDomain%22%3A%22https%3A%2F%2Fstatic.newkr.net%2F%22%7D"
+				},
+				{
+					"id": -1,
+					"name": "sellerInfo",
+					"pathName": "page/userCenter/pages/sellerInfo/sellerInfo",
+					"query": ""
+				},
+				{
+					"id": 20,
+					"name": "location",
+					"pathName": "page/index/pages/location/location",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "locationCity",
+					"pathName": "page/index/pages/locationCity/locationCity",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "pickUpPoint",
+					"pathName": "page/pickUpPoint/pickUpPoint",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "saleData",
+					"pathName": "page/userCenter/pages/saleData/saleData",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "saleOrderList",
+					"pathName": "page/userCenter/pages/saleOrderList/saleOrderList",
+					"query": "type=detailList"
+				},
+				{
+					"id": -1,
+					"name": "debug",
+					"pathName": "page/userCenter/pages/debug/debug",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "canvasTest",
+					"pathName": "page/canvasTest/canvasTest",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "video",
+					"pathName": "page/video/video",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "redPackage",
+					"pathName": "page/userCenter/pages/redPackage/redPackage",
+					"query": ""
+				},
+				{
+					"id": 29,
+					"name": "sharePackage",
+					"pathName": "page/userCenter/pages/sharePackage/sharePackage",
+					"query": "queryObj=%7B%22order_no%22%3A%2220181228180550388594%22%2C%22creator%22%3A19%2C%22activity_id%22%3A9%2C%22best_envelop_key%22%3A10%7D"
+				},
+				{
+					"id": -1,
+					"name": "closeShop",
+					"pathName": "page/userCenter/pages/closeShop/closeShop",
+					"query": "",
+					"scene": "1012"
+				},
+				{
+					"id": 31,
+					"name": "flashSaleList",
+					"pathName": "page/index/pages/flashSaleList/flashSaleList",
+					"query": "queryObj=%7B%22communityObj%22%3A%7B%22id%22%3A8916131%2C%22name%22%3A%22%E7%8C%B4%22%2C%22status%22%3A1%2C%22community_name%22%3A%22%E6%9E%97%E5%92%8C%E9%82%A8%22%2C%22longitude%22%3A%22%22%2C%22latitude%22%3A%22%22%2C%22address%22%3A%22%E5%B9%BF%E4%B8%9C%E7%9C%81%E5%B9%BF%E5%B7%9E%E5%B8%82%E5%A4%A9%E6%B2%B3%E5%8C%BA%E7%8C%B4%22%2C%22contact%22%3A%22%E7%8C%B4%22%2C%22mobile%22%3A%2218813750848%22%2C%22avatar%22%3A%22https%3A%2F%2Fwx.qlogo.cn%2Fmmopen%2Fvi_32%2FIanNhIHjrOLxoADwIGOc8PoNz4njar3v0rT0y8bFyUBjeOREKEelibm564IgGgNlGSfJVRpjdRm79BwSgnkiaKVw%2F132%22%2C%22adcode%22%3A%22440106%22%2C%22distance%22%3A12400%7D%7D",
+					"scene": "1001"
+				},
+				{
+					"id": 32,
+					"name": "compareCommunity",
+					"pathName": "page/index/pages/compareCommunity/compareCommunity",
+					"query": "queryObj=%7B%22communityObj%22%3A%7B%22avatar%22%3A%22https%3A%2F%2Fwx.qlogo.cn%2Fmmopen%2Fvi_32%2FQ0j4TwGTfTJJCPmOBLhIzjX67LEIB0fZP93v1nQ5QZRP4NZHpYPUpJEE0rGYBLyTTuOyicPY3FBFeOg07cwymLQ%2F132%22%2C%22contact%22%3A%22%E4%B8%87%E5%85%A8%E9%87%8C%E8%8F%9C%E9%B8%9F%E9%A9%BF%E7%AB%99%E3%80%90%E9%A9%BF%E7%AB%99%E6%8B%BC%E5%9B%A2%E3%80%91%22%2C%22mobile%22%3A%2213043211188%22%2C%22community_name%22%3A%22%E4%B8%87%E5%85%A8%E9%87%8C%22%2C%22store_status%22%3A1%2C%22store_address%22%3A%22%E5%A4%A9%E6%B4%A5%E5%A4%A9%E6%B4%A5%E5%B8%82%E5%92%8C%E5%B9%B3%E5%8C%BA%E4%B8%87%E5%85%A8%E9%87%8C6%E9%97%A8%E6%97%81%E8%BE%B9%E5%B9%B3%E6%88%BF%E8%8F%9C%E9%B8%9F%E9%A9%BF%E7%AB%99%22%2C%22store_id%22%3A285%2C%22store_name%22%3A%22%E4%B8%87%E5%85%A8%E9%87%8C%E8%8F%9C%E9%B8%9F%E9%A9%BF%E7%AB%99%22%2C%22longitude%22%3A%22117.183548%22%2C%22latitude%22%3A%2239.11977%22%2C%22county%22%3A22%2C%22adcode%22%3A%22120101%22%2C%22id%22%3A%22285%22%2C%22address%22%3A%22%E5%A4%A9%E6%B4%A5%E5%A4%A9%E6%B4%A5%E5%B8%82%E5%92%8C%E5%B9%B3%E5%8C%BA%E4%B8%87%E5%85%A8%E9%87%8C6%E9%97%A8%E6%97%81%E8%BE%B9%E5%B9%B3%E6%88%BF%E8%8F%9C%E9%B8%9F%E9%A9%BF%E7%AB%99%E4%B8%87%E5%85%A8%E9%87%8C%22%2C%22name%22%3A%22%E4%B8%87%E5%85%A8%E9%87%8C%E8%8F%9C%E9%B8%9F%E9%A9%BF%E7%AB%99%22%7D%7D",
+					"scene": "1001"
+				},
+				{
+					"id": -1,
+					"name": "productDetail",
+					"pathName": "page/productDetail/productDetail",
+					"query": "",
+					"scene": null
+				}
+			]
+		}
+	}
+}

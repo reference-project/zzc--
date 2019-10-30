@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "productItem": "../../../../components/productItem/productItem",
+    "loadMore": "../../../../components/loadMore/loadMore"
+  }
+}

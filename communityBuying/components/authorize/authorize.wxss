@@ -1,0 +1,122 @@
+/* components/authorize/authorize.wxss */
+ .com-authorize{
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 1001;
+}
+/* .container{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  background-color: #fff;
+  border-radius: 12rpx;
+  width: 600rpx;
+  padding: 40rpx 0 0;
+} */
+/* .title{
+  font-size: 36rpx;
+  padding-bottom: 20rpx;
+  text-align: center;
+  border-bottom: 1rpx solid #eee;
+}
+.center{
+  padding: 20rpx 60rpx 80rpx;
+  font-size: 0rpx;
+}
+.center image{
+  height: 64rpx;
+  width: 64rpx;
+  border-radius: 50%;
+  margin: 0 auto;
+  display: block;
+}
+.center .limit{
+  font-size: 36rpx;
+  border-bottom: 1rpx solid #eee;
+  padding: 20rpx 0;
+}
+.center .desc{
+  font-size: 32rpx;
+  color: #ccc;
+  padding: 20rpx 0 0;
+}
+.icon{
+  display: inline-block;
+  width: 16rpx;
+  height: 16rpx;
+  border-radius: 50%;
+  background-color: #ccc;
+  margin: 0 6rpx;
+}
+.btn-box{
+  display: flex;
+  border-top: 1rpx solid #eee;
+}
+.btn-box button{
+  box-sizing: border-box;
+  background-color: #fff;
+  border-radius: 0rpx;
+  flex: 1;
+}
+.btn-box button::after{
+  border: 0rpx;
+}
+button.submit{
+  color: #19b71a;
+}  */
+
+.pic-box{
+  width: 522rpx;
+  position: absolute;
+  padding: 0;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  font-size: 0rpx;
+  border-radius: 12rpx;
+}
+
+image.adv{
+  width: 100%;
+  height: 100%;
+  border-radius: 0rpx;
+}
+
+.authorize-container{
+  width: 600rpx;
+  height: 460rpx;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  font-size: 0rpx;
+  border-radius: 20rpx;
+  text-align: center;
+}
+.authorize-container image{
+  width: 380rpx;
+  margin-top: 100rpx;
+}
+.authorize-tips{
+  font-family: PingFangSC-Medium;
+  font-size: 32rpx;
+  color: #000000;
+  line-height: 32rpx;
+  margin-top: 60rpx;
+}
+.btn-action{
+  width: 420rpx;
+  height: 80rpx;
+  margin: 38rpx auto 0;
+  background-image: linear-gradient(90deg, #f76d59 0%, #fa9148 100%);
+  border-radius: 100rpx;
+  font-family: PingFangSC-Medium;
+  font-size: 38rpx;
+  color: #FFFFFF;
+  line-height: 80rpx;
+}

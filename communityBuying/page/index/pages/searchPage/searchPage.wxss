@@ -1,0 +1,120 @@
+/* page/index/pages/searchPage/searchPage.wxss */
+.P-search{
+  min-height: 100vh;
+  background:rgba(247,247,247,1);
+  padding-bottom: 30rpx;
+}
+.header{
+  height: 110rpx;
+  padding: 0 20rpx;
+  display: flex;
+  align-items: center;
+  background-color: #fff;
+}
+.input-box{
+  flex: 1;
+  background: #e9e9e9;
+  border-radius: 100rpx;
+  height: 60rpx;
+  display: flex;
+  align-items: center;
+}
+.input-box image{
+  width: 33rpx;
+  height: 33rpx;
+  margin-left: 20rpx;
+}
+.input-box input{
+  flex: 1;
+  margin-left: 20rpx;
+  font-size: 28rpx;
+  height: 60rpx;
+}
+.history-content{
+  padding: 20rpx 30rpx 0rpx 30rpx;
+  background-color: #fff;
+}
+.recommend-content{
+  padding: 0 30rpx;
+}
+.history-title-content{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 28rpx;
+  color: #666; 
+}
+.history-items{
+  padding-bottom: 40rpx;
+  /* border-bottom: 1rpx solid #e6e6e6; */
+}
+.history-item,.recommend-item{
+  margin-left: 20rpx;
+  padding: 10rpx 30rpx;
+  background-color: #f0efef;
+  display: inline-block;
+  border-radius: 100rpx;
+  font-size: 28rpx;
+  line-height: 28rpx;
+  margin-top: 20rpx;
+  color: #666;
+}
+.history-item:first-child,.recommend-item:first-child{
+  margin-left: 0rpx;
+}
+.history-empty-tips{
+  text-align: center;
+  font-size: 28rpx;
+  line-height: 28rpx;
+  margin-top: 20rpx;
+  color: #666;
+}
+ .recommend-items{
+  padding-bottom: 20rpx;
+} 
+.recommend-title{
+  font-size: 28rpx;
+  line-height: 28rpx;
+  color: #666;
+  border-top: 1rpx solid #e6e6e6;
+  padding-top: 20rpx;
+}
+
+.pro-lists{
+  /* display: flex; */
+  background-color: #fff;
+  padding: 0 20rpx 10rpx;
+}
+.recommend-lists-left{
+  margin-right: 10rpx;
+}
+.recommend-lists-left, .recommend-lists-right{
+  overflow: hidden;
+  flex: 1;
+}
+.search-result{
+  /* background-color: rgba(248, 248, 248, 0.75); */
+  background-color: #fff;
+}
+.search-nodata{
+  width: 260rpx;
+  height: 260rpx;
+  margin: 0 auto;
+}
+.pro-list-empty{
+  text-align: center;
+  padding-bottom: 98rpx;
+}
+/* .pro-list-empty image{
+  margin-top: 60rpx;
+  width: 400rpx;
+  height: 400rpx;
+   background-color: #000; 
+} */
+.pro-list-empty-tips{
+  font-size: 24rpx;
+  color: #CCCCCC;
+}
+.search-like-content{
+   background:rgba(247,247,247,1);
+}

@@ -1,0 +1,84 @@
+/* page/userCenter/pages/addressList/addressList.wxss */
+.P-address-list{
+  font-family: PingFangSC-Medium;
+}
+.address-add{
+  font-size: 38rpx;
+  color: #FF2918;
+  padding: 30rpx;
+  display: flex;
+  align-items: center;
+}
+.icon-add{
+  width: 36rpx;
+  height: 36rpx;
+}
+.address-add view{
+  margin-left: 20rpx;
+}
+
+/* .address-item{
+  padding-bottom: 17rpx;
+} */
+.address-item-edil{
+  display: flex;
+  justify-content: flex-end;
+  padding: 0 30rpx;
+  box-sizing: border-box;
+}
+.address-item-edil text{
+  padding: 16rpx;
+  font-size: 24rpx;
+  color: #000000;
+  line-height: 24rpx;
+}
+.address-item-edil text.active{
+  color: #999;
+}
+.address-item-user-info{
+  display: flex;
+  align-items: center;
+  padding: 0 30rpx;
+}
+.address-item-user-name{
+  font-size: 28rpx;
+  color: #333333;
+  line-height: 28rpx;
+}
+.address-item-user-phone{
+  font-size: 28rpx;
+  color: #666666;
+  line-height: 28rpx;
+  margin-left: 40rpx;
+}
+.address-item-adddress{
+  margin-top: 24rpx;
+  padding: 0 30rpx 44rpx;
+  box-sizing: border-box;
+}
+.address-item-adddress-status{
+  /* width: 64rpx;
+  height: 30rpx; */
+  background-image: linear-gradient(-90deg, #F65F5F 0%, #FFD628 100%);
+  border-radius: 100rpx;
+  font-size: 22rpx;
+  line-height: 22rpx;
+  color: #fff;
+  padding: 2rpx 14rpx;
+  margin-right: 20rpx;
+}
+.address-item-adddress-desc{
+  font-size: 28rpx;
+  color: #333333;
+  line-height: 42rpx;
+}
+.address-active-line{
+  height: 4rpx;
+  background-image: linear-gradient(46deg, #FF0700 0%, #FF9363 100%);
+}
+.empty-tips{
+  padding-top: 120rpx;
+  font-size: 28rpx;
+  line-height: 28rpx;
+  text-align: center;
+}

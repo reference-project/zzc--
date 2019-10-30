@@ -1,0 +1,212 @@
+/* components/guessLike/guessLike.wxss */
+.like-container{
+   padding: 50rpx 20rpx 22rpx 20rpx;
+}
+.like-header{
+    text-align: center;
+    position: relative;
+    width: 100%;
+    height: 32rpx;
+    margin-bottom: 50rpx;
+}
+.like-header-bg{
+   width: 248rpx;
+   height: 32rpx;
+   position: absolute;
+   left: 50%;
+   top: 0;
+   transform: translateX(-50%);
+}
+.like-header-bg image{
+    width: 248rpx;
+    height: 32rpx;
+}
+.like-header-title{
+   font-size:30rpx;
+    font-family:PingFangSC-Medium;
+    font-weight:500;
+    color:rgba(51,51,51,1);
+    line-height:32rpx;
+    padding-left: 48rpx;
+}
+
+.like-pro-lists{
+   width: 346rpx;
+   height: 500rpx;
+   background-color: #fff;
+   border-radius:20rpx;
+   padding: 23rpx;
+   box-sizing: border-box;
+   margin-bottom: 18rpx;
+}
+.like-pro-image-box{
+   width: 300rpx;
+   height: 300rpx;
+   background:rgba(247,247,247,1);
+   border-radius:16rpx;
+   margin-bottom: 20rpx;
+}
+.like-pro-image-box image{
+   width: 300rpx;
+   height: 300rpx;
+   border-radius:16rpx;
+}
+.like-pro-lists-title{
+   font-size:28rpx;
+  font-family:PingFangSC-Regular;
+  font-weight:400;
+  color:rgba(51,51,51,1);
+  line-height:36rpx;
+  white-space:nowrap;
+  overflow:hidden;
+  -o-text-overflow:ellipsis;
+  text-overflow:ellipsis;
+  margin-bottom: 20rpx;
+}
+.like-pro-bottom{
+  position: relative;
+}
+.like-pro-bottom-price{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.like-pro-bottom-price text.current-price{
+   font-size:32rpx;
+    font-family:PingFangSC-Medium;
+    font-weight:500;
+    color:rgba(255,80,64,1);
+    margin-right: 8rpx;
+} 
+.like-pro-bottom-price text.old-price{
+   font-size:24rpx;
+  font-family:PingFangSC-Regular;
+  font-weight:400;
+  color:rgba(153,153,153,1);
+  text-decoration:line-through;
+}
+.sale-out{
+   font-size:24rpx;
+  font-family:PingFangSC-Regular;
+  font-weight:400;
+  color:rgba(153,153,153,1);
+}
+.like-content{
+  display: flex;
+  justify-content: space-between;
+  flex-wrap:wrap;
+}
+.like-pro-bottom-right{
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 3;
+  border-radius: 50%;
+  width: 60rpx;
+  height: 60rpx;
+  background:linear-gradient(146deg,rgba(254,227,53,1) 0%,rgba(255,191,58,1) 100%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.like-pro-bottom-right image{
+   width: 28rpx;
+   height: 27rpx;
+}
+
+/*=======================*/
+
+.like-detail-page{
+  width: 690rpx;
+  margin:20rpx auto 0;
+  border-radius:16rpx;
+  background: #fff;
+  padding: 30rpx 0px 30rpx 40rpx;
+  box-sizing: border-box;
+}
+.like-detail-page-header{
+    font-size:26rpx;
+    font-family:PingFangSC-Regular;
+    font-weight:400;
+    color:rgba(155,155,155,1);
+    margin-bottom:38rpx;
+}
+.scroll-view-item{
+   width: 240rpx;
+   height: 372rpx;
+    display: inline-block;
+    margin-right: 20rpx;
+}
+.scroll-view_H{
+    height: 372rpx;
+    width: 100%;
+    white-space: nowrap;
+}
+.scroll-view-imge-box{
+   width: 240rpx;
+   height: 240rpx;
+}
+.scroll-view-imge-box image{
+    width: 240rpx;
+   height: 240rpx;
+   border-radius:14rpx;
+}
+.scroll-view-title{
+  font-size:24rpx;
+  font-family:PingFangSC-Regular;
+  font-weight:400;
+  color:rgba(51,51,51,1);
+  white-space:nowrap;
+  overflow:hidden;
+  -o-text-overflow:ellipsis;
+  text-overflow:ellipsis;
+  margin: 14rpx 0 13rpx 0;
+}
+.scroll-view-pro-price{
+   font-size:30rpx;
+  font-family:PingFangSC-Medium;
+  font-weight:500;
+  color:rgba(255,80,64,1);
+}
+.scroll-view-pro-oldprice{
+   font-size:24rpx;
+  font-family:PingFangSC-Regular;
+  font-weight:400;
+  color:rgba(153,153,153,1);
+  text-decoration: line-through;
+}
+.scroll-view-bottom{
+  position: relative;
+}
+.right-car{
+  position: absolute;
+  top: 0;
+  right: 10rpx;
+  z-index: 2;
+   width:60rpx;
+   height:60rpx;
+   border-radius: 50%;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   background:linear-gradient(146deg,rgba(254,227,53,1) 0%,rgba(255,191,58,1) 100%);
+}
+.right-car image{
+   width: 29rpx;
+   height: 27rpx;
+}
+.red-num{
+   width: 35rpx;
+   height: 35rpx;
+   background:rgba(251,94,81,1);
+   border-radius: 50%;
+   color: #fff;
+   font-size: 20rpx;
+   display: inline-block;
+   text-align: center;
+   line-height: 35rpx;
+   position: absolute;
+   top: -10rpx;
+   right: -10rpx;
+   z-index: 2;
+}

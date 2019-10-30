@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "alertingTips": "../../components/alertingTips/alertingTips",
+    "emptyTips": "../../components/emptyTips/emptyTips",
+    "packageItem": "../../components/packageItem/packageItem"
+  }
+}

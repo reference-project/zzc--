@@ -1,0 +1,14 @@
+<!--page/groupBuying/groupBuying.wxml-->
+<view class='ground-buying-page'>
+
+  <view class='swiper-container'>
+    <image src='' class='swiper-bg'></image>
+    <swiperItems imgsList="{{data.rotation}}" widthSize="700" userDots="{{true}}"></swiperItems>
+  </view>
+
+  <view class='group-buying-lists'>
+    <groupBuyingItem wx:for="{{2}}" wx:key="{{index}}" product="{{item}}"></groupBuyingItem>
+    <loadMore loadMoreStatus="{{data.totalPage >state.page}}"></loadMore>
+  </view>
+
+</view>

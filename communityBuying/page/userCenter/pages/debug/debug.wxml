@@ -1,0 +1,29 @@
+<!--page/userCenter/pages/debug/debug.wxml-->
+<view class='P-debug'>
+  <view class='local-storage-items'>
+    <view class='local-storage-item' wx:for="{{data.arr}}" wx:key="{{index}}">
+      <view class='local-storage-item-text'>{{item.key}}</view>
+      <view class='local-storage-item-value'>
+        <text selectable>{{item.value}}</text>
+      </view>
+    </view>
+  </view>
+
+  <view class='env-change-container'>
+    <view class='change-env-text'>切换环境</view>
+    <view class='select-env' wx:for="{{state.envArr}}" wx:key="{{index}}" catchtap='onSelectEnvTypeHandler' data-index='{{index}}' data-type='{{item.type}}'>
+      <image class='' src='/imgs/icon-check-active.png' wx:if="{{state.envType==item.type}}"></image>
+      <image class='' src='/imgs/icon-check-default.png' wx:else></image>
+      <view class=''>{{item.name}}</view>
+    </view>
+    <view class='submit-buttom' catchtap='onSureChangeEnvHandler'>切换环境</view>
+  </view>
+
+  <view class='actions-box'>
+    <view class=''>该操作会把本地数据全部清掉哦</view>
+    <view class='action-btn clear' catchtap='onClearStorageHandler'>
+      清除本地数据
+    </view>
+  </view>
+  
+</view>

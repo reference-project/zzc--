@@ -1,0 +1,88 @@
+<!--page/userCenter/pages/sharePackage/sharePackage.wxml-->
+<view class='P-share-package {{state.isIphoneX?"isIphoneX":""}}'>
+  <view class='header-bg'>
+    <image src='/imgs/share-package-bg.png' mode='widthFix'></image>
+  </view>
+  
+  <view class='share-package-inner'>
+    <view class='login-content' wx:if="{{state.needAuthorize}}">
+      <button  open-type="getUserInfo" bindgetuserinfo="userInfoHandler" class='btn-get-userInfo'>立即登录领取</button>
+      <view class='login-content-text margin'>拼手气红包即将到账</view>
+    </view>
+
+    <view class='red-package-content' wx:if="{{state.needAuthorize == false}}">
+      <view class='current-package-content' wx:if="{{data.packageObj}}">
+        <view class='current-package-items'>
+          <packageItem packageType="share" packageItem="{{data.packageObj}}"></packageItem>
+        </view>
+      </view>
+
+      <view class='new-package-content' wx:if="{{data.newUserPackages.length > 0 }}">
+        <view class='package-tips'>~ 手气一般没有关系，还有优惠送给你 ~</view>
+        <view class='new-package-list'>
+          <packageItem packageType="share" wx:for="{{data.newUserPackages }}" wx:key="{{index}}" packageItem="{{item}}"></packageItem>
+        </view>
+      </view>
+      <view class='package-tips' wx:if="{{data.packageObj}}">红包已放至帐户进入商城即可使用</view>
+      <view class='has-pick-package' wx:if="{{state.fetchPackageStatus}}">获取红包中...</view>
+      <view class='has-pick-package' wx:if="{{(!data.packageObj && !data.newUserPackages.length)}}">
+        {{data.packageObjMsg}}
+      </view>
+    </view>
+    
+    <view class='get-package-content' wx:if="{{state.needAuthorize==false}}">
+      <view class='get-package-content-inner'>
+        <view class='get-package-title-box'>
+          <view class='get-package-title-line'></view>
+          <view class='get-package-title-text'>看看朋友们手气如何</view>
+          <view class='get-package-title-line'></view>
+        </view>
+        <view class='get-package-items' wx:if="{{data.getPackageList && data.getPackageList.length}}">
+          <view class='get-package-item' wx:for="{{data.getPackageList}}" wx:key="{{index}}">
+            <image src='{{item.avatar}}' class='get-package-item-avatar'></image>
+            <view class='get-package-item-center'>
+              <view class='get-package-item-user'>{{item.nickname}}<text>{{item.receive_time_util}}</text></view>
+              <view class='get-package-item-tips'>红包领得好，购物没烦恼</view>
+            </view>
+            <view class='get-package-item-right'>
+              <view class='get-package-money'>{{item.amount/100}}元</view>
+              <view class='get-package-lucky' wx:if="{{(index+1) == data.best_envelop_key}}">
+                <image src='/imgs/share-package-money-max.png' class='icon-lucky-active'></image>
+                <view>手气最佳</view>
+              </view>
+            </view>
+          </view>
+        </view>
+        <view class='get-package-empty' wx:if="{{data.getPackageList && data.getPackageList.length == 0}}">暂无领取记录</view>
+      </view>
+      
+
+      <image src='/imgs/share-package-desc-shucai.png' class='icon-activity-desc'></image>
+    </view>
+
+    <view class='activity-desc-content'>
+      <view class='activity-desc-title-box'>
+        <view class='activity-desc-title-line'></view>
+        <view class='activity-desc-title-text'>活动规则</view>
+        <view class='activity-desc-title-line'></view>
+      </view>
+      
+      <image src='/imgs/share-package-desc-shucai.png' class='icon-activity-desc'></image>
+      <view class='activity-desc-items'>
+        <view class='activity-desc-item'>1.每位用户每天至多可以领取5个红包，新老用户同享；</view>
+        <view class='activity-desc-item'>2.使用红包时的下单手机号需为抢红包时使用的</view>
+        <view class='activity-desc-item'>3.发放至壹手仓鲜品账户的红包登录后即可使用； </view>
+        <view class='activity-desc-item'>4.红包仅限在线支付时使用，每个订单仅限使用一
+  个红包，红包不找零；</view>
+      </view>
+    </view>
+  </view>
+  
+
+  <view class='footer-content {{state.isIphoneX?"isIphoneX":""}}' catchtap='onGoToIndexHandler' wx:if="{{ state.needAuthorize == false}}">
+    <view class='footer-btn'>进入商城抢购鲜品</view>
+  </view>
+
+  <alertingTips alertingStatus="{{state.alertingStatus}}" alertingWords="{{state.alertingWords}}"></alertingTips>
+
+</view>

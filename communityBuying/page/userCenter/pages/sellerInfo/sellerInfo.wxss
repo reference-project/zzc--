@@ -1,0 +1,61 @@
+/* page/userCenter/pages/sellerInfo/sellerInfo.wxss */
+
+.header-container{
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24rpx 25rpx 26rpx;
+  font-family: PingFangSC-Medium;
+}
+.title-container{
+  display: flex;
+  align-items: center;
+  font-size: 34rpx;
+  color: #000000;
+}
+.title-container image{
+  width: 44rpx;
+  height: 44rpx;
+  margin-right: 12rpx;
+}
+.chat-btn{
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24rpx;
+  color: #333333;
+}
+.chat-btn image{
+  width: 44rpx;
+  height: 44rpx;
+  margin-right: 4rpx
+}
+.seller-info-container{
+  margin-top: 76rpx;
+  padding-left: 90rpx;
+}
+.seller-avatar-content image{
+  width: 160rpx;
+  height: 160rpx;
+  border-radius: 20rpx;
+  background-color: #ccc;
+  display: block;
+}
+.seller-info-item{
+  margin-top: 50rpx;
+  font-family: PingFangSC-Medium;
+  font-size: 28rpx;
+  line-height: 32rpx;
+}
+.seller-info-item:nth-child(2){
+  margin-top: 30rpx;
+}
+.seller-info-text{
+  color: #999999;
+}
+.seller-info-value{
+  color: #333;
+  margin-top: 20rpx;
+}

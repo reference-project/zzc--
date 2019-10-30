@@ -1,0 +1,22 @@
+/* components/emptyTips/emptyTips.wxss */
+/* .empty-tips{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  font-size: 0px;
+  text-align: center;
+} */
+.empty-tips{
+  text-align: center;
+}
+.empty-tips image{
+  /* height: 100rpx; */
+  width: 370rpx;
+  height: 280rpx;
+}
+.empty-tips .tips{
+  font-size: 30rpx;
+  color: #999;
+  margin-top: 30rpx;
+}

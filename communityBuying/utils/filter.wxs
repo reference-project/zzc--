@@ -1,0 +1,20 @@
+var toolFr ={
+  accumulationFn:function(arry){
+    var goodNumber=0;
+    arry.forEach(function(item){
+        if(item.number){
+          goodNumber += Number(item.number)
+        }
+    });
+    return goodNumber
+  }
+}
+
+module.exports = {
+  accumulationFn: toolFr.accumulationFn
+}
+
+
+
+
+

@@ -1,0 +1,9 @@
+{
+  "usingComponents": {
+    "alertingTips": "../../../../components/alertingTips/alertingTips",
+    "flashSaleItem":"../../../../components/flashSaleItem/flashSaleItem",
+    "loadMore": "../../../../components/loadMore/loadMore",
+    "emptyTips":"../../../../components/emptyTips/emptyTips",
+    "skeletonScreen": "../../../../components/skeletonScreen/skeletonScreen"
+  }
+}

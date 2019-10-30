@@ -1,0 +1,211 @@
+<!--page/cart/cart.wxml-->
+<view class='P-cart {{!state.isLoading && state.needAuthorize?"P-cart-bg":""}}'>
+
+  <!-- 不是请求状态，并且需要登录 -->
+  <!-- <view class='need-login-container' wx:if="{{!state.isLoading && state.needAuthorize}}">
+    <view>您还没有登录哦～</view>
+    <view class='btn-need-login' catchtap='onGoToLoginPage'>点击登录</view>
+  </view> -->
+
+  <view class="needAuthorize-page" wx:if="{{!state.isLoading && state.needAuthorize}}">
+    <view class="needAuthorize-header">
+            <image src='/imgs/needAuthorize-bg.png' class='needAuthorize-bg'></image>
+            <image class="needAuthorize-logo" src='/imgs/needAuthorize-logo.png'></image>
+    </view>
+    <button class="login-btn" open-type="getUserInfo" bindgetuserinfo="userInfoHandler">
+         <image class="weixin-logo" src='/imgs/weixin.png'></image>
+         <text>微信一键登录</text>
+    </button>
+    <view class="join-container">
+       <view class="join-limit" catchtap='onGoToMiniProgram'>
+         <text>限时加盟</text>
+         <image src="/imgs/user-right.png" class="user-right"></image>
+       </view>
+        <view class="join-limit-title">©2019壹手仓鲜品</view>
+    </view>
+  </view>
+
+
+
+  <!-- 不是请求状态，并且不需要登录 -->
+  <block wx:if="{{!state.isLoading && !state.needAuthorize}}">
+       <!-- 购物车凑单 -->
+      <!-- <view class="pick-up-container" wx:if="{{false}}">
+          <view class="pick-up-content">
+              <view class="pick-up-left flex">
+                 <view class="label">促销</view>
+                 <view class="promotion-text">
+                   满60减5，还差11.3元
+                 </view>
+              </view>
+              <view class="pick-up-right flex">
+              <view class="right-text">去凑单</view>
+              <image class="icon-car-right" src="/imgs/icon-car-right.png"></image>
+              </view>
+          </view>
+      </view> --> 
+
+
+    <!-- 购物车列表不为空 -->
+    <view class='cart-has' wx:if="{{data.products.length > 0}}">
+
+      <!-- <view class='header-title'>
+        <view class='btn-select-all-content'>
+          <image src='/imgs/icon-check-active.png' wx:if="{{state.selectAllStatus}}" catchtap='changeSelectAllStatus'></image>
+          <image src='/imgs/icon-check-default.png' wx:else catchtap='changeSelectAllStatus'></image>
+          <text>全选</text>
+        </view>
+        <view class='btn-done' wx:if="{{state.manageStatus}}" catchtap='changeManageStatus'>完成</view>
+        <view class='btn-manage' wx:else catchtap='changeManageStatus'>管理</view> 
+      </view> -->
+
+      <view class='cart-products'>
+        <view class='cart-pro-item opacity-animation {{item.moveState?"cart-pro-item-toleft":""}}' wx:for="{{data.prosNow}}" wx:key="{{index}}" catchtap='onGoToProductDetail' data-index="{{index}}" data-type='now' data-id='{{item.id}}' bindtouchstart="touchStart" bindtouchmove="touchMove" bindtouchend="touchEnd">
+
+          <view class="pro-item-delete {{item.moveState?'pro-item-delete-right':''}}" catchtap='onDeleteOnehandler' data-index='{{index}}' data-type='now'>
+             删除
+          </view>
+
+          <view class='cart-pro-select' catchtap='onSeleteHandler' data-index='{{index}}'>
+            <image src='/imgs/check-active.png' wx:if="{{item.selected}}"></image>
+            <image src='/imgs/check-default.png' wx:else ></image>
+          </view>
+
+         <view class="cart-pro-right">
+          <view class="cart-pro-pic-box">
+             <view class="cart-pro-limit-bottom" wx:if="{{item.sku_stock>=10&&item.limit_buy}}">限购{{item.limit_buy}}件</view>
+             <view class="cart-pro-limit-bottom" wx:if="{{item.sku_stock<10}}">仅剩{{item.sku_stock}}件</view>
+             <image class='cart-pro-pic' src='{{data.qiniuDomain+item.picture}}'></image>
+          </view>
+          
+          <view class='cart-pro-info' style="border-bottom:{{index==(data.prosNow.length-1)?'0rpx':'1rpx solid #EEEEEE'}};">
+            <view>
+              <!-- <image class='icon-delete' src='/imgs/icon-close-default.png' catchtap='onDeleteOnehandler' data-index='{{index}}' data-type='now'></image> -->
+              <view class='cart-pro-title'>
+                <text>{{item.goods_name}}</text>
+              </view>
+              <view class='cart-pro-sku'>{{item.sku_name}}</view>
+                <text class='pro-tips booking' wx:if="{{item.type==2}}">预售</text>
+                <text class='pro-tips booking' wx:elif="{{item.type==1}}">次日达</text>
+                <text class='pro-tips booking' wx:else>秒杀</text>
+            </view>
+            
+            <view class='cart-pro-price-box has-goods-padding' catchtap='onPreventDefault'>
+              <view class="cart-pro-price-clum">
+                <view class='cart-pro-price'>¥{{item.our_price/100}}</view>
+                <view class="cart-maket-price">¥{{item.market_price/100}}</view>
+              </view>
+              
+              <view class='cart-pro-actions-content'>
+                <!-- <view class='cart-pro-limit' wx:if="{{item.num==item.limit_buy}}">每人限购{{item.limit_buy}}件</view> -->
+
+                 <!--{{item.num>1?"onNumDescHandler":""}}--->
+                <view class='cart-pro-actions'>
+                  <view class='action-desc {{item.num==1?"disabled":" "}}' data-index="{{index}}" data-type='now' catchtap='onNumDescHandler'>-</view>
+                  <view class='action-num'>{{item.num}}</view>
+                  <view class='action-add {{item.num==item.limit_buy||item.num==item.sku_stock?"disabled":""}}' data-index="{{index}}" catchtap='{{item.num < item.limit_buy || item.limit_buy == 0?"onNumAddHandler":""}}'>+</view>
+                </view>
+              </view>
+            </view>
+          </view>
+         </view>
+        </view>
+      </view>
+      <!--失效的商品data.prosOut && data.prosOut.length>0-->
+      <view class='cart-products-out' wx:if="{{data.prosOut && data.prosOut.length>0}}">
+        <view class='cart-products-out-title'>失效商品</view>
+        <view class='cart-pro-item opacity-animation {{item.moveState?"cart-pro-item-toleft":""}}' catchtap='onGoToProductDetail' wx:for="{{data.prosOut}}" wx:key="{{index}}" data-index="{{index}}" data-type='out' data-id='{{item.id}}' bindtouchstart="touchStart" bindtouchmove="touchMove" bindtouchend="touchEnd">
+
+      <view class="pro-item-delete {{item.moveState?'pro-item-delete-right':''}}" catchtap='onDeleteOnehandler' data-index='{{index}}' data-type='out'>
+             删除
+          </view>
+          <view class='cart-pro-select lose-select'>
+            <view class='cart-pro-select-out'>失效</view>
+          </view>
+          <view class="cart-pro-right">
+          <view class='image-box'>
+            <image class='cart-pro-pic' src='{{data.qiniuDomain+item.picture}}'></image>
+            <view class='shadow' wx:if="{{item.sku_stock == 0}}">
+              <view class='over-title'>已售罄</view>
+              <view class=''>Sold out</view>
+            </view>
+            <!-- 目前来说，prosOut 数组中不是没库存 就是下架状态 -->
+            <view class='shadow' wx:else>
+              <view class='over-title'>已下架</view>
+              <view class=''>Sold out</view>
+            </view>
+          </view>
+          <view class='cart-pro-info' style="border-bottom:{{index==(data.prosOut.length-1)?'0rpx':'1rpx solid #EEEEEE'}};">
+            <!-- <image class='icon-delete' src='/imgs/icon-close-default.png' catchtap='onDeleteOnehandler' data-index='{{index}}' data-type='out'></image> -->
+            <view class='cart-pro-title'>
+              <text> {{item.goods_name}}</text>
+            </view>
+            <view class='cart-pro-sku'>{{item.sku_name}}</view>
+            <view class="cart-pro-buy">此商品不能购买</view>
+            <view class='cart-pro-price-box' catchtap='onPreventDefault'>
+              <view class='cart-pro-price'>¥{{item.our_price/100}}</view>
+            </view>
+          </view>
+          </view>
+        </view>
+      </view>
+
+
+     <!--底下结算按钮-->
+      <view class='footer-btn-container'>
+        <view class='btn-select-all-content'>
+          <image src='/imgs/check-active.png' wx:if="{{state.selectAllStatus}}" catchtap='changeSelectAllStatus'></image>
+          <image src='/imgs/check-default.png' wx:else catchtap='changeSelectAllStatus'></image>
+          <text>全选</text>
+        </view>
+        <view wx:if="{{!state.manageStatus}}" class='footer-right'>
+          <view class='footer-total-price'>
+            <view class="total-price-top">
+               合计:¥{{state.allPrice/100}}
+            </view>
+            <view class="total-price-optimization">
+              总额:￥{{state.marketPrice/100}},已优惠￥{{state.favouredPrice}}
+            </view>
+            
+          </view>
+          <view class='footer-btn' catchtap='onCreateOrderRequest'>
+            结算<text wx:if="{{state.selectLength>0}}">({{state.selectLength}})</text>
+          </view>
+        </view>
+        <view wx:else>
+          <view class='footer-total-price'>
+          </view>
+          <view class='footer-btn delete' catchtap='onDeleteAllhandler'>
+            删除
+          </view>
+        </view>
+      </view>
+    </view>
+    
+    <view class='cart-empty-container' wx:else>
+      <view class='cart-empty-content'>
+        <image src='/imgs/icon-cart-empty.png' class='empty-pic'></image>
+        <view class='empty-tips'>赶快去挑选商品吧～</view>
+        <view class='empty-action-btn' catchtap='onGoToHomeHandler'>去首页</view>
+      </view>
+    </view>
+  </block>
+  
+   <!--删除提示框-->
+  <view class='confirm-delete-container' wx:if="{{state.deleteComfirm}}" catchtap='onCancelDeleteHandler'>
+    <view class='comfirm-delete-content'>
+      <view class='comfirm-delete-text'>美好总是稍纵即逝的，确定要删除吗？</view>
+      <view class='comfirm-delete-btns'>
+        <view class='delete-confirm' catchtap='onConfirmDeleteHandler'>去意已决</view>
+        <view class='delete-hesitate' catchtap='onCancelDeleteHandler'>先留着</view>
+      </view>
+    </view>
+  </view>
+
+  <alertingTips alertingStatus="{{state.alertingStatus}}" alertingWords="{{state.alertingWords}}"></alertingTips>
+
+
+<!--猜你喜欢组件-->
+<guessLike likeStyle="{{1}}"   likeProData="{{data.likeProData}}" likeProStaus="{{state.likeProStaus}}" bind:parentEvent='onParentEvent' likePageStyle="{{'goodsCar'}}"></guessLike>
+
+</view>

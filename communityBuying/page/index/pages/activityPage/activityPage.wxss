@@ -1,0 +1,26 @@
+/* page/index/pages/activityPage/activityPage.wxss */
+.activity-page{
+  padding-bottom: 20rpx;
+  background-color: rgba(248, 248, 248, 0.75);
+}
+.activity-banner{
+  height: 482rpx;
+  /* background-color: #E8E4E4; */
+}
+.activity-banner image{
+  width: 100%;
+  height: 100%;
+  background-color: #000;
+}
+.pro-lists{
+  display: flex;
+  padding: 0 20rpx;
+  /* margin-top: -90rpx; */
+  margin-top: 40rpx;
+}
+.pro-lists-left{
+  margin-right: 10rpx;
+}
+.pro-lists-left,.pro-lists-right{
+  flex: 1;
+}

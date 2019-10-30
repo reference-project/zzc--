@@ -1,0 +1,241 @@
+/* page/userCenter/pages/returnDetailPage/returnDetailPage.wxss */
+.P-order-return-detail{
+  /* overflow: hidden; */
+  min-height: 100vh;
+  background-color: rgba(248, 248, 248, 0.75);
+  font-family: PingFangSC-Medium;
+  padding-bottom: 140rpx;
+}
+.header-tips{
+  background:linear-gradient(270deg,#FF5e6f 100%,#ff4b4c 100%);
+  height: 190rpx;
+  color: #fff;
+  font-size: 28rpx;
+  line-height: 28rpx;
+  text-align: center;
+  overflow: hidden;
+}
+.header-tips-status{
+  font-size: 32rpx;
+  line-height: 32rpx;
+  padding-bottom: 20rpx;
+  margin-top: 50rpx;
+  font-family: PingFangSC-Semibold;
+}
+.header-actions{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.header-active-btn{
+  width: 200rpx;
+  height: 60rpx;
+  text-align: center;
+  line-height: 60rpx;
+  background-color: #fff;
+  color: #FF474B;
+  font-size: 32rpx;
+  font-family: PingFangSC-Medium;
+  border-radius: 100rpx;
+  margin: 0 15rpx;
+}
+.header-cancel-btn{
+  width: 200rpx;
+  height: 60rpx;
+  text-align: center;
+  line-height: 60rpx;
+  background-color: #fff;
+  color: #B4B4B4;
+  font-size: 32rpx;
+  font-family: PingFangSC-Medium;
+  border-radius: 100rpx;
+  margin: 0 15rpx;
+}
+/* .address-container{
+  padding: 20rpx 40rpx;
+  background-color: #fff;
+}
+.user-info-content{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 28rpx;
+  color: #333333;
+  line-height: 28rpx;
+}
+.user-info-content:last-child{
+  margin-top: 26rpx;
+  line-height: 38rpx;
+} */
+.return-form{
+  padding: 10rpx 0;
+}
+.return-form-item{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10rpx 40rpx 10rpx 20rpx;
+  background-color: #fff;
+}
+.retutn-input-text{
+  font-size: 32rpx;
+  color: #333333;
+  line-height: 32rpx;
+}
+.retutn-input-input{
+  flex: 1;
+  /* border: 1rpx solid #ececec; */
+  margin-left: 20rpx;
+  font-size: 28rpx;
+  height: 48rpx;
+  min-height: 48rpx;
+  line-height: 48rpx;
+  text-align: right;
+}
+
+.order-pro-lists{
+  margin-top: 20rpx;
+  padding: 10rpx 20rpx 30rpx;
+  background-color: #fff;
+}
+.order-pro-item{
+  margin-top: 30rpx;
+}
+.item-info-container{
+  display: flex;
+  align-items: center;
+  border-radius: 20rpx;
+  overflow: hidden;
+}
+.item-info-container image{
+  width: 240rpx;
+  height: 240rpx;
+}
+.item-info-content{
+  flex: 1;
+  height: 240rpx;
+  padding: 20rpx 20rpx 10rpx;
+  box-sizing: border-box;
+}
+.item-info-title{
+  font-size: 32rpx;
+  line-height: 32rpx;
+  color: #333333;
+}
+.item-info-weight{
+  font-size: 22rpx;
+  color: #999999;
+  line-height: 22rpx;
+  margin-top: 20rpx;
+}
+.item-info-package{
+  margin-top: 10rpx;
+  font-size: 22rpx;
+  color: #999999;
+  line-height: 22rpx;
+}
+.item-price-container{
+  margin-top: 50rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.item-info-price{
+  margin-top: 20rpx;
+  text-align: right;
+}
+.pro-price{
+  font-size: 28rpx;
+  color: #333333;
+  line-height: 34rpx;
+  vertical-align: middle;
+}
+.pro-fee{
+  font-size: 22rpx;
+  color: #999999;
+  line-height: 28rpx;
+  vertical-align: middle;
+}
+.order-pro-actions{
+  display: flex;
+  justify-content: flex-end;
+}
+.btn-change{
+  width: 120rpx;
+  height: 50rpx;
+  line-height: 50rpx;
+  text-align: center;
+  background-color: #ff8459;
+  color: #fff;
+  font-size: 24rpx;
+  border-radius: 100rpx;
+  margin-left: 20rpx;
+}
+
+
+.chat-container{
+  display: flex;
+  background-color: #fff;
+}
+.chat-btn{
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28rpx;
+  color: #ff8459;
+}
+.chat-btn image{
+  width: 44rpx;
+  height: 44rpx;
+  margin-right: 20rpx
+}
+
+
+.order-info-container{
+  margin-top: 20rpx;
+  background-color: #fff;
+  padding: 30rpx 20rpx;
+  font-size: 24rpx;
+  line-height: 24rpx;
+  color: #999;
+}
+.order-info-container text{
+  color: #666;
+}
+.btn-copy{
+  margin-left: 40rpx;
+}
+.order-info-number{
+  margin-top: 20rpx;
+}
+.order-pay-way{
+  margin-top: 20rpx;
+}
+.order-create-time{
+  margin-top: 20rpx;
+}
+
+
+.order-footer-container{
+  background-color: #fff;
+  height: 120rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 20rpx;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+.btn-active{
+  width: 600rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  text-align: center;
+  border-radius: 100rpx;
+  background:linear-gradient(90deg,#FF9363 0%,#FF0700 100%);
+  color: #fff;
+  font-size: 28rpx;
+}

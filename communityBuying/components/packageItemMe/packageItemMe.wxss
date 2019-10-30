@@ -1,0 +1,216 @@
+/* components/packageItem/packageItem.wxss */
+.package-item{
+  margin-top: 20rpx;
+  border-radius: 10rpx;
+  background-color: #fff;
+  min-height: 200rpx;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  /* box-shadow: 0rpx 2rpx 6rpx #eee; */
+  overflow: hidden;
+  box-shadow: 0 2rpx 6rpx rgba(102, 102, 102, 0.06);
+}
+.top-border{
+  height: 10rpx;
+  background-color: #ff5e53;
+}
+.package-content{
+  height: 190rpx;
+  position: relative;
+  display: flex;
+  align-items: center;
+  border-bottom: 1rpx dashed #eee;
+}
+.half-circle-left{
+  position: absolute;
+  left: 0;
+  bottom: -11rpx;
+  width: 11rpx;
+  height: 22rpx;
+  border-radius: 0 22rpx 22rpx 0;
+  background-color: #f7f7f7;
+}
+.half-circle-right{
+  position: absolute;
+  right: 0;
+  bottom: -11rpx;
+  width: 11rpx;
+  height: 22rpx;
+  border-radius: 22rpx 0rpx 0rpx 22rpx;
+  background-color: #f7f7f7;
+  z-index: 2;
+}
+.package-content-left{
+  width: 210rpx;
+  text-align: center;
+}
+.package-num{
+  font-family: PingFangSC-Semibold;
+  font-size: 30rpx;
+  color: #FF5E53;
+}
+.package-num text{
+  font-family: PingFangSC-Medium;
+  font-size: 60rpx;
+  margin-left: 10rpx;
+  line-height: 60rpx;
+}
+.package-limit-num{
+  margin-top: 16rpx;
+  font-family: PingFangSC-Regular;
+  font-size: 22rpx;
+  line-height: 22rpx;
+  color: #999999;
+}
+.package-content-center{
+  flex: 1;
+}
+.package-title{
+  font-family: PingFangSC-Medium;
+  font-size: 34rpx;
+  line-height: 34rpx;
+  color: #282828;
+}
+.package-desc-items{
+  padding-top: 4rpx;
+}
+.package-desc-item{
+  margin-top: 6rpx;
+  display: flex;
+  align-items: center;
+}
+.circle-item{
+  width: 4rpx;
+  height: 4rpx;
+  border-radius: 50%;
+  background-color: #999;
+}
+.package-desc-item-text{
+  margin-left: 10rpx;
+  font-family: PingFangSC-Regular;
+  font-size: 22rpx;
+  color: #999999;
+}
+.package-content-right{
+  height: 100%;
+  width: 170rpx;
+  box-sizing: border-box;
+  position: relative;
+}
+.btn-use{
+  width: 108rpx;
+  height: 48rpx;
+  line-height: 48rpx;
+  text-align: center;
+  background-color: #ff5e53;
+  border-radius: 24rpx;
+  font-family: PingFangSC-Medium;
+  font-size: 24rpx;
+  color: #fff;
+  z-index:3;
+  position: absolute;
+  bottom: 42rpx;
+  right: 43rpx;
+}
+.btn-package-timeout{
+  width: 108rpx;
+  height: 48rpx;
+  line-height: 48rpx;
+  text-align: center;
+  border: 1rpx solid #ccc;
+  border-radius: 24rpx;
+  font-family: PingFangSC-Medium;
+  font-size: 24rpx;
+  color: #ccc;
+  z-index:3;
+  position: absolute;
+  bottom: 42rpx;
+  right: 43rpx;
+}
+.icon-package-active{
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 170rpx;
+  height: 172rpx;
+}
+.limit-content{
+  padding: 0 40rpx;
+  background: #fff6f5;
+}
+.limit-content-top{
+  height: 62rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.limit-content-top-text{
+  font-family: PingFangSC-Regular;
+  font-size: 22rpx;
+  color: #646464;
+  flex: 1;
+  width: 1rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.limit-content-top-icon{
+  font-size: 0px;
+}
+.limit-content-top-icon image{
+  width: 18rpx;
+  height: 10rpx;
+}
+.limit-content-top-icon image.bottom{
+  transform: rotate(180deg);
+}
+.limit-items-content{
+  padding-bottom: 50rpx;
+}
+.limit-item-content{
+  opacity: 0.6;
+  font-family: PingFangSC-Regular;
+  font-size: 22rpx;
+  color: #666666;
+}
+.limit-item-title{
+  display: inline;
+}
+.limit-item-values{
+  line-height: 34rpx;
+  display: inline;
+}
+
+
+.isUsed .top-border{
+  background-color: #ccc;
+}
+.isUsed .package-num{
+  color: #999;
+}
+.isUsed .package-title{
+  color: #666;
+}
+.isUsed .circle-item{
+  background-color: #ccc;
+}
+.isUsed .package-desc-item-text{
+  color: #ccc;
+}
+.icon-package-used{
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 147rpx;
+  height: 139rpx;
+}
+.isUsed .limit-content{
+  background: #EEEEEE;
+}
+.isUsed .limit-content-top-text{
+  color: #999;
+}
+.isUsed .limit-item-content{
+  color: #999999;
+}

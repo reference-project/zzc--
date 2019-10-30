@@ -1,0 +1,41 @@
+<!--page/pickUpPoint/pickUpPoint.wxml-->
+<view class='P-pick-up-point'>
+  <view class='status-top-tips'>
+    <image src='/imgs/icon-clock-tips.png' class='icon-clock-tips'></image>
+    <view class=''>选择小区代理点，可享受免费代收服务</view>
+  </view>
+
+  <view class='pick-up-recommend-container' wx:if="{{data.address}}">
+    <view class='pick-up-recommend-title'>当前代理点</view>
+    <view class='pick-up-lists'>
+      <view class='pick-up-item' catchtap='onSelectAddressHandler' data-type='current'>
+        <view class='pick-up-address-detail'>{{data.address.address}}</view>
+        <view class='pick-up-user-info'>
+          <view class='pick-up-user-text'>小区代理:</view>
+          <view class='pick-up-user-name'>{{data.address.canSeedName}}</view>
+          <view class='pick-up-user-phone'>{{data.address.canSeedMobile}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class='bottom-line' wx:if="{{data.address}}"></view>
+  <view class='pick-up-choose-container'>
+    <view class='pick-up-others-title'>可选小区代理点</view>
+
+    <view class='pick-up-lists' wx:if='{{data.coms && data.coms.length>0}}'>
+      <view class='pick-up-item' wx:for="{{data.coms}}" wx:key="{{index}}" catchtap='onSelectAddressHandler' data-index='{{index}}'>
+        <view class='pick-up-address-detail'>{{item.address}}</view>
+        <view class='pick-up-user-info'>
+          <view class='pick-up-user-text'>小区代理:</view>
+          <view class='pick-up-user-name'>{{item.canSeedName}}</view>
+          <view class='pick-up-user-phone'>{{item.canSeedMobile}}</view>
+        </view>
+      </view>
+    </view>
+
+    <view class='pick-up-empty' wx:else>
+      <view class='pick-up-empty-text'>当前定位小区暂无代理点～<text catchtap='onGoToLocationPageHandler'>点击重新定位</text></view>
+    </view>
+  </view>
+</view>

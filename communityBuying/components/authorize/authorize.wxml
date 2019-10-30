@@ -1,0 +1,23 @@
+<!--components/authorize/authorize.wxml-->
+
+<view class='com-authorize'>
+  <!-- <view class='container'>
+    <view class='title'>微信授权</view>
+    <view class='center'>
+      <image src='../../imgs/logo-140.png'></image>
+      <view class='limit'>Bir必燃特卖申请获得以下权限</view>
+      <view class='desc'><view class='icon'></view>获得你的公开信息（昵称，头像等）</view>
+    </view>
+    <view class='btn-box'>
+      <button type="primary" open-type="getUserInfo" bindgetuserinfo="userInfoHandler" class='submit'>允许</button>
+    </view>
+  </view> -->
+  <!-- <button open-type="getUserInfo" bindgetuserinfo="userInfoHandler" class='pic-box'>
+    <image src='{{imgUrl}}' class='adv' mode='widthFix'></image>
+  </button> -->
+  <button open-type="getUserInfo" bindgetuserinfo="userInfoHandler" class='authorize-container'>
+    <image src='/imgs/icon-logo-big.png' mode='widthFix'></image>
+    <view class='authorize-tips'>授权后立即低价抢购</view>
+    <view class='btn-action'>微信一键授权</view>
+  </button>
+</view>

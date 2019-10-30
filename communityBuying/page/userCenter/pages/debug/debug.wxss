@@ -1,0 +1,56 @@
+/* page/userCenter/pages/debug/debug.wxss */
+.P-debug{
+  padding-bottom: 120rpx;
+}
+.local-storage-items{
+  padding: 30rpx;
+}
+.local-storage-item{
+  display: flex;
+  margin-top: 30rpx;
+  word-break: break-all;
+}
+.local-storage-item-text{
+  width: 200rpx;
+}
+.local-storage-item-value{
+  flex: 1;
+  margin-left: 20rpx;
+}
+.env-change-container{
+  padding: 30rpx;
+}
+.select-env{
+  display: flex;
+  align-items: center;
+}
+.select-env image{
+  width: 40rpx;
+  height: 40rpx;
+  margin-right: 20rpx;
+}
+.submit-buttom{
+  width: 600rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  text-align: center;
+  margin: 30rpx auto 0;
+  border-radius: 100rpx;
+  background-color: #ff5e53;
+  color: #fff;
+}
+.actions-box{
+  padding-top: 100rpx;
+}
+.action-btn{
+  width: 600rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  text-align: center;
+  margin: 30rpx auto 0;
+  border-radius: 100rpx;
+  color: #fff;
+}
+.action-btn.clear{
+  background-color: #ccc;
+}

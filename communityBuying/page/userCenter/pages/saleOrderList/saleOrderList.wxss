@@ -1,0 +1,329 @@
+/* page/userCenter/pages/saleOrder/saleOrderList.wxss */
+/* page/user/pages/orderList/orderList.wxss */
+.P-oder-list{
+  min-height: 100vh;
+  padding-bottom: 3rpx;
+  background-color: #fff;
+  padding-top: 100rpx;
+  box-sizing: border-box;
+}
+.bottom-line{
+  background-color: #f7f7f7;
+  height: 20rpx;
+}
+.user-sale-order-nav{
+  display: flex;
+  align-items: center;
+  height: 100rpx;
+  position: fixed;
+  top: 0;
+  left: 0; 
+  width: 100%;
+  background-color: #fff;
+}
+.user-sale-order-nav-item{
+  flex: 1;
+  text-align: center;
+  height: 100rpx;
+  padding-top: 30rpx;
+  box-sizing: border-box;
+}
+.user-sale-order-nav-item-text.active{
+  color: #333;
+}
+.user-sale-order-nav-item-text{
+  font-size: 28rpx;
+  color: #999;
+  line-height: 28rpx;
+}
+.user-nav-light{
+  width: 40rpx;
+  height: 14rpx;
+  border-radius: 10rpx;
+  background-color: #1E6FFF;
+  margin: 16rpx auto 0;
+}
+
+.nav-bar {
+  position: fixed;
+  top: 0;
+  left: 0; 
+  width: 100%;
+  white-space:nowrap;
+  font-size: 32rpx;
+  height: 100rpx;
+  /* border-bottom: solid 1rpx #efefef; */
+  background-color: #fff;
+  z-index: 100;
+  line-height: 100rpx;
+}
+.nav-bar.flex{
+  display: flex;
+  align-items: center;
+}
+.nav-bar .item {
+  display: inline-block;
+  padding: 30rpx 40rpx 0;
+  /* background-color: white;   */
+  position: relative; 
+}
+.nav-bar .item .word{
+  font-size: 28rpx;
+  line-height: 28rpx;
+  color: #999;
+}
+.nav-bar .item.active .word{
+  color: #333;
+  /* border-bottom: 2px solid #ff0600; */
+  font-size: 28rpx;
+}
+.nav-active-bottom{
+  margin: 10rpx auto 0;
+  width:40rpx;
+  height:14rpx;
+  border-radius:100rpx;
+  background-color:#1E6FFF;
+}
+/* .nav-bar .num{
+  position:absolute;
+  min-width: 8px;
+  height:28rpx;
+  background-color:#ff0600;
+  color:#fff;
+  text-align:center;
+  line-height:28rpx;
+  border-radius:7px;
+  font-size:20rpx;
+  top:8px;
+  right:0;
+  padding:0 3px;
+} */
+
+.order-item-container{
+  /* margin-top: 20rpx; */
+  background-color: #fff;
+  padding: 12rpx 15rpx;
+}
+.order-item-container:first-child{
+  margin-top: 0rpx;
+}
+.order-item-status-box{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 22rpx;
+  line-height: 22rpx;
+  border-bottom: 1rpx solid#EAEAEA;
+  padding: 20rpx 10rpx 10rpx;
+  font-family: PingFangSC-Regular;
+}
+.order-item-status{
+  color: #1E6FFF;
+}
+.order-item-status.red{
+  color: #FF5E53;
+}
+.order-item-time{
+  color: #999999;
+}
+.order-item-time text{
+  margin-left: 20rpx;
+}
+.order-item-info{
+  display: flex;
+  align-items: center;
+  padding: 30rpx 10rpx;
+  border-bottom: 1rpx solid #eaeaea;
+}
+.order-item-info image{
+  width: 160rpx;
+  height: 160rpx;
+  border-radius: 20rpx;
+  background-color: #FAFAFA;
+}
+.order-item-info-desc{
+  flex: 1;
+  height: 160rpx;
+  margin-left: 20rpx;
+  padding: 8rpx 0;
+  box-sizing: border-box;
+}
+.order-item-info-title-box{
+  display: flex;
+  align-items: center;
+  font-family: PingFangSC-Medium;
+  font-size: 30rpx;
+  color: #333333;
+  line-height: 40rpx;
+}
+.order-item-info-title{
+  flex: 1;
+  width: 1rpx;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-right: 10rpx;
+}
+.order-item-info-sku{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 20rpx;
+  font-size: 22rpx;
+  line-height: 22rpx;
+  color: #999;
+  font-family: PingFangSC-Regular;
+}
+.order-type-content{
+  margin-top: 20rpx;
+  display: flex;
+  align-items: center;
+  font-size: 28rpx;
+  line-height: 28rpx;
+}
+.pro-tips{
+  display: inline-block;
+  width: auto;
+  height: 34rpx;
+  margin-right: 10rpx;
+  border-radius: 8rpx;
+  text-align: center;
+}
+.pro-tips.booking{
+  font-family: PingFangSC-Medium;
+  font-size: 22rpx;
+  background-color: #fde7e5;
+  width: 74rpx;
+  line-height: 34rpx;
+  color: #fd6058;
+}
+
+/* .order-pro-item-status{
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  font-family: PingFangSC-Regular;
+} */
+.order-status{
+  text-align: center;
+  line-height: 60rpx;
+  font-size: 28rpx;
+  border-radius: 30rpx;
+}
+.order-status.refund{
+  color: #ccc;
+}
+.order-status.active{
+  color: #ff5e53;
+}
+.order-item-info-num-price{
+  text-align: right;
+  font-size: 28rpx;
+  line-height: 28rpx;
+  color: #666;
+  padding: 30rpx 10rpx 0;
+}
+.order-item-info-num-price text{
+  font-family: PingFangSC-Medium;
+  font-size: 34rpx;
+  color: #151515;
+}
+.order-message-info{
+  display: flex;
+  align-items: center;
+  padding: 10rpx;
+}
+
+.order-message-items{
+  flex: 1;
+  width: 1rpx;
+}
+.order-message-item{
+  display: flex;
+  align-items: center;
+  margin-top: 20rpx;
+  font-family: PingFangSC-Regular;
+  font-size: 24rpx;
+  line-height: 24rpx;
+}
+.order-message-item-text{
+  color: #999;
+}
+.order-message-item-value{
+  color: #666;
+  margin-left: 10rpx;
+}
+view.btn-copy {
+  margin-left: 40rpx;
+  color: #1e6fff;
+}
+.order-sale-price{
+  display: flex;
+  align-items: flex-end;
+}
+.order-sale-price-text{
+  font-family: PingFangSC-Regular;
+  font-size: 22rpx;
+  color: #999999;
+}
+.order-sale-price-value{
+  font-family: PingFangSC-Medium;
+  font-size: 40rpx;
+  color: #FF5E53;
+  line-height: 40rpx;
+  margin-left: 10rpx;
+}
+.order-item-actions{
+  padding: 30rpx 10rpx;
+  display: flex;
+  justify-content: flex-end;
+}
+.btn-active{
+  width: 170rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  text-align: center;
+  border-radius: 100rpx;
+  background-color: #FF5E53;
+  color: #fff;
+  font-size: 28rpx;
+  margin-left: 30rpx;
+  flex-shrink:1;
+}
+.btn-default{
+  width: 170rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  text-align: center;
+  border-radius: 100rpx;
+  font-family: PingFangSC-Regular;
+  border: 2rpx solid #979797;
+  color: #979797;
+  font-size: 28rpx;
+  flex-shrink:1;
+}
+.order-item-actions view{
+  margin-left: 30rpx;
+}
+.order-item-actions view:first-child{
+  margin-left: 0rpx;
+}
+
+.empty-tips{
+  /* position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%); */
+  margin-top: 180rpx;
+  font-size: 0px;
+  text-align: center;
+}
+.empty-tips image{
+  height: 280rpx;
+  width: 370rpx;
+}
+.empty-tips .tips{
+  font-size: 28rpx;
+  color: #aeaeae;
+  margin-top: 30rpx;
+}

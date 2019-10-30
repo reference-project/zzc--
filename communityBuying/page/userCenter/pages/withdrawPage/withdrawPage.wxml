@@ -1,0 +1,82 @@
+<!--page/userCenter/pages/withdrawPage/withdrawPage.wxml-->
+<view class='P-withdraw {{state.thirdStep?"background":""}}'>
+
+  <view class='withdraw-intro' catchtap='onGoToWithdrawPageHandler' wx:if="{{!state.thirdStep}}">
+    <image src='/imgs/icon-rule-default.png' class='icon-rule'></image>
+    <view>规则说明</view>
+  </view>
+  <view class='withdraw-first-container' wx:if="{{state.firstStep}}">
+    <view class=''>
+      <view class='can-withdraw-title'>可提现金额<text>(元)</text></view>
+      <view class='can-withdraw-money'>{{data.balance.balance?data.balance.balance:0}}</view>
+      <view class='can-widthdraw-input-content'>
+        <view class='can-widthdraw-input-text'>¥</view>
+        <input class='can-widthdraw-input' bindinput='onInputMoneyHandler' placeholder='请输入申请提现金额，最低提现1元' placeholder-class='input-placeholder'></input>
+      </view>
+      <view class='can-widthdraw-btn {{data.balance.balance>0?"":"disabled"}}' catchtap='{{data.balance.balance>0?"onSecondHandler":""}}'>我要提现</view>
+      <!-- <view class='can-withdraw-tips'>最低提现金额1元</view> -->
+    </view>
+    
+    <view class='hot-tips-container'>
+      <view class='hot-tips-title'>温馨提示</view>
+      <view class='hot-tips-value'>订单确认收货后2天可提现</view>
+      <view class='hot-tips-value'>仅支持微信实名认证的用户提现</view>
+      <view class='hot-tips-value'>提现金额会在72小时内转到您微信零钱中</view>
+    </view>
+
+    <view class='bottom-line'></view>
+
+    <view class='widthdraw-history'>
+      <view class='widthdraw-history-title'>提现记录</view>
+      <view class='widthdraw-history-items' wx:if="{{data.widthdrawLists.length > 0 }}">
+        <view class='widthdraw-history-item' wx:for="{{data.widthdrawLists}}" wx:key="{{index}}">
+          <view class='widthdraw-history-item-time'>{{item.create_time_util}}</view>
+          <view class='widthdraw-history-item-money'>-{{item.amount/100}}</view>
+          <view class='widthdraw-history-item-status checking' wx:if="{{item.status == 0}}">待审核</view>
+          <view class='widthdraw-history-item-status' wx:if="{{item.status == 1}}">审核通过</view>
+          <view class='widthdraw-history-item-status' wx:if="{{item.status == 2}}">审核不通过</view>
+        </view>
+      </view>
+      <view class='widthdraw-history-empty' wx:else>暂无提现记录~</view>
+    </view>
+  </view>
+
+  <view class='confirm-container' wx:if="{{state.secondStep}}">
+    <view class='confirm-content'>
+      <view class='confirm-content-title'>提现确认</view>
+      <view class='confirm-content-desc'>申请提现金额：¥{{data.amount}}</view>
+      <view class='confirm-content-actions'>
+        <view class='action-btn cancel' catchtap='onCancelWithDrawHandler'>取消</view>
+        <view class='action-btn submit' catchtap='onWidthdrawHandler'>确认提现</view>
+      </view>
+    </view>
+  </view>
+
+  <view class='withdraw-success-container' wx:if="{{state.thirdStep}}">
+    <view class='withdraw-success-image-box'>
+      <image class='withdraw-success-image' src="/imgs/icon-withDraw-success.png"></image>
+    </view>
+    <view class='withdraw-success-title'>
+      提现申请成功，等待处理…
+    </view>
+
+    <view class='withdraw-success-items'>
+      <view class='withdraw-success-item'>
+        <view class='withdraw-success-item-text'>提现金额(元)</view>
+        <view class='withdraw-success-item-value'>{{data.amount}}</view>
+      </view>
+      <view class='withdraw-success-item'>
+        <view class='withdraw-success-item-text'>提现到</view>
+        <view class='withdraw-success-item-value'>微信零钱</view>
+      </view>
+    </view>
+
+    <view class='withdraw-success-btn' catchtap='onGoToBackHandler'>完成</view>
+    <view class='withdraw-success-tips'>
+      <view class='icon-circle'></view>
+      <view>提现金额会在72小时内转到您微信零钱中</view>
+    </view>
+  </view>
+
+   <alertingTips alertingStatus="{{state.alertingStatus}}" alertingWords="{{state.alertingWords}}"></alertingTips>
+</view>

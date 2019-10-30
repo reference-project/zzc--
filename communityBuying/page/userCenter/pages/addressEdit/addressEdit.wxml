@@ -1,0 +1,70 @@
+<!--page/userCenter/pages/addressEdit/addressEdit.wxml-->
+<view class='P-address-Edit'>
+  <view class='address-item'>
+    <view class='address-text'>收货人</view>
+    <input placeholder='请输入真实姓名' placeholder-class='placeholder-class' class='input' bindinput='onInputUserNameHandler' value='{{data.contact}}'></input>
+  </view>
+  <view class='address-item'>
+    <view class='address-text'>手机号</view>
+    <input placeholder='请输入11位手机号' placeholder-class='placeholder-class' class='input' bindinput='onInputPhoneHandler' value="{{data.mobile}}"></input>
+  </view>
+  <!-- <view class='address-item'>
+    <view class='address-text'>收货时间</view>
+    <view class='select-box'>
+      <view class='select-box-text'>收货时间不限</view>
+      <image class='icon-arrow-right'></image>
+    </view>
+  </view> -->
+  <view class='line'></view>
+  <view class='address-item'>
+    <view class='address-text'>所在地区</view>
+    <picker class='select-picker' mode="multiSelector" bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange" value="{{data.multiIndex}}" range="{{data.multiArray}}">
+
+      <view class='select-box' wx:if="{{data.provinceObj && data.provinceObj.name}}">
+        <view class='select-box-text'><text wx:if="{{data.provinceObj}}">{{data.provinceObj.name}}</text><text wx:if="{{data.cityObj }}">{{data.cityObj.name}}</text><text wx:if="{{data.countyObj}}">{{data.countyObj.name}}</text></view>
+        <image class='icon-arrow-right' src='/imgs/icon-arrow-default.png'></image>
+      </view>
+
+      <view class='select-box' wx:else >
+        <view class='select-box-text'>选择地址</view>
+        <image class='icon-arrow-right' src='/imgs/icon-arrow-default.png'></image>
+      </view>
+      
+      <!-- <view class="picker">
+        当前选择：{{multiArray[0][multiIndex[0]]}}，{{multiArray[1][multiIndex[1]]}}，{{multiArray[2][multiIndex[2]]}}
+      </view> -->
+    </picker>
+    <!-- <picker class='select-picker' mode="region" bindchange="bindRegionChange" value="{{data.region}}" custom-item="{{data.customItem}}">
+      <view class='select-box' wx:if="{{!data.region[0]}}">
+        <view class='select-box-text'>选择地址</view>
+        <image class='icon-arrow-right'></image>
+      </view>
+      <view wx:else class='select-box'>
+        <view class='select-box-text'><text>{{data.region[0]}}</text><text wx:if="{{data.region[1]!=='全部'}}">{{data.region[1]}}</text><text wx:if="{{data.region[2]!=='全部'}}">{{data.region[2]}}</text></view>
+        <image class='icon-arrow-right'></image>
+      </view>
+    </picker> -->
+  </view>
+  <view class='address-item'>
+    <view class='address-text'>详细地址</view>
+    <input placeholder='请输入详细地址' placeholder-class='placeholder-class' class='input' bindinput='onInputAddressDetailHandler' value="{{data.detailAddress}}"></input>
+  </view>
+  <view class='address-item'>
+    <view class='address-text'>邮政编码</view>
+    <input placeholder='请输入邮政编码' placeholder-class='placeholder-class' class='input' bindinput='onInputZipCodeHandler' value='{{data.zipCode}}'></input>
+  </view>
+  <view class='address-item'>
+    <view class='address-text'>是否默认</view>
+    <view class='address-item-type {{data.isDefault ? "active":""}}'  catchtap='onsetDefaultHandler' >默认</view>
+  </view>
+  <!-- <view class='address-item'>
+    <view class='address-item-type {{state.addressType == item.type ? "active":""}}' wx:for="{{state.addressTypes}}" wx:key="{{index}}" catchtap='onSelectAddressTypeHandler' data-type='{{item.type}}'>{{item.text}}</view>
+  </view> -->
+
+  <view class='address-actions'>
+    <view class='address-btn delete' catchtap='onDeleteHandler' wx:if="{{data.id}}">删除地址</view>
+    <view class='address-btn submit' catchtap='onSubmitHandler'>保存地址</view>
+  </view>
+
+  <alertingTips alertingStatus="{{state.alertingStatus}}" alertingWords="{{state.alertingWords}}"></alertingTips>
+</view>

@@ -1,0 +1,353 @@
+/* page/userCenter/pages/saleData/saleData.wxss */
+.P-sale-data{
+  min-height: 100vh;
+  background-color: #F7F7F7;
+}
+.user-sale-info-content{
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  padding: 30rpx 0 40rpx 40rpx;
+}
+.user-sale-avatar{
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 50%;
+}
+.user-sale-center{
+  flex: 1;
+  margin-left: 30rpx;
+}
+.user-sale-name{
+  display: flex;
+  align-items: center;
+}
+.user-sale-name text{
+  font-size: 36rpx;
+  color: #000000;
+  line-height: 28rpx;
+}
+.icon-arrow-right{
+  width: 22rpx;
+  height: 30rpx;
+}
+.user-sale-status{
+  position: relative;
+  width: 100rpx;
+  height: 28rpx;
+  margin-left: 40rpx;
+}
+.user-sale-status-bg{
+  width: 100rpx;
+  height: 28rpx;
+  border-radius: 100rpx;
+  position: absolute;
+  z-index: 1;
+}
+.user-sale-status text{
+  font-size: 22rpx;
+  line-height: 22rpx;
+  color: #fff;
+  position: absolute;
+  z-index: 2;
+  white-space: nowrap;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}
+.user-sale-phone{
+  font-size: 24rpx;
+  color: #666666;
+  line-height: 24rpx;
+  margin-top: 10rpx;
+}
+.user-sale-shop{
+  display: flex;
+  font-size: 24rpx;
+  line-height: 24rpx;
+  margin-top: 20rpx;
+  color: #999;
+}
+.user-sale-shop-id{
+  display: flex;
+  align-items: center;
+  padding-right: 30rpx;
+  border-right: 1rpx solid #eaeaea;  
+}
+.user-sale-shop-id-value{
+  color: #666;
+  margin-left: 10rpx;
+  font-size: 28rpx;
+}
+.shop-name{
+  padding-left: 30rpx;
+  display: flex;
+  align-items: center;
+}
+.shop-name text{
+  color: #666;
+  margin-left: 10rpx;
+  font-size: 28rpx;
+}
+.user-sale-share{
+  position: relative;
+  width: 148rpx;
+  height: 60rpx;
+}
+.user-sale-share-bg{
+  position: absolute;
+  width: 148rpx;
+  height: 60rpx;
+  border-radius: 30rpx 0 0 30rpx;
+  left: 0;
+  top: 0;
+}
+.user-sale-share-content{
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30rpx;
+  color: #fff;
+}
+.user-sale-share-icon{
+  width: 34rpx;
+  height: 34rpx;
+  margin-right: 14rpx;
+}
+
+.user-sale-save-content{
+  margin-top: 20rpx;
+  background-color: #fff;
+  padding: 40rpx 40rpx 30rpx;
+}
+.user-sale-save-title-content{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.user-sale-save-title{
+  font-family: PingFangSC-Medium;
+  font-size: 32rpx;
+  color: #333333;
+  line-height: 32rpx;
+}
+.user-sale-save-title text{
+  font-family: PingFangSC-Regular;
+  font-size: 24rpx;
+  color: #999;
+}
+.look-detail-content{
+  display: flex;
+  align-items: center;
+}
+.look-detail-text{
+  margin-right: 10rpx;
+  font-family: PingFangSC-Regular;
+  font-size: 28rpx;
+  color: #666666;
+}
+.user-sale-price-content{
+  display: flex;
+  align-items: center;
+  margin-top: 70rpx;
+}
+.user-sale-price{
+  font-size: 30rpx;
+  height: 50rpx;
+  overflow: hidden;
+}
+.user-sale-price text{
+  display: inline-block;
+  height: 50rpx;
+  font-size: 50rpx;
+  line-height: 50rpx;
+  color:#FF5E53;
+  margin-left: 10rpx;
+}
+.user-sale-price-action{
+  width: 104rpx;
+  height: 50rpx;
+  line-height: 46rpx;
+  border: 2rpx solid #979797;
+  border-radius: 25rpx;
+  box-sizing: border-box;
+  text-align: center;
+  font-size: 28rpx;
+  color: #999999;
+  margin-left: 50rpx;
+}
+.user-sale-count-content{
+  display: flex;
+  margin-top: 72rpx;
+}
+.user-sale-count-item{
+  flex: 1;
+  text-align: center;
+  color: #999;
+  font-family: PingFangSC-Regular;
+}
+.user-sale-count-time{
+  font-size: 24rpx;
+  line-height: 24rpx;
+}
+.user-sale-count-money{
+  color: #666;
+  margin-top: 14rpx;
+  font-size: 28rpx;
+  line-height: 28rpx;
+}
+
+.user-sale-orders-content{
+  margin-top: 20rpx;
+  background-color: #fff;
+  padding-bottom: 100rpx;
+}
+.user-sale-order-nav{
+  display: flex;
+  align-items: center;
+  height: 100rpx;
+}
+.user-sale-order-nav-item{
+  flex: 1;
+  text-align: center;
+  height: 100rpx;
+  padding-top: 30rpx;
+  box-sizing: border-box;
+}
+.user-sale-order-nav-item-text.active{
+  color: #ff5e53;
+}
+.user-sale-order-nav-item-text{
+  font-size: 28rpx;
+  color: #999;
+  line-height: 28rpx;
+}
+.user-nav-light{
+  width: 40rpx;
+  height: 6rpx;
+  border-radius: 10rpx;
+  background-color: #ff0700;
+  margin: 16rpx auto 0;
+}
+.user-sale-order-list{
+  padding-left: 20rpx;
+  box-sizing: border-box;
+}
+.user-sale-order-item{
+  border-bottom: 1rpx solid #eaeaea;
+  padding-bottom: 20rpx;
+}
+.user-sale-order-item-header{
+  display: flex;
+  justify-content: space-between;
+  padding: 20rpx 0 20rpx 20rpx;
+  box-sizing: border-box;
+  align-items: center;
+  height: 80rpx;
+}
+.user-sale-order-item-number{
+  font-size: 24rpx;
+  color: #666666;
+  line-height: 24rpx;
+}
+.user-sale-order-item-number text{
+  margin-left: 10rpx;
+}
+.user-sale-order-item-status{
+  width: 100rpx;
+  height: 40rpx;
+  line-height: 40rpx;
+  border-radius: 100rpx 0 0 100rpx;
+  font-size: 24rpx;
+  color: #fff;
+  text-align: center;
+}
+.user-sale-order-item-status.pay{
+  background: linear-gradient(90deg,#FFC800 0%,#FF814A 100%);
+}
+.user-sale-order-item-status.deal{
+  background: linear-gradient(90deg,#FF814A 0%,#FF009C 100%);
+}
+.user-sale-order-item-status.timeout{
+  background-color: #C3C3C3;
+}
+.user-sale-order-item-info{
+  display: flex;
+  padding-bottom: 20rpx;
+  padding-left: 20rpx;
+}
+.user-sale-order-item-pic{
+  width: 200rpx;
+  height: 200rpx;
+  border-radius: 20rpx;
+}
+.user-sale-order-item-content{
+  flex: 1;
+  margin-left: 20rpx;
+}
+.user-sale-order-item-title{
+  font-size: 30rpx;
+  color: #333333;
+  line-height: 30rpx;
+  margin-top: 20rpx;
+}
+.user-sale-order-item-sku{
+  margin-top: 20rpx;
+  font-size: 22rpx;
+  color: #999999;
+  line-height: 22rpx;
+}
+.user-sale-order-item-package{
+  margin-top: 10rpx;
+  font-size: 22rpx;
+  color: #999999;
+  line-height: 22rpx;
+}
+.user-sale-order-item-price-box{
+  display: flex;
+  padding: 0 30rpx 0 0;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 50rpx;
+}
+.user-sale-order-item-price{
+  font-size: 24rpx;
+  color: #666666;
+  line-height: 24rpx;
+}
+.user-sale-order-item-money{
+  font-size: 22rpx;
+  color: #999999;
+}
+.user-sale-order-item-money text{
+  font-size: 32rpx;
+  color: #FF0600;
+}
+.user-sale-order-item-time{
+  font-size: 22rpx;
+  color: #666666;
+  line-height: 22rpx;
+  margin-top: 12rpx;
+  padding-left: 20rpx;
+}
+
+.user-sale-order-list-empty{
+  text-align: center;
+  font-size: 0rpx;
+}
+.user-sale-order-empty-pic{
+  width: 370rpx;
+  height: 280rpx;
+}
+.user-sale-order-list-empty-tips{
+  font-size: 28rpx;
+  color: #B4B4B4;
+  line-height: 28rpx;
+  margin-top: 20rpx;
+}

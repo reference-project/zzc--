@@ -1,0 +1,5 @@
+<!--components/emptyTips/emptyTips.wxml-->
+<view class='empty-tips'>
+  <image src='{{emptyIcon}}' mode='widthFix'></image>
+  <view class='tips'>{{emptyTips}}</view>
+</view>

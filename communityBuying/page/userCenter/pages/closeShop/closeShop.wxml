@@ -1,0 +1,32 @@
+<!--page/userCenter/pages/closeShop/closeShop.wxml-->
+<view class='P-close-shop' wx:if="{{data.userInfo}}">
+  <view class='info-content'>
+    <view class='shop-info-item'>
+      <view class='shop-info-item-text'>账户昵称</view>
+      <view class='shop-info-item-value'>{{data.userInfo.nickname}}</view>
+    </view>
+    <view class='shop-info-item'>
+      <view class='shop-info-item-text'>ID号</view>
+      <view class='shop-info-item-value'>{{data.userInfo.merchant.id}}</view>
+    </view>
+    <view class='shop-info-item'>
+      <view class='shop-info-item-text'>门店</view>
+      <view class='shop-info-item-value'>{{data.userInfo.merchant.stores[0].name}}</view>
+    </view>
+  </view>
+
+  <view class='close-reason-content'>
+    <view class='close-reason-text'>终止原因</view>
+    <view class='textarea-content'>
+      <textarea class='textarea' placeholder='请描述下您的终止原因' placeholder-class='textarea-holder' bindinput='onInputReasonHandler' maxlength="{{state.maxlength}}"></textarea>
+      <view class='textarea-num {{state.reason.length>200?"alert":""}}'>{{state.reason.length?state.reason.length:0}}/200</view>
+    </view>
+    <view class='close-reason-tips'>
+      <view class='icon-circle'></view>
+      <view class='close-reason-tips-text'>发起申请后，您的帐户仍然可以申请提现
+</view>
+    </view>
+  </view>
+
+  <view class='btn-submit {{state.canSubmitStatus?"active":"disabled"}}' catchtap='{{state.canSubmitStatus?"onSubmitHandler":""}}'>提交</view>
+</view>

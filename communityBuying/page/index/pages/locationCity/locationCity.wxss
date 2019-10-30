@@ -1,0 +1,63 @@
+/* page/index/pages/locationCity/locationCity.wxss */
+.current-city-item{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 106rpx;
+  padding: 0 30rpx;
+}
+.current-city-left{
+  display: flex;
+  align-items: center;
+  flex: 1;
+}
+.current-city-left image{
+  width: 26rpx;
+  height: 30rpx;
+}
+.current-city-taber{
+  margin-left: 10rpx;
+  color: #282828;
+  font-size: 32rpx;
+}
+.current-city-taber text{
+  color: #999;
+}
+.current-city-btn{
+  display: flex;
+  align-items: center;
+}
+.current-city-btn image{
+  width: 30rpx;
+  height: 30rpx;
+}
+.current-city-btn-text{
+  margin-left: 12rpx;
+  color: #FB5E51;
+  font-size: 24rpx;
+}
+
+.select-city-taber{
+  height: 70rpx;
+  padding: 0 30rpx;
+  line-height: 70rpx;
+  opacity: 0.8;
+  background: #F8F8F8;
+  font-family: PingFangSC-Regular;
+  font-size: 28rpx;
+  color: #999999;
+}
+.select-city-lists{
+  padding: 0 30rpx;
+}
+.select-city-text{
+  font-family: PingFangSC-Regular;
+  font-size: 28rpx;
+  color: #333333;
+  height: 88rpx;
+  line-height: 88rpx;
+  border-bottom: 1rpx solid #f7f7f7;
+}
+.select-city-text:last-child{
+  border: 0;
+}

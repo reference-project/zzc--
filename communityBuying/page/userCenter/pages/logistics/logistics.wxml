@@ -1,0 +1,36 @@
+<!--pages/logistics/logistics.wxml-->
+<view class='logistics-page' >
+  <view class='header'>
+    <!-- <view class='item'>
+      <text class='word'>订单编号:</text>
+      <text class='number'>1279909384348</text>
+    </view> -->
+    <view class='item'>
+      <text class='word'>快递单号:</text>
+      <text class='number'>{{state.tracking_number}}</text>
+    </view>
+    <view class='item'>
+      <text class='word'>国内承运商:</text>
+      <text class='number'>{{logistics.company}}</text>
+    </view>
+      <button class='capture-item contact' open-type='contact'>
+          <image src='/imgs/icon-customer-active.png'></image>
+          <view class='name'>联系客服</view>
+      </button>
+  </view>
+
+  <view class='content' wx:if="{{logistics && logistics.content.length}}">
+    <view class='desc-item' wx:for="{{logistics.content}}" wx:key="{{index}}">
+      <view class='desc'><text selectable>{{item.AcceptStation}}</text>
+      <!-- <text catchtap='onCallPhone'>18813750848</text> -->
+      </view>
+      <view class='time'>{{item.AcceptTime}}</view>
+      <view class='cicle-icon'></view>
+    </view>
+  </view>
+
+  <view class='empty-tips' wx:else>
+    {{emptyTips}}
+  </view>
+  <!-- <emptyTips wx:else emptyTips="{{emptyTips}}"></emptyTips> -->
+</view>

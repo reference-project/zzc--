@@ -1,0 +1,104 @@
+<!--pages/returnPage/returnPage.wxml-->
+<view class='return-page' wx:if="{{data.orderDetail && data.orderDetail.currentItem}}">
+  <view class='order-item-container'>
+    <!-- <orderItem></orderItem> -->
+    <view class='item-info-container'>
+      <image src='{{data.orderDetail.qiniuDomain+data.orderDetail.currentItem.goods_logo}}'></image>
+      <view class='item-info-content'>
+        <view class='item-info-title'>{{data.orderDetail.currentItem.goods_name}}</view>
+        <view class='item-info-weight'>{{data.orderDetail.currentItem.sku_name}}</view>
+        <!-- <view class='item-info-package'>包装: 33333</view> -->
+        <view class='item-price-container'>
+          <view class='pro-price'>¥ {{data.orderDetail.currentItem.real_price/100}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class='division-line'></view>
+
+  <view class='return-type-container' wx:if="{{state.chooseReturnTypeStatus}}">
+    <view class='return-type-item' data-index='{{index}}' catchtap='onSelectReturnTypeHandler' wx:for="{{state.returnTypes}}" wx:key="{{index}}">
+      <view class='return-type-text-container' >
+        <view class='return-type-text'>{{item.name}}</view>
+        <view class='return-type-tips'>{{item.desc}}</view>
+      </view>
+      <image src='/imgs/icon-arrow-address-right.png' class='return-type-icon-arrow'></image>
+    </view>
+  </view>
+
+  <view class='return-input-container' wx:if="{{!state.chooseReturnTypeStatus}}">
+    <view class='retutn-input-item'>
+      <view class='retutn-input-text'>售后类型</view>
+      <view class='retutn-input-right' catchtap='{{!data.orderDetail.banEdit?"onOpenReturnTypeHandler":""}}'>
+        <view class='return-input-tips' wx:if="{{!state.selectReturnTypeItem.name}}">请选择</view>
+        <view class='return-input-tips' wx:else>{{state.selectReturnTypeItem.name}}</view>
+        <image class='retutn-input-icon-arrow' src='/imgs/icon-arrow-address-right.png'></image>
+      </view>
+    </view>
+    <view class='retutn-input-item'>
+      <view class='retutn-input-text'>申请原因</view>
+      <!-- <textarea class='retutn-input-textarea'></textarea> -->
+      <input class='retutn-input-input' placeholder='请填写申请原因' bindinput='onInputReasonHandler' value='{{data.returnItem.apply_reason}}' wx:if="{{!data.orderDetail.banEdit}}"></input>
+      <view class='retutn-input-input' wx:else>{{data.returnItem.apply_reason}}</view>
+    </view>
+    <view class='retutn-input-item' wx:if="{{data.returnItem.exchange_return_tracking_number || data.returnItem.refund_tracking_number}}">
+      <view class='retutn-input-text'>物流单号(买家)</view>
+      <!-- <textarea class='retutn-input-textarea'></textarea> -->
+      <view class='retutn-input-input' wx:if="{{data.returnItem.refund_tracking_number}}">{{data.returnItem.refund_tracking_number}}</view>
+      <view class='retutn-input-input' wx:if="{{data.returnItem.exchange_return_tracking_number}}">{{data.returnItem.exchange_return_tracking_number}}</view>
+      <view class='btn-change' catchtap='onGoToLogisticsHandler' data-trade-no='{{data.returnItem.exchange_return_tracking_number || data.returnItem.refund_tracking_number}}'>查看物流</view>
+    </view>
+
+    <view class='retutn-input-item' wx:if="{{data.returnItem.exchange_ship_tracking_number}}">
+      <view class='retutn-input-text'>物流单号(商家)</view>
+      <!-- <textarea class='retutn-input-textarea'></textarea> -->
+      <view class='retutn-input-input'>{{data.returnItem.exchange_ship_tracking_number}}</view>
+      <view class='btn-change' catchtap='onGoToLogisticsHandler' data-trade-no='{{data.returnItem.exchange_ship_tracking_number}}'>查看物流</view>
+    </view>
+
+    <view class='division-line'></view>
+    <view class='retutn-input-item' wx:if="{{state.selectReturnTypeItem.type == 2 || state.selectReturnTypeItem.type==1}}">
+      <view class='retutn-input-text'>退款金额</view>
+      <!-- <input class='retutn-input-input' placeholder='请填写退款金额' bindinput='onInputMoneyHandler' value='{{data.returnItem.refund_amount/100}}'></input> -->
+      <view class='retutn-input-input'>{{data.orderDetail.currentItem.amount/100}}</view>
+    </view>
+    <!-- <view class='return-price-tips' wx:if="{{state.selectReturnTypeItem.type == 2 || state.selectReturnTypeItem.type==1}}">
+    填写金额，最多¥ {{data.orderDetail.currentItem.real_price/100}}
+    </view> -->
+    <view class='retutn-input-item'>
+      <view class='retutn-input-text'>备注</view>
+      <input class='retutn-input-input' placeholder='选填' bindinput='onInputRemarkHandler' value='{{data.returnItem.remark}}' wx:if="{{!data.orderDetail.banEdit}}"></input>
+      <view wx:else class='retutn-input-input'>{{data.returnItem.remark}}</view>
+    </view>
+
+    <view class='division-line'></view>
+
+    <view class='return-pic-content'>
+      <view class='retutn-input-text'>
+        上传凭证<text>选填</text>
+      </view>
+      <view class='return-pic-lists'>
+        <view class='pic-box' catchtap='onChooseImageHandler' wx:if="{{(data.tempFilePathsLocal.length+data.tempFilePathsNet.length) < 4 && !data.orderDetail.banEdit}}">
+          <image src='/imgs/icon-add-picture-default.png' class='pic-return'></image>
+        </view>
+
+        <view class='pic-box' wx:for="{{data.tempFilePathsNet}}" wx:key="{{index}}">
+          <image class='icon-delete' src='/imgs/icon-delete-picture-default.png' data-index='{{index}}' catchtap='onDeleteImageHandler' wx:if="{{!data.orderDetail.banEdit}}" data-type="net"></image>
+          <image src='{{data.orderDetail.qiniuDomain+item}}' class='pic-return' catchtap='onPreviewImageHandler' data-index='{{index}}'></image>
+        </view>
+        <view class='pic-box' wx:for="{{data.tempFilePathsLocal}}" wx:key="{{index}}">
+          <image class='icon-delete' src='/imgs/icon-delete-picture-default.png' data-index='{{index}}' catchtap='onDeleteImageHandler' wx:if="{{!data.orderDetail.banEdit}}" data-type="local"></image>
+          <image src='{{item}}' class='pic-return' catchtap='onPreviewImageHandler' data-index='{{index}}' data-type="local"></image>
+        </view>
+      </view>
+    </view>
+
+    <form report-submit bindsubmit="formSubmit" wx:if="{{!data.orderDetail.banEdit}}">
+      <button formType="submit" class='return-submit-btn' data-order-id='{{data.orderDetail.order_id}}' >{{data.orderDetail.has_after_sale?"确认":"提交"}}  </button>
+    </form>
+  </view>
+
+
+  
+  <alertingTips alertingStatus="{{state.alertingStatus}}" alertingWords="{{state.alertingWords}}"></alertingTips>
+</view>

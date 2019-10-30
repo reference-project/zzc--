@@ -1,0 +1,32 @@
+<!--components/swiperItems/swiperItems.wxml-->
+<view class='C-swiper-content' wx:if="{{imgsList.length > 0}}">
+  <!-- <swiper indicator-dots="{{!userDots}}"
+  autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" indicator-color="#fff"  bindchange="bindchange"  style="height:{{imgheights[current]}}rpx;">
+    <swiper-item wx:for="{{imgsList}}" wx:key="{{index}}" data-index="{{index}}" catchtap='onGotoPage'>
+      <view class='slide'>
+        <image src="{{item.image? domain +item.image:domain+item}}" class="slide-image" mode='widthFix' bindload="imageLoad" style="height:{{imgheights[current]}}rpx;width:{{widthSize}}rpx;"/>
+      </view>
+    </swiper-item>
+  </swiper> -->
+  <swiper indicator-dots="{{!userDots}}"
+  autoplay="{{autoplay}}" interval="{{interval}}" duration="{{500}}" indicator-color="#fff"  bindchange="bindchange"  style="height:{{heightSize}}rpx; border-radius:{{radiusSize}}rpx;overflow:hidden;" circular="{{true}}" interval="{{3000}}" id="custom-swiper">
+    <swiper-item wx:for="{{imgsList}}" wx:key="{{index}}" data-index="{{index}}" catchtap='onGotoPage'>
+      <view class='slide'>
+        <image src="{{item.image? domain +item.image:domain+item}}" class="slide-image"  style="height:{{heightSize}}rpx;width:{{widthSize}}rpx;"/>
+      </view>
+    </swiper-item>
+  </swiper>
+  <!-- <view class='user-dots-num' wx:if="{{userDots=='index'}}">
+    {{current+1}}/{{imgsList.length}}
+  </view> -->
+  <!-- <view class='user-dots' wx:if="{{userDots == 'proDetail' && imgsList.length >1}}">
+    <text wx:for="{{imgsList}}" wx:key="{{index}}" class='{{index == current ? "active":""}}'></text>
+  </view> -->
+  <view class='user-dots-pro' wx:if="{{userDots == 'proDetail' && imgsList.length >1}}">
+    {{current+1}}/{{imgsList.length}}
+  </view>
+  <view class='user-dots-tab' wx:if="{{userDots=='index'}}">
+    <view class='user-dots-tab-item {{current == index?"active":""}}' wx:for="{{imgsList.length}}" wx:key="{{index}}"></view>
+  </view>
+</view>
+

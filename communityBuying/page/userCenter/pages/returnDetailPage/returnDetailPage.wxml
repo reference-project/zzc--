@@ -1,0 +1,104 @@
+<!--page/userCenter/pages/returnDetailPage/returnDetailPage.wxml-->
+<view class='P-order-return-detail'>
+  <view class='header-tips'>
+    <view class='header-tips-status' wx:if="{{data.returnItem.status == 0}}">等待确认售后申请</view>
+    <view class='header-tips-status' wx:if="{{data.returnItem.status == 1}}">已拒绝售后申请</view>
+    <view class='header-tips-status' wx:if="{{data.returnItem.status == 2}}">已同意售后申请</view>
+    <view class='header-tips-status' wx:if="{{data.returnItem.status == -1}}">你已取消售后申请</view>
+    <view class='header-tips-status' wx:if="{{data.returnItem.status == 3}}">已同意换货中，请退回需要更换的商品</view>
+    <view class='header-tips-status' wx:if="{{data.returnItem.status == 4}}">买家已发货</view>
+    <view class='header-tips-status' wx:if="{{data.returnItem.status == 5}}">卖家已收货</view>
+    <view class='header-tips-status' wx:if="{{data.returnItem.status == 6}}">退款成功</view>
+    <view class='header-tips-status' wx:if="{{data.returnItem.status == 7}}">退款失败，商品不符合换货要求，已退回始发地</view>
+    <view class='header-tips-status' wx:if="{{data.returnItem.status == 8}}">等待卖家退款</view>
+    <view class='header-tips-status' wx:if="{{data.returnItem.status == 9}}">退款成功</view>
+    <view class='header-tips-status' wx:if="{{data.returnItem.status == 10}}">换货中，请填写物流信息</view>
+    <view class='header-tips-status' wx:if="{{data.returnItem.status == 11}}">换货中，请等待更换新商品</view>
+    <view class='header-tips-status' wx:if="{{data.returnItem.status == 12}}">退换商品已收到，正在重新备货</view>
+    <view class='header-tips-status' wx:if="{{data.returnItem.status == 13}}">换货商品正在途中</view>
+    <view class='header-tips-status' wx:if="{{data.returnItem.status == 14}}">换货商品已寄出，请注意查收</view>
+    <view class='header-tips-status' wx:if="{{data.returnItem.status == 15}}">换货成功</view>
+    <view class='header-tips-status' wx:if="{{data.returnItem.status == 16}}">换货失败，商品不符合换货要求，已退回始发地</view>
+    <view class='header-actions'>
+      <!-- <button open-type='contact' class='header-active-btn' wx:if="{{data.returnItem.status == 0}}">
+        联系客服
+      </button> -->
+      <view class='header-active-btn' wx:if="{{data.returnItem.status == 2}}" catchtap='onGoToReturnPage'>退款详情</view>
+      <view class='header-active-btn' wx:if="{{data.returnItem.status >= 3}}" data-ban-edit="{{true}}" catchtap='onGoToReturnPage'>退款详情</view>
+      <view class='header-active-btn' wx:if="{{data.returnItem.status == 1 || data.returnItem.status == 0 ||data.returnItem.status == -1}}" catchtap='onGoToReturnPage'>重新申请</view>
+      <view class='header-cancel-btn' wx:if="{{data.returnItem.status == 0}}" catchtap='onCancelRefundRequest'>取消申请</view>
+      <view class='header-active-btn' wx:if="{{data.returnItem.status == 14}}" catchtap='onSureReceiveHandler'>确认收货</view>
+    </view>
+  </view>
+
+  <view class='return-form' wx:if="{{data.returnItem.status == 3 || data.returnItem.status == 10 || data.returnItem.status == 6 || data.returnItem.status == 9}}">
+    <!-- <view class='return-form-item' wx:if="{{data.returnItem.status == 3}}">
+      <view class='retutn-input-text'>退货快递编号</view>
+      <input class='retutn-input-input' placeholder='请填写快递编号' bindinput='onInputLCompanyHandler'></input>
+    </view> -->
+    <view class='return-form-item' wx:if="{{data.returnItem.status == 3 || data.returnItem.status == 10}}">
+      <view class='retutn-input-text'>换货快递编号</view>
+      <!-- <textarea class='retutn-input-textarea'></textarea> -->
+      <input class='retutn-input-input' placeholder='请填写快递编号' bindinput='onInputLNumberHandler'></input>
+    </view>
+    <view class='return-form-item'  wx:if="{{data.returnItem.status == 6 || data.returnItem.status == 9}}">
+      <view class='retutn-input-text'>退款金额</view>
+      <!-- <textarea class='retutn-input-textarea'></textarea> -->
+      <view class='retutn-input-input'>¥{{data.returnItem.refund_amount/100}}</view>
+    </view>
+    <view class='return-form-item' wx:if="{{data.returnItem.status == 6 || data.returnItem.status == 9}}">
+      <view class='retutn-input-text'>到账平台</view>
+      <!-- <textarea class='retutn-input-textarea'></textarea> -->
+      <view class='retutn-input-input'>微信</view>
+    </view>
+  </view>
+
+  <view class='order-pro-lists'>
+    <view class='order-pro-item' wx:if="{{data.orderDetail.currentItem}}">
+      <view class='item-info-container'>
+        <image src='{{data.orderDetail.currentItem.goods_logo?data.orderDetail.qiniuDomain+data.orderDetail.currentItem.goods_logo:""}}'></image>
+        <view class='item-info-content'>
+          <view class='item-info-title'>{{data.orderDetail.currentItem.goods_name}}</view>
+          <view class='item-info-weight'>{{data.orderDetail.currentItem.sku_name}}</view>
+          <!-- <view class='item-info-package'>包装: 33333</view> -->
+          <view class='item-price-container'>
+            <view class='pro-price'>¥ {{data.orderDetail.currentItem.real_price/100}}</view>
+          </view>
+        </view>
+      </view>
+      <view class='item-info-price'>
+        <text class='pro-price'>实付 ¥{{data.orderDetail.currentItem.real_price/100}}</text>
+        <!-- <text class='pro-fee'>（免运费）</text> -->
+      </view>
+      <!-- <view class='order-pro-actions'>
+        <view class='btn-change' catchtap='onGoToLogisticsHandler' wx:if="{{item.tracking_number}}" data-trade-no='{{item.tracking_number}}'>查看物流</view>
+        <view class='btn-change' catchtap='onGoToReturnPageHandler'>售后</view>
+      </view> -->
+    </view>
+  </view>
+
+  <view class='chat-container'>
+    <button open-type='contact' class='chat-btn'>
+      <image src='/imgs/icon-customer-active.png'></image>
+      联系客服
+    </button>
+    <view class='chat-btn' catchtap='onCallHandler'>
+      <image src='/imgs/icon-phone-active.png'></image>
+      拨打电话
+    </view>
+  </view>
+  <view class='order-info-container'>
+    <view class='order-info-freight'>售后单号  <text>¥{{data.returnItem.no}}</text><text class='btn-copy' catchtap='onCopyHandler' data-no="{{data.returnItem.no}}">复制</text></view>
+    <view class='order-info-number'>订单编号  <text>{{data.orderDetail.order_id}}</text><text class='btn-copy' catchtap='onCopyHandler' data-no="{{data.orderDetail.order_id}}">复制</text></view>
+    <view class='order-pay-way'>支付方式  <text>{{data.orderDetail.pay_type}}</text></view>
+    <view class='order-create-time'>下单时间  <text>{{data.orderDetail.create_time}}</text></view>
+  </view>
+
+  <view class='order-footer-container' wx:if="{{data.returnItem.status == 3 || data.returnItem.status == 10}}">
+    <form report-submit bindsubmit="formSubmit">
+      <button formType="submit" class='btn-active' data-order-id='{{data.orderDetail.order_id}}'>提交快递信息</button>
+    </form>
+  </view>
+
+  <alertingTips alertingStatus="{{state.alertingStatus}}" alertingWords="{{state.alertingWords}}"></alertingTips>
+</view>

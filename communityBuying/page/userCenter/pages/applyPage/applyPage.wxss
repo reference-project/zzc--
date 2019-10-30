@@ -1,0 +1,230 @@
+/* page/userCenter/pages/applyPage/applyPage.wxss */
+.P-apply{
+  
+}
+.header-title{
+  padding: 40rpx 30rpx;
+  font-size: 42rpx;
+  color: #333333;
+  font-family: PingFangSC-Medium;
+}
+.info-items{
+  margin-top: 10rpx;
+  padding: 0 15rpx;
+}
+.info-item{
+  display: flex;
+  align-items: center;
+  height: 130rpx;
+  padding: 0 15rpx;
+  border-bottom: 1rpx solid #eaeaea;
+}
+.info-item:last-child{
+  border: 0rpx;
+}
+.info-item-text{
+  font-family: PingFangSC-Regular;
+  font-size: 32rpx;
+  color: #666666;
+  line-height: 32rpx;
+  display: flex;
+  align-items: center;
+}
+.info-item-text image{
+  width: 16rpx;
+  height: 30rpx;
+  margin-right: 10rpx;
+}
+.info-item-input{
+  font-family: PingFangSC-Medium;
+  font-size: 28rpx;
+  color: #333333;
+  line-height: 28rpx;
+  flex: 1;
+  margin-left: 60rpx;
+}
+.red-tips{
+  font-family: PingFangSC-Regular;
+  font-size: 24rpx;
+  color: #FF5E53;
+  line-height: 24rpx;
+}
+.btn-allow-phone{
+  border: 2rpx solid #979797;
+  border-radius: 40rpx;
+  width: 200rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  font-family: PingFangSC-Medium;
+  font-size: 32rpx;
+  color: #979797;
+}
+.placeholder-class{
+  color: #999999;
+}
+.send-code{
+  font-family: PingFangSC-Regular;
+  font-size: 24rpx;
+  color: #FF2F1C;
+  margin-left: 30rpx;
+  width:120rpx;
+  padding:0;
+  text-align:center;
+}
+.send-code button{
+  font-family: PingFangSC-Regular;
+  font-size: 24rpx;
+  color: #FF2F1C;
+  line-height: 24rpx;
+}
+.protocol-container{
+  margin-top: 200rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22rpx;
+  color: #666;
+}
+.select-checkbox{
+  height: 22rpx;
+  width: 22rpx;
+  border: 2rpx solid #979797;
+  border-radius: 2rpx;
+  box-sizing: border-box;
+  margin-right: 12rpx;
+}
+.select-checkbox.active{
+  background: #FF5F3F;
+  border-radius: 2px;
+  border: 0rpx;
+}
+.protocol-content{
+  font-family: PingFangSC-Medium;
+  
+  color: #FF5F3F;
+}
+.btn-submit{
+  margin: 230rpx auto 0;
+  width: 600rpx;
+  height: 80rpx;
+  background: #FFE849;
+  border-radius: 100rpx;
+  font-family: PingFangSC-Medium;
+  font-size: 38rpx;
+  color: #1E6FFE;
+  line-height: 80rpx;
+  text-align: center;
+}
+.btn-submit.phone.disabled{
+  opacity: 0.2;
+  background: #FFE849;
+}
+.btn-submit.add-shop{
+  margin: 140rpx auto 0;
+  background-color: #ff5e53;
+  color: #fff;
+}
+.btn-submit.disabled{
+  background: #FFE7D9;
+}
+
+.select-box{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  /* flex: 1;
+  width: 1rpx; */
+}
+.select-box-text{
+  font-size: 28rpx;
+  color: #333333;
+}
+.select-box-text text{
+  margin-right: 20rpx;
+}
+.icon-arrow-right{
+  width: 28rpx;
+  height: 28rpx;
+}
+
+.apply-success-container{
+  min-height: 100vh;
+}
+
+.image-status-box{
+  text-align: center;
+  font-size: 0rpx;
+  margin-top: 148rpx;
+}
+.image-status-box image{
+  width: 150rpx;
+  height: 138rpx;
+}
+.image-status-box-text{
+  margin-top: 50rpx;
+  font-family: PingFangSC-Medium;
+  font-size: 28rpx;
+  color: #333333;
+  line-height: 28rpx;
+}
+.shop-info{
+  padding: 0 50rpx;
+}
+.shop-info-item{
+  margin-top: 40rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.shop-info-item-text{
+  font-family: PingFangSC-Regular;
+  font-size: 28rpx;
+  color: #666666;
+  line-height: 28rpx;
+}
+.shop-info-item-value{
+  font-family: PingFangSC-Medium;
+  font-size: 28rpx;
+  color: #333333;
+  line-height: 28rpx;
+}
+.btn-go-home{
+  margin: 70rpx auto 0;
+  width: 500rpx;
+  height: 80rpx;
+  background: #FFE849;
+  border-radius: 100rpx;
+  font-family: PingFangSC-Medium;
+  font-size: 38rpx;
+  color: #1E6FFE;
+  line-height: 80rpx;
+  text-align: center;
+}
+.tn-go-home.looking{
+  margin: 150rpx auto 0;
+}
+.apply-success-bottom-tips{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: PingFangSC-Regular;
+  font-size: 22rpx;
+  color: #999999;
+  line-height: 22rpx;
+  margin-top: 10rpx;
+}
+.apply-success-bottom-tips .circle{
+  width: 16rpx;
+  height: 16rpx;
+  background-color: #999;
+  border-radius: 50%;
+  margin-right: 22rpx;
+}
+.looking-tips{
+  margin-top: 54rpx;
+  text-align: center;
+  font-family: PingFangSC-Regular;
+  font-size: 28rpx;
+  color: #666666;
+  line-height: 28rpx;
+}

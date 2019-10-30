@@ -1,0 +1,18 @@
+<!--page/userCenter/pages/redPackage/redPackage.wxml-->
+<view class='P-red-package'>
+  <view class='nav-header'>
+    <view class='nav-item' wx:for="{{state.filters}}" wx:key="{{index}}" catchtap='onNavItemPressHandler' data-index='{{index}}' data-type='{{item.type}}'>
+      <view class='nav-item-text {{index == state.selectFilterIndex?"active":""}}'>{{item.label}}</view>
+      <view class='nav-bottom-line' wx:if="{{index == state.selectFilterIndex}}"></view>
+    </view>
+  </view>
+  <scroll-view scroll-y scroll-top="{{state.scrollTop}}"  class='red-package-list' wx:if="{{data.allData[state.selectFilterType].data.length > 0}}" bindscrolltolower="onReachBottom">
+    <packageItem wx:for="{{data.allData[state.selectFilterType].data}}" packageItem="{{item}}" wx:key="{{index}}"></packageItem>
+    <view class='load-more-container'>
+      <loadMore loadMoreStatus="{{data.totalPage > state.page}}"></loadMore>
+    </view>
+  </scroll-view>
+  <view class='red-package-empty' wx:if="{{data.allData[state.selectFilterType].data.length == 0 && !state.loading}}">
+    <emptyTips emptyIcon="{{state.emptyIcon}}" emptyTips="{{state.emptyTips}}"></emptyTips>
+  </view>
+</view>

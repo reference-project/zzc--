@@ -1,0 +1,94 @@
+<!--components/rushBuyingItem/rushBuyingItem.wxml-->
+<view class='C-rush-buying-item opacity-animation' wx:if="{{productItem}}" catchtap='onGoToProductDetail'>
+  <view class='pro-pic-box'>
+     <image src='{{domain+productItem.goods_logo}}' class='pro-pic'></image>
+     <view class='pro-pic-status' wx:if='{{productItem.special_label}}'>
+      <!-- <image src='/imgs/icon-pro-high-tips.png'></image> -->
+      <view class='pro-pic-status-text'>{{productItem.special_label}}</view>
+     </view>
+     <view class='sale-out-shadow' wx:if="{{productItem.stock == 0}}">
+      <view class='inner'>
+        <view>售罄</view>
+        <view class='inner-text-en'>Sold out</view>
+      </view>
+     </view>
+  </view>
+  
+  <view class='pro-info-content'>
+    <view class='pro-info-top'>
+      <view class='pro-info-title two-ellipsis'>
+        <!-- 这种方案可以更加垂直居中一点，但是记得要放开对应样式，并不要删除“不删”两个字 -->
+        <!-- <view wx:if="{{productItem.limit_buy>0}}" class="limit-tips-container">
+          不删
+          <view class='limit-tips-text'>限购{{productItem.limit_buy}}件</view>
+        </view> -->
+        <text class='pro-tips limit' wx:if="{{productItem.limit_buy > 0}}">限购{{productItem.limit_buy}}件</text>
+        <!-- <text class='pro-tips booking'  wx:if="{{productItem.type==2}}">预售</text> -->
+        <text>{{productItem.goods_name}}</text>
+      </view>
+         
+      <view class="info-center">
+       <view class='pro-desc-tags' wx:if="{{productItem.tags || productItem.type==2||productItem.type==1}}">
+        <view class='pro-desc-tag orange' wx:if="{{productItem.type==2}}">预售</view>
+        <view class='pro-desc-tag orange' wx:if="{{productItem.type==1}}">次日达</view>
+        <!-- 注释商品列表的标签 2019-4-10 by fred -->
+        <!-- <view class='pro-desc-tag {{item.actived==1?"active":""}}' wx:for="{{productItem.tags}}" wx:key="{{index}}">{{item.value}}</view> -->
+      </view>
+        <view class='info-sell-status' wx:if="{{!featureStatus}}">
+          <view class='info-sell had'>已售{{productItem.sell_count}}件/</view>
+          <view class='info-sell now'>仅剩{{productItem.stock}}件</view>
+        </view>
+
+      </view>
+  
+      <view class='pro-info-desc ellipsis' wx:if="{{productItem.sellpoint}}">
+        {{productItem.sellpoint}}
+      </view>
+    </view>
+    <view class='pro-info-others'>
+
+      <!-- <view class='pro-info-status'>
+        
+        
+        <view class='has-sell-process' style='width:{{productItem.proportion}}rpx'></view>
+        <view class='pro-info-status-text' wx:if="{{productItem.stock > 0}}">仅剩{{productItem.stock}}件</view>
+        <view class='pro-info-status-text' wx:else>已抢完</view>
+      </view> -->
+
+      <view class='pro-price-box'>
+        <view class='pro-price-new-old'>
+          <view class='pro-price-new'>
+          <text>¥</text>
+          <text class='big-font'>{{productItem.intValue}}</text>
+          <text>{{productItem.floatValue?"."+productItem.floatValue:''}}</text></view>
+          <view class='pro-price-old'>¥{{productItem.market_price/100}}</view>
+        </view>
+        <view class='add-cart-content' wx:if="{{productItem.stock > 0 && !activityEnd && pageUrl=='index'}}" catchtap='preventHandler'>
+          <view class='icon-add-cart' wx:if="{{!totalBuyNum}}" catchtap="onAddToCartHandler">
+            <image src='/imgs/icon-add-cart-black.png'></image>
+          </view>
+          <view class='add-cart-btns' wx:else>
+            <view class='cart-btn desc' catchtap='onDescHandler'>-</view>
+            <view class='cart-num'>{{totalBuyNum}}</view>
+            <view class='cart-btn add {{productItem.limit_buy== totalBuyNum?"disabled":""}}' catchtap='{{totalBuyNum == productItem.limit_buy?"":"onAddHandler"}}'>+</view>
+          </view>
+        </view>
+        <!-- <view class='pro-action buy' wx:if="{{productItem.stock > 0 && !activityEnd}}">立即购买</view> -->
+        <view class='pro-action seed' wx:if="{{productItem.stock > 0 && activityEnd}}" >已结束</view>
+        <view class='pro-action sellout' wx:if="{{productItem.stock <= 0 }}" >已抢完</view>
+        <!-- <view class='pro-action next' wx:if="{{proType == 'next'}}" >即将开抢</view> -->
+      </view>
+      <!-- <view class='pro-price-old-box'>
+        <view class='pro-price-old'>¥{{productItem.market_price/100}}</view>
+        <view class='pro-sale-num' wx:if="{{productItem.sell_count>0 && proType !== 'next'}}">已售{{productItem.sell_count}}件</view>
+      </view> -->
+    </view>
+  </view>
+</view>
+
+<alertingTips alertingStatus="{{state.alertingStatus}}" alertingWords="{{state.alertingWords}}"></alertingTips>
+
+<!-- 多规格商品， 加入购物车弹窗 -->
+<!-- 测试了一下，组件rgba的透明值，不能在父组件显示
+所以只能通过事件冒泡到首页执行 -->
+<!-- <view class='shu-content'></view> -->

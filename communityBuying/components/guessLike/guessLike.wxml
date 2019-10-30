@@ -1,0 +1,73 @@
+<!--components/guessLike/guessLike.wxml-->
+
+<!---猜你喜欢组件1-->
+<view class="like-container" wx:if="{{likeStyle==1&&likeProStaus}}">
+    <view class="like-header">
+        <view class="like-header-bg">
+           <image src="/imgs/like-icon.png"></image>
+        </view>
+        <text class="like-header-title">猜你喜欢</text>
+    </view>
+
+    <view class="like-content"  wx:if="{{likeProData.length>0}}">
+       <view class="like-pro-lists opacity-animation" wx:for="{{likeProData}}" wx:key="{{index}}" catchtap='onGoToProductDetail' data-index="{{index}}">
+            <view class="like-pro-image-box">
+              <image src="{{item.goods_logo}}"></image>
+            </view>
+            <view class="like-pro-lists-title">
+               {{item.goods_name}}
+            </view>
+            <view class="like-pro-bottom">
+                <view class="like-pro-bottom-left">
+                     <view class="like-pro-bottom-price">
+                        <text class="current-price">￥{{item.our_price/100}}</text>
+                        <text class="old-price">￥{{item.market_price/100}}</text>
+                     </view>
+                     <view class="sale-out">已售{{item.invented_sell}}件</view>
+                </view>
+              <view class="like-pro-bottom-right" catchtap='onAddGoodsCar' data-index="{{index}}" data-style="搜索">
+              <view class="red-num" wx:if="{{item.num>0}}">{{item.num}}</view>
+                     <image src="/imgs/like-car-icon.png"></image>
+                </view>
+            </view>
+       </view>
+
+    </view>
+     <view class="no-like-pro"  wx:if="{{likeProData.length<=0}}">
+            暂时没有你喜欢的数据
+      </view>
+</view>
+
+
+<!---猜你喜欢组件2-->
+<view class="like-detail-page" wx:if="{{likeStyle==2&&likeProStaus}}">
+   <view class="like-detail-page-header">
+      猜你喜欢
+   </view>
+    <view class="like-detail-page-content" wx:if="{{likeProData2.length>0}}">
+        <scroll-view class="scroll-view_H" 
+         scroll-x 
+        style="width: 100%" >
+            <view  class="scroll-view-item" wx:for="{{likeProData2}}" wx:key="{{index}}"  data-index="{{index}}">
+                <view class="scroll-view-imge-box">
+                    <image src="{{item.goods_logo}}"></image>
+                </view>
+                <view class="scroll-view-title">
+                    {{item.goods_name}}
+                </view>
+                <view class="scroll-view-bottom">
+                   <view class="scroll-view-left">
+                      <view class="scroll-view-pro-price"> ￥{{item.our_price/100}}</view>
+                      <view class="scroll-view-pro-oldprice">￥{{item.market_price/100}}</view>
+                   </view>
+                   <view class="right-car" catchtap='onAddGoodsCar' data-index="{{index}}" data-style="详情页">
+                         <view class="red-num" wx:if="{{item.num>0}}">{{item.num}}</view>
+                        <image src="/imgs/like-car-icon.png"></image>
+                   </view>
+                </view>
+            </view>
+      </scroll-view>
+  </view>
+  <view class="no-like-pro" wx:if="{{likeProData2.length<0}}">暂时没有你喜欢的数据</view>
+</view>
+

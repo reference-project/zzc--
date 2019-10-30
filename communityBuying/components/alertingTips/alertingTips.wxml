@@ -1,0 +1,4 @@
+<!--components/alertingTips/alertingTips.wxml-->
+<view class='alert-box'>
+  <view class='alert {{alertingStatus ? "alerting":""}}'>{{alertingWords}}</view>
+</view>

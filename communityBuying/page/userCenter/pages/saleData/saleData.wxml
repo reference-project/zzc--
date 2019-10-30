@@ -1,0 +1,166 @@
+<!--page/userCenter/pages/saleData/saleData.wxml-->
+<view class='P-sale-data'>
+
+  <view class='user-sale-info-container' wx:if="{{data.saleData}}">
+
+    <view class='user-sale-info-content'>
+      <image class='user-sale-avatar' src='{{data.userInfo.avatar}}'></image>
+      <view class='user-sale-center'>
+        <view class='user-sale-name'>
+          <text>{{data.userInfo.nickname}}</text>
+        </view>
+        <!-- <view class='user-sale-phone'>{{data.userInfo.merchant.mobile}}</view> -->
+        <view class='user-sale-shop'>
+          <view class='user-sale-shop-id'>
+            <view>ID</view>
+            <view class='user-sale-shop-id-value'>{{data.userInfo.merchant.id}}</view>
+          </view>
+          <view class='shop-name'>
+          <view>门店</view>
+          <text selectable>{{data.userInfo.merchant.stores[0].name}}</text></view>
+        </view>
+      </view>
+      <!-- <view catchtap='onChangeShareBoxHandler'  class='user-sale-share'>
+        <image src='/imgs/icon-my-share-bg.png' class='user-sale-share-bg'></image>
+        <view class='user-sale-share-content'>
+          <image class='user-sale-share-icon' src='/imgs/icon-share-default.png'></image>
+          <text>分享</text>
+        </view>
+      </view> -->
+    </view>
+
+    <view class='user-sale-save-content'>
+      <view class='user-sale-save-title-content'>
+        <view class='user-sale-save-title'>累计销售额<text>(元)</text></view>
+        <view class='look-detail-content' catchtap='onGoToSaleListHandler' data-type='list'>
+          <view class='look-detail-text'>销售订单</view>
+          <image src='/imgs/icon-arrow-default.png' class='icon-arrow-right-default'></image>
+        </view>
+      </view>
+      <view class='user-sale-price-content'>
+        <view class='user-sale-price'>
+          ¥<text>{{data.saleData.total.sales_volumes/100}}</text>
+        </view>
+        <!-- <view class='user-sale-price-action' catchtap='onGoTowithdrawPage'>
+          <text>提现</text>
+          <image src='/imgs/icon-arrow-default.png' class='icon-arrow-right'></image>
+        </view> -->
+      </view>
+      <view class='user-sale-count-content'>
+        <view class='user-sale-count-item'>
+          <view class='user-sale-count-time'>今日</view>
+          <view class='user-sale-count-money'>{{data.saleData.today.sales_volumes/100}}</view>
+        </view>
+        <view class='user-sale-count-item'>
+          <view class='user-sale-count-time'>本月</view>
+          <view class='user-sale-count-money'>{{data.saleData.this_monty.sales_volumes/100}}</view>
+        </view>
+        <view class='user-sale-count-item'>
+          <view class='user-sale-count-time'>上月</view>
+          <view class='user-sale-count-money'>{{data.saleData.last_month.sales_volumes/100}}</view>
+        </view>
+      </view>
+    </view>
+
+
+    <view class='user-sale-save-content'>
+      <view class='user-sale-save-title-content'>
+        <view class='user-sale-save-title'>累计预估收入<text>(元)</text></view>
+        <view class='look-detail-content' catchtap='onGoToSaleListHandler' data-type='detailList'>
+          <view class='look-detail-text'>订单明细</view>
+          <image src='/imgs/icon-arrow-default.png' class='icon-arrow-right-default'></image>
+        </view>
+      </view>
+      <view class='user-sale-price-content'>
+        <view class='user-sale-price'>
+          ¥<text>{{data.saleData.total.expected_income/100}}</text>
+        </view>
+        <view class='user-sale-price-action' catchtap='onGoTowithdrawPage'>
+          提现
+        </view>
+      </view>
+      <view class='user-sale-count-content'>
+        <view class='user-sale-count-item'>
+          <view class='user-sale-count-time'>今日</view>
+          <view class='user-sale-count-money'>{{data.saleData.today.expected_income/100}}</view>
+        </view>
+        <view class='user-sale-count-item'>
+          <view class='user-sale-count-time'>本月</view>
+          <view class='user-sale-count-money'>{{data.saleData.this_monty.expected_income/100}}</view>
+        </view>
+        <view class='user-sale-count-item'>
+          <view class='user-sale-count-time'>上月</view>
+          <view class='user-sale-count-money'>{{data.saleData.last_month.expected_income/100}}</view>
+        </view>
+      </view>
+    </view>
+
+    <!-- <view class='user-sale-orders-content'>
+      <view class='user-sale-order-nav'>
+        <view class='user-sale-order-nav-item' wx:for="{{state.saleTypeFilters}}" wx:key="{{index}}" catchtap='onSelectSaleTypeHandler' data-type='{{item.type}}' data-index='{{index}}'>
+          <view class='user-sale-order-nav-item-text {{item.type == state.selectSaleType ? "active" : ""}}'>{{item.name}}</view>
+          <view class='user-nav-light' wx:if="{{item.type == state.selectSaleType}}"></view>
+        </view>
+      </view>
+
+      <view class='user-sale-order-list' wx:if="{{data.saleDataOrders.length>0}}">
+        <view class='user-sale-order-item' wx:for="{{data.saleDataOrders}}" wx:key="{{index}}">
+          <view class='user-sale-order-item-header'>
+            <view class='user-sale-order-item-number'>
+              订单编号<text>{{item.no}}</text>
+            </view>
+            <block wx:if="{{state.selectSaleType=='all'}}">
+              <view class='user-sale-order-item-status pay' wx:if="{{item.status == 0}}">
+                待付款
+              </view>
+              <view class='user-sale-order-item-status pay' wx:if="{{item.status == 2}}">
+                已付款
+              </view>
+              <view class='user-sale-order-item-status deal' wx:if="{{item.status == 4}}">
+                已结算
+              </view>
+              <view class='user-sale-order-item-status timeout' wx:if="{{item.status == -1}}">
+                已失效
+              </view>
+              <view class='user-sale-order-item-status pay' wx:if="{{item.status == 3}}">
+                待收货
+              </view>
+              <view class='user-sale-order-item-status pay' wx:if="{{item.status == 4}}">
+                已完成
+              </view>
+              <view class='user-sale-order-item-status pay' wx:if="{{item.status == 5}}">
+                已关闭
+              </view>
+            </block>
+          </view>
+
+          <view class='user-sale-order-item-info' wx:for="{{item.items}}" wx:key="{{index}}" wx:for-index="proIndex" wx:for-item="proItem">
+            <image src='{{proItem.sku_logo ? data.qiniuDomain+proItem.sku_logo:data.qiniuDomain+proItem.goods_logo}}' class='user-sale-order-item-pic'></image>
+            <view class='user-sale-order-item-content'>
+              <view class='user-sale-order-item-title'>{{proItem.goods_name}}</view>
+              <view class='user-sale-order-item-sku'>{{proItem.sku_name}}</view>
+              <view class='user-sale-order-item-price-box'>
+                <view class='user-sale-order-item-price'>实付 ¥{{proItem.price/100}}</view>
+                <view class='user-sale-order-item-money'>
+                  预估收入<text>¥ {{proItem.expected_income/100}}</text>
+                </view>
+              </view>
+            </view>
+          </view>
+          <view class='user-sale-order-item-time'>创建 {{item.create_time_util}}</view>
+          <view class='user-sale-order-item-time' wx:if="{{item.settlement_time > 0}}">结算 {{item.settlement_time_util}}</view>
+        </view>
+
+        <loadMore loadMoreStatus="{{data.totalPage >state.page}}"></loadMore>
+      </view>
+
+
+      <view class='user-sale-order-list-empty' wx:else>
+        <image src='/imgs/icon-order-me-empty.png' class='user-sale-order-empty-pic'></image>
+        <view class='user-sale-order-list-empty-tips'>钱包还没有鼓鼓，快去分享商品吧～</view>
+      </view>
+
+    </view> -->
+
+  </view>
+</view>

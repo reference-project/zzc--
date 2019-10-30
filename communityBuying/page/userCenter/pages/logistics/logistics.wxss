@@ -1,0 +1,79 @@
+/* pages/logistics/logistics.wxss */
+.logistics-page{
+  min-height: 100vh;
+  background-color: #f4f4f4;
+}
+.header{
+  position: relative;
+  padding: 30rpx;
+  background-color: #fff;
+}
+.header .item{
+  font-size: 32rpx;
+  line-height: 32rpx;
+  margin-top: 20rpx;
+}
+.header .item .word{
+  color: #333;
+  display: inline-block;
+  min-width: 132rpx;
+}
+.header .item .number{
+  margin-left: 30rpx;
+}
+button.contact{
+  position: absolute;
+  right: 30rpx;
+  top: 40rpx;
+  display: flex;
+  align-items: center;
+  font-size: 32rpx;
+  background-color: #fff;
+  padding-right: 0px;
+  color: #ff8459;
+}
+button.contact image{
+  width: 36rpx;
+  height: 36rpx;
+  margin-right: 20rpx;
+}
+.content{
+  margin-top: 20rpx;
+  padding: 30rpx;
+  background-color: #fff;
+}
+.desc-item{
+  border-left: 2px solid #ddd;
+  font-size: 28rpx;
+  line-height: 28rpx;
+  padding-left: 40rpx;
+  padding-bottom: 60rpx;
+  position: relative;
+}
+.desc-item:first-child .desc{
+  color: #ff8459;
+}
+.desc-item .desc{
+  line-height: 48rpx;
+  color: #333;
+}
+.desc-item .time{
+  margin-top: 20rpx;
+  color: #999;
+}
+.cicle-icon{
+  position: absolute;
+  left: -14rpx;
+  top: 0rpx;
+  width: 20rpx;
+  height: 20rpx;
+  border-radius: 50%;
+  background-color: #666;
+}
+.empty-tips{
+  margin-top: 160rpx;
+  text-align: center;
+  font-size: 28rpx;
+  line-height: 28rpx;
+  color: #999;
+}

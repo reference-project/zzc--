@@ -1,0 +1,103 @@
+<!--page/userCenter/pages/invitePage/invitePage.wxml-->
+<view class='P-invite'>
+  <view class='group-buying-container'>
+    <view class='group-buying-time'>
+      剩余时间<text>23</text>:<text>23</text>:<text>23</text>
+    </view>
+    <view class='ground-buying-success'>拼团成功</view>
+
+    <view class='group-buying-status'>还差<text>5</text>个名额，快去邀请好友拼团吧～</view>
+    <view class='group-buying-avatar'>
+      <view class='group-buying-avatar-item'>
+        <image src=''></image>
+        <view class='group-buying-grouper'>团主</view>
+      </view>
+      <view class='group-buying-avatar-item'>
+        <image src=''></image>
+      </view>
+      <view class='group-buying-avatar-item'>
+        <image src=''></image>
+      </view>
+      <view class='group-buying-avatar-item'>
+        <image src=''></image>
+      </view>
+      <view class='group-buying-avatar-item'>
+        <image src=''></image>
+      </view>
+    </view>
+
+    <view class='group-btn' catchtap='onChangeShareBoxHandler'>
+      邀请好友
+    </view>
+
+    <view class='group-btn' catchtap='onAddBuyingHandler'>
+      参与拼团
+    </view>
+    <view class='group-btn' catchtap='onGoHomeHandler'>
+      去首页逛逛
+    </view>
+
+    <button open-type="getUserInfo" bindgetuserinfo="userInfoHandler" class='group-btn'>
+      参与拼团
+    </button>
+  </view>
+
+  <view class='group-buying-pro'>
+    <view class='item-info-container'>
+        <image></image>
+        <view class='item-info-content'>
+          <view class='item-info-title'>{{item.name}}dddd</view>
+          <view class='item-info-weight'>重量: 500g</view>
+          <view class='item-info-package'>包装: 33333</view>
+          <view class='item-price-container'>
+            <view class='pro-price'>¥ 56/件</view>
+            <!-- <view class='btn-change'>退换</view> -->
+          </view>
+        </view>
+      </view>
+  </view>
+
+  <!-- 分享选择框 -->
+  <view class='share-type-container' wx:if="{{state.shareBoxStatus}}">
+    <image class='icon-share-close' src='/imgs/icon-close-default.png' catchtap='onChangeShareBoxHandler'></image>
+    <view class='share-type-content'>
+      <button class='share-type-item' open-type='share'>
+        <image src='/imgs/icon-wechat-active.png'></image>
+        <view class='share-type-item-text'>分享给微信好友</view>
+      </button>
+      <!-- <button class='share-type-item' open-type='openSetting' bindopensetting="onOpenHandler" catchtap='onSureCanSave' data-pic="{{'https://bir.langnadujia.cn/static/images/kefu.jpg'}}" wx:if="{{state.needOpenSettingBtn}}">
+        <image src='/imgs/icon-moment-active.png'></image>
+        <view class='share-type-item-text'>生成海报</view>
+      </button>
+      <button class='share-type-item' catchtap='onSureCanSave' data-pic="{{'https://bir.langnadujia.cn/static/images/kefu.jpg'}}" wx:else>
+        <image src='/imgs/icon-moment-active.png'></image>
+        <view class='share-type-item-text'>生成海报</view>
+      </button> -->
+      <button class='share-type-item' catchtap='onOpenSavePicStatus'>
+        <image src='/imgs/icon-moment-active.png'></image>
+        <view class='share-type-item-text'>生成海报</view>
+      </button>
+    </view>
+  </view>
+
+  <!-- 海报展示框 -->
+  <view class='invite-poster-container' wx:if="{{state.savePicBoxStatus}}">
+    <view class='invite-poster-content'>
+      <view class='invite-poster-close'>
+        <image  catchtap='onCloseSavePicStatus' src='../../../../imgs/item.jpg'></image>
+      </view>
+      <canvas canvas-id="posterId" class='invite-poster'>
+        <!-- <image src=''></image> -->
+      </canvas>
+      <button open-type='openSetting' bindopensetting="openSettingHandler" class='invite-save-poster' wx:if="{{state.needOpenSettingBtn}}">
+        保存到手机
+      </button>
+      <view class='invite-save-poster' wx:else catchtap='saveWeChatPicHandler'>
+        保存到手机
+      </view>
+    </view>
+  </view>
+
+  <alertingTips alertingStatus="{{state.alertingStatus}}" alertingWords="{{state.alertingWords}}"></alertingTips>
+
+</view>

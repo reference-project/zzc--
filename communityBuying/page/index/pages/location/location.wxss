@@ -1,0 +1,330 @@
+/* page/index/pages/location/location.wxss */
+.header-container{
+  padding: 0 30rpx;
+}
+/* 头部样式 */
+.header-container{
+  background-color: #fff;
+  display: flex;
+  /* align-items: center;
+  justify-content: space-between; */
+  /* height: 110rpx; */
+  padding: 0 25rpx;
+  font-family: PingFangSC-Medium;
+  height: 332rpx;
+}
+.header-bg image{
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 304rpx;
+  z-index: 1;
+}
+.header-content{
+  margin-top: 14rpx;
+  display: flex;
+  flex: 1;
+  z-index: 2;
+  background: #fff;
+  border-radius: 100rpx;
+  height: 66rpx;
+  align-items: center;
+}
+.city-choose{
+  display: flex;
+  align-items: center;
+  padding: 0 23rpx;
+  height: 66rpx;
+}
+.icon-address{
+  width: 31rpx;
+  height: 31rpx;
+  margin-right: 14rpx;
+}
+.icon-arrow-bottom{
+  margin-left: 18rpx;
+  width: 16rpx;
+  height: 8rpx;
+}
+.city-choose-name{
+  font-family: PingFangSC-Medium;
+  font-size: 28rpx;
+  color: #282828;
+}
+.line-vertical{
+  height: 30rpx;
+  width: 2rpx;
+  background-color: #d3d3d3;
+}
+.input-content{
+  flex: 1;
+  display: flex;
+  align-items: center;
+  margin-left: 23rpx;
+  height: 66rpx;
+}
+.icon-search{
+  width: 36rpx;
+  height: 36rpx;
+  margin-right: 4rpx;
+}
+.input-text{
+  font-family: PingFangSC-Regular;
+  font-size: 26rpx;
+  color: #ccc;
+}
+.current-address{
+  position: absolute;
+  z-index: 3;
+  width: 750rpx;
+  left: 0;
+  top: 122rpx;
+  text-align: center;
+  font-family: PingFangSC-Medium;
+}
+.current-address-text{
+  font-size: 30rpx;
+  line-height: 42rpx;
+  color: #282828;
+}
+.current-address-value{
+  margin-top: 15rpx;
+  font-size: 38rpx;
+  line-height: 53rpx;
+  color: #282828;
+}
+.current-address-select-tips{
+  margin: 43rpx auto 0;
+  width: 362rpx;
+  height: 98rpx;
+  line-height: 98rpx;
+  text-align: center;
+  background: #FFFFFF;
+  box-shadow: 0 16rpx 30rpx 0 rgba(255,197,4,0.28);
+  border-radius: 48.5rpx;
+  font-size: 32rpx;
+  color: #282828;
+}
+
+.has-community-container{
+  height: 324rpx;
+  position: relative;
+}
+.has-community-content{
+  padding-top: 68rpx;
+  box-sizing: border-box;
+  position: absolute;
+  top: -80rpx;
+  width: 690rpx;
+  height: 364rpx;
+  left: 30rpx;
+  background: #FFFFFF;
+  box-shadow: 0 16rpx 30rpx 0 rgba(255,197,4,0.28);
+  border-radius: 20rpx;
+  z-index: 3;
+  text-align: center;
+  padding: 15rpx;
+}
+.has-community-inner{
+  padding-top: 50rpx;
+  width: 100%;
+  height: 100%;
+  border: 1rpx dashed #ddd;
+  border-radius: 4rpx;
+  box-sizing: border-box;
+}
+.community-avatar{
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+  position: absolute;
+  top: -50rpx;
+  left: 50%;
+  margin-left: -50rpx;
+  z-index: 3;
+}
+.community-user{
+  color: #AEAEAE;
+  font-size: 26rpx;
+  line-height: 38rpx;
+  font-family: PingFangSC-Medium;
+}
+.community-name{
+  margin-top: 42rpx;
+  font-size: 36rpx;
+  color: #282828;
+  line-height: 50rpx;
+  font-family: PingFangSC-Semibold;
+}
+.community-address{
+  margin-top: 10rpx;
+  font-size: 26rpx;
+  line-height: 38rpx;
+  color: #666;
+  padding: 0 86rpx;
+  font-family: PingFangSC-Medium;
+}
+.icon-community-address{
+  position: absolute;
+  width: 108rpx;
+  height: 88rpx;
+  bottom: 0rpx;
+  right: 56rpx;
+}
+
+.select-community-container{
+  margin-top: 40rpx;
+}
+.line-bottom{
+  opacity: 0.75;
+  background: #F8F8F8;
+  height: 20rpx;
+}
+.current-community{
+  padding: 50rpx 30rpx 30rpx;
+}
+.hot-community-lists{
+  padding: 30rpx 30rpx;
+}
+.hot-community-title{
+  display: flex;
+  align-items: center;
+}
+.hot-community-line{
+  width: 10rpx;
+  height: 40rpx;
+  background-image: linear-gradient(150deg, #FEE335 0%, #FEDB02 100%);
+}
+.hot-community-text{
+  margin-left: 10rpx;
+  font-family: PingFangSC-Medium;
+  font-size: 38rpx;
+  color: #382828;
+  line-height: 28rpx;
+}
+.hot-community-item-name{
+  margin-top: 38rpx;
+  font-family: PingFangSC-Medium;
+  font-size: 32rpx;
+  color: #333333;
+  line-height: 32rpx;
+}
+.hot-community-item-address{
+  margin-top: 14rpx;
+  font-family: PingFangSC-Regular;
+  font-size: 26rpx;
+  color: #666666;
+  line-height: 28rpx;
+}
+.touch-bottom-tips{
+  padding: 30rpx;
+  text-align: center;
+  font-size: 24rpx;
+  color: #999;
+}
+
+.community-empty-container{
+  margin-top: 150rpx;
+  text-align: center;
+  font-size: 0rpx;
+}
+.community-empty-container image{
+  width: 370rpx;
+  height: 280rpx;
+  padding-bottom: 14rpx;
+}
+.community-empty-tips{
+  font-family: PingFangSC-Medium;
+  font-size: 28rpx;
+  color: #333333;
+  text-align: center;
+  line-height: 40rpx;
+}
+
+.community-items{
+  padding: 0 30rpx;
+}
+.community-item{
+  height: 304rpx;
+  padding: 62rpx 0rpx;
+  display: flex;
+  box-sizing: border-box;
+  border-bottom: 1rpx solid #f7f7f7;
+}
+.community-item:last-child{
+  border: 0;
+}
+.community-item-left image{
+  width: 86rpx;
+  height: 86rpx;
+  border-radius: 50%;
+}
+.community-item-right{
+  margin-left: 16rpx;
+  flex: 1;
+  width: 1;
+  overflow: hidden;
+}
+.community-item-right-top,.community-item-right-middle{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.community-item-name{
+  font-size: 32rpx;
+  line-height: 46rpx;
+  height: 46rpx;
+  color: #282828;
+  font-family: PingFangSC-Semibold;
+  flex: 1;
+  width: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.community-item-distance{
+  padding-right: 30rpx;
+  font-size: 26rpx;
+  line-height: 38rpx;
+  color: #FB5E51;
+  font-family: PingFangSC-Medium;
+}
+.community-item-right-middle{
+  margin-top: 16rpx;
+}
+.community-item-address{
+  font-size: 26rpx;
+  line-height: 38rpx;
+  color: #666;
+  flex: 1;
+}
+.community-item-right-middle image{
+  width: 18rpx;
+  height: 18rpx;
+}
+.community-item-right-bottom{
+  margin-top: 4rpx;
+  font-family: PingFangSC-Regular;
+  font-size: 26rpx;
+  line-height: 38rpx;
+  color: #AEAEAE;
+}
+.community-item-right-bottom text{
+  margin-left: 20rpx;
+}
+
+.hot-community-empty{
+  padding-top: 144rpx;
+  text-align: center;
+  font-size: 0rpx;
+}
+.hot-community-empty image{
+  width: 266rpx;
+  height: 194rpx;
+}
+.hot-community-empty-text{
+  font-size: 24rpx;
+  line-height: 24rpx;
+  margin-top: 26rpx;
+  color: #ccc;
+}

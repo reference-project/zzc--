@@ -1,0 +1,22 @@
+/* components/loadMore/loadMore.wxss */
+.load-more{
+  padding-top: 70rpx;
+  font-size: 24rpx;
+  line-height: 24rpx;
+  text-align: center;
+  color: #999;
+  padding-bottom: 30rpx;
+}
+.bottom-tips-content{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.bottom-tips-line{
+  width: 80rpx;
+  height: 2rpx;
+  background-color: #ddd;
+}
+.bottom-tips-text{
+  margin: 0 25rpx;
+}

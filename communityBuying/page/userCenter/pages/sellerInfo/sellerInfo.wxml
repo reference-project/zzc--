@@ -1,0 +1,37 @@
+<!--page/userCenter/pages/sellerInfo/sellerInfo.wxml-->
+<view class='P-seller-info'>
+  <view class='header-container'>
+    <view class='title-container'>
+      <image src='/imgs/icon-card-active.png'></image>
+      <view>店主联系方式</view>
+    </view>
+    <view class='chat-container'>
+      <button open-type='contact' class='chat-btn'>
+        <image src='/imgs/icon-customer-active.png'></image>
+        联系客服
+      </button>
+    </view>
+  </view>
+
+  <view class='seller-info-container' wx:if="{{data.userInfo}}">
+    <view class='seller-avatar-content'>
+      <image src='{{data.userInfo.avatar}}'></image>
+    </view>
+    <view class='seller-info-item'>
+      <view class='seller-info-text'>姓名</view>
+      <view class='seller-info-value'>{{data.userInfo.canSeedName}}</view>
+    </view>
+    <view class='seller-info-item'>
+      <view class='seller-info-text'>电话</view>
+      <view class='seller-info-value'>{{data.userInfo.canSeedMobile}}</view>
+    </view>
+    <view class='seller-info-item'>
+      <view class='seller-info-text'>小区</view>
+      <view class='seller-info-value'>{{data.userInfo.community_name}}</view>
+    </view>
+    <view class='seller-info-item'>
+      <view class='seller-info-text'>详细地址</view>
+      <view class='seller-info-value'>{{data.userInfo.store_address}}</view>
+    </view>
+  </view>
+</view>

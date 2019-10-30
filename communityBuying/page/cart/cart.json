@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "alertingTips": "../../components/alertingTips/alertingTips",
+    "guessLike":"../../components/guessLike/guessLike"
+  }
+}

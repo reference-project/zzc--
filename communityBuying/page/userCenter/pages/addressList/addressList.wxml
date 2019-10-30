@@ -1,0 +1,24 @@
+<!--page/userCenter/pages/addressList/addressList.wxml-->
+<view class='P-address-list'>
+  <view class='address-add' catchtap='onGoToAddressEditHandler'>
+    <image class='icon-add' src='/imgs/icon-add-active.png'></image>
+    <view>添加地址</view>
+  </view>
+  <view class='address-list' wx:if="{{data.addressList && data.addressList.length>0}}">
+    <view class='address-item' wx:for="{{data.addressList}}" wx:key="{{index}}" catchtap='onSelectAddressHandler' data-index="{{index}}">
+      <view class='address-item-edil'>
+        <text class='active' catchtap='onGoToAddressEditHandler' data-index="{{index}}">编辑</text>
+      </view>
+      <view class='address-item-user-info'>
+        <text class='address-item-user-name'>{{item.contact}}</text>
+        <text class='address-item-user-phone'>{{item.mobile}}</text>
+      </view>
+      <view class='address-item-adddress'>
+        <text class='address-item-adddress-status' wx:if="{{item.is_default}}">默认</text>
+        <text class='address-item-adddress-desc'>{{item.complete_address}}</text>
+      </view>
+      <view class='address-active-line' wx:if="{{item.is_default}}"></view>
+    </view>
+  </view>
+  <view class='empty-tips' wx:else>请点击添加地址进行添加哦～</view>
+</view>

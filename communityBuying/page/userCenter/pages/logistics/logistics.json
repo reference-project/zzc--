@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "emptyTips": "../../../../components/emptyTips/emptyTips"
+  }
+}

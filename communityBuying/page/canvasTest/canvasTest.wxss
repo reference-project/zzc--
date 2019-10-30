@@ -1,0 +1,4 @@
+/* pages/canvasTest/canvasTest.wxss */
+.canvas {
+  width:750rpx; box-sizing: border-box; height: 500px;
+}

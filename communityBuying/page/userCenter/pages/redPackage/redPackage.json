@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "emptyTips": "../../../../components/emptyTips/emptyTips",
+    "packageItem":"../../../../components/packageItemMe/packageItemMe",
+    "loadMore": "../../../../components/loadMore/loadMore"
+  }
+}

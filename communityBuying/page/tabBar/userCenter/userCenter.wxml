@@ -1,0 +1,198 @@
+<!--page/tabBar/userCenter/userCenter.wxml-->
+<view class='P-user-center {{state.needAuthorize?"P-user-center-bg":""}}'>
+
+ <view class="user-center-bg" wx:if="{{state.needAuthorize == false}}">
+      <image class='center-bg' src='/imgs/center-bg.png'></image>
+ </view>
+  <view class='user-info-container' wx:if="{{state.needAuthorize == false}}">
+    <view class='user-info-content user-info-flex'>
+      <image src='{{data.userInfo.avatar}}' class='user-avatar'></image>
+      <view class="user-info-content-right">
+      <view class='user-name'>{{data.userInfo.nickname}}</view>
+      <view class='user-phone' wx:if="{{data.userInfo.mobile}}" catchtap='onGoToDebugPageHandler'>{{data.userInfo.canSeedPhone}}</view>
+      </view>
+    </view>
+    
+
+    <view class='user-order-content'>
+      <view class='user-order-header' catchtap='onGoToOrders' data-type="">
+        <view class='user-order-title'>我的订单</view>
+        <view class='user-order-tips'>
+          <text>全部订单</text>
+          <image class='icon-arrow-right' src='/imgs/icon-arrow-default.png'></image>
+        </view>
+      </view>
+      <view class='user-order-status-items'>
+        <view class='user-order-status-item' catchtap='onGoToOrders' data-type="waitpay">
+          <view class='user-order-status-img-box'>
+            <view class='order-status-num-circle' wx:if="{{data.orderNumObj.unpaid>0}}">{{data.orderNumObj.unpaid}}</view>
+            <image class='payments' src='/imgs/payments.png'></image>
+          </view>
+          <view class='user-order-status-text'>待付款</view>
+        </view>
+        <view class='user-order-status-item' catchtap='onGoToOrders' data-type='shipping'>
+          <view class='user-order-status-img-box delivery-box'>
+            <view class='order-status-num-circle' wx:if="{{data.orderNumObj.waiting_for_ship>0}}">{{data.orderNumObj.waiting_for_ship}}</view>
+            <image class='delivery' src='/imgs/delivery.png'></image>
+          </view>
+          <view class='user-order-status-text'>待发货</view>
+        </view>
+        <view class='user-order-status-item' catchtap='onGoToOrders' data-type='shipped'>
+          <view class='user-order-status-img-box'>
+            <view class='order-status-num-circle' wx:if="{{data.orderNumObj.shipping>0}}">{{data.orderNumObj.shipping}}</view>
+            <image class='distribution' src='/imgs/distribution.png'></image>
+          </view>
+          <view class='user-order-status-text'>配送中</view>
+        </view>
+        <view class='user-order-status-item' catchtap='onGoToOrders' data-type="success">
+          <view class='user-order-status-img-box'>
+            <view class='order-status-num-circle' wx:if="{{data.orderNumObj.reached>0}}">{{data.orderNumObj.reached}}</view>
+            <image class='introduction' src='/imgs/introduction.png'></image>
+          </view>
+          <view class='user-order-status-text'>待自提</view>
+        </view>
+      </view>
+    </view>
+
+
+    <view class="user-center-box">
+
+    <view class='user-action-items half-border-top'>
+      <view class='user-action-item' catchtap='onGoToRedPackageHandler'>
+        <view class="user-action-item-left">
+          <image src='/imgs/center-pocket.png' class='center-pocket'></image>
+          <view class='user-action-text'>我的红包</view>
+        </view>
+        <view class='user-action-item-right'>
+          <view class='red-package-num' wx:if="{{data.packageNum>0}}">{{data.packageNum}}个红包</view>
+           <view class='no-package-num'  wx:if="{{data.packageNum==0}}">暂无可用</view>
+          <image src='/imgs/icon-arrow-default.png' class='icon-arrow-right'></image>
+        </view>
+      </view>
+    </view>
+    <view class='user-action-items user-action-border'>
+      <!-- <view class='user-action-item' catchtap='onSeedSellerInfoHandler' wx:if="{{state.canLookOtherStore}}">
+        <view class='user-action-text'>查看店主信息</view>
+        <image src='/imgs/icon-arrow-default.png' class='icon-arrow-right'></image>
+      </view> -->
+      <!-- <view class='user-action-item' catchtap='onSeedSellerSaleDataHandler' wx:if="{{data.userInfo.merchant && data.userInfo.merchant.stores && data.userInfo.merchant.stores[0] && data.userInfo.merchant.stores[0].status == 1}}">
+        <view class='user-action-text'>店主收入查询</view>
+        <image src='/imgs/icon-arrow-default.png' class='icon-arrow-right'></image>
+      </view> -->
+     <button class='user-action-item'  catchtap='onGoToMiniProgram'>
+        <view class="user-action-item-left">
+             <image src='/imgs/center-recruit.png' class='center-recruit'></image>
+             <view class='user-action-text'>团长招募</view>
+        </view>
+        <image src='/imgs/icon-arrow-default.png' class='icon-arrow-right'></image>
+      </button>
+      <button class='user-action-item' open-type='contact'>
+       <view class="user-action-item-left">
+          <image src='/imgs/center-contact.png' class='center-contact'></image>
+          <view class='user-action-text'>联系客服(10:00-20:00)</view>
+        </view>
+        <image src='/imgs/icon-arrow-default.png' class='icon-arrow-right'></image>
+      </button>
+      <!-- <button class='user-action-item' open-type='feedback' wx:if="{{state.canUseFeedBackStatus}}">
+        <view class='user-action-text'>意见反馈</view>
+        <image src='/imgs/icon-arrow-default.png' class='icon-arrow-right'></image>
+      </button> -->
+      <!-- <view class='user-action-item' catchtap='onCallHandler'>
+        <view class='user-action-text'>拨打客服电话</view>
+        <image src='/imgs/icon-arrow-default.png' class='icon-arrow-right'></image>
+      </view> -->
+    </view>
+
+</view>
+
+    <view class='qr-code-box'>
+      <canvas style="width: 200rpx; height: 200rpx;" canvas-id="myQrcode" wx:if="{{!data.radarImg}}"></canvas>
+      <image wx:else src="{{data.radarImg}}" style="width: 200rpx; height: 200rpx;" />
+      <view class='qr-code-tips'>
+        <view class='qr-code-tip'>向团长出示二维码提货</view>
+        <view class='qr-code-other'>或者</view>
+        <view class='qr-code-btn' catchtap='onChangeQRCodeBoxStatusHandler'>使用提货码</view>
+      </view>
+    </view>
+    
+    <view class='delivery-code-container' hidden="{{!state.qRCodeBoxStatus}}">
+      <!-- <cover-view class="cover-canvas" catchtap='onChangeQRCodeBoxStatusHandler'>
+      </cover-view> -->
+      <view class='delivery-code-content'>
+        <view class='icon-close-delivery-box' bindtap='onChangeQRCodeBoxStatusHandler'>
+          <image src='/imgs/icon-close-delivery-code.png' class='icon-close-delivery-code' catchtap='onChangeQRCodeBoxStatusHandler'  catchtap='onChangeQRCodeBoxStatusHandler'></image>
+        </view>
+        <view class='delivery-code-title'>您的提货码为</view>
+        <view class='delivery-code-number'>{{state.qrCode}}</view>
+        <view class='delivery-time'>{{state.interval}}分钟有效时长</view>
+      </view>
+    </view>
+  </view>
+
+  <!-- <view class='user-info-container needAuthorize' wx:if="{{state.needAuthorize == true}}">
+    <button  open-type="getUserInfo" bindgetuserinfo="userInfoHandler" class='user-info-content' wx:if="{{ state.needAuthorize}}">
+        <image src='/imgs/icon-user-avatar-default.png' class='user-avatar'></image>
+        <view class='user-name'>点击登录</view>
+    </button>
+  </view> -->
+  <view class="needAuthorize-page" wx:if="{{state.needAuthorize == true||state.orderNeedAuthorize==true}}">
+    <view class="needAuthorize-header">
+            <image src='/imgs/needAuthorize-bg.png' class='needAuthorize-bg'></image>
+            <image class="needAuthorize-logo" src='/imgs/needAuthorize-logo.png'></image>
+    </view>
+    <button class="login-btn" open-type="getUserInfo" bindgetuserinfo="userInfoHandler">
+         <image class="weixin-logo" src='/imgs/weixin.png'></image>
+         <text>微信一键登录</text>
+    </button>
+    <view class="join-container">
+       <view class="join-limit" catchtap='onGoToMiniProgram'>
+         <text>限时加盟</text>
+         <image src="/imgs/user-right.png" class="user-right"></image>
+       </view>
+        <view class="join-limit-title">©2019壹手仓鲜品</view>
+    </view>
+  </view>
+
+
+
+
+
+   <!-- 分享选择框 -->
+  <!-- <view class='share-type-container' wx:if="{{state.shareBoxStatus}}">
+    <image class='icon-share-close' src='/imgs/icon-close-default.png' catchtap='onChangeShareBoxHandler'></image>
+    <view class='share-type-content'>
+      <button class='share-type-item' open-type='share'>
+        <image src='/imgs/icon-wechat-active.png'></image>
+        <view class='share-type-item-text'>分享给微信好友</view>
+      </button>
+      </button>
+      <button class='share-type-item' catchtap='onOpenSavePicStatus'>
+        <image src='/imgs/icon-moment-active.png'></image>
+        <view class='share-type-item-text'>生成海报</view>
+      </button>
+    </view>
+  </view> -->
+
+  <!-- 海报展示框 -->
+  <!-- <view class='invite-poster-container' wx:if="{{state.savePicBoxStatus}}" catchtap='onCloseSavePicStatus'>
+    <view class='invite-poster-content'>
+      <view class='invite-poster-close'>
+        <image   src='/imgs/icon-close-default.png'></image>
+      </view>
+      <canvas canvas-id="{{state.posterId}}" class='invite-poster' catchtap='onPreventHandler'>
+      </canvas>
+      
+      <button open-type='openSetting' bindopensetting="openSettingHandler" class='invite-save-poster' wx:if="{{state.needOpenSettingBtn}}">
+        保存到手机
+      </button>
+      <view class='invite-save-poster' wx:else catchtap='saveWeChatPicHandler'>
+        保存到手机
+      </view>
+    </view>
+  </view> -->
+
+
+  
+  <alertingTips alertingStatus="{{state.alertingStatus}}" alertingWords="{{state.alertingWords}}"></alertingTips>
+
+</view>

@@ -1,0 +1,37 @@
+<!--components/flashSaleItem/flashSaleItem.wxml-->
+<view class='content' catchtap='onGoToProductDetail'>
+  <view class='pic-box'>
+    <image src='{{domain+productItem.goods_logo}}'></image>
+    <view class='tips'>{{productItem.special_label?productItem.special_label:"限时秒杀"}}</view>
+    <view class='pro-status-saled' wx:if="{{productItem.stock == 0}}">已抢完</view>
+  </view>
+  <view class='info-content'>
+    <view class='info-content-top'>
+      <view class='info-name two-ellipsis'>
+        <text class='pro-tips limit' wx:if="{{productItem.limit_buy > 0}}">限购</text>
+        <text>{{productItem.goods_name}}</text>
+      </view>
+      <view class='info-sell-status' wx:if="{{!featureStatus}}">
+        <view class='info-sell had'>已售{{productItem.sell_count}}件</view>
+        <view class='info-sell now'>仅剩{{productItem.stock}}件</view>
+      </view>
+      <view class='info-stock-status' wx:else>
+        限量{{productItem.stock}}份
+      </view>
+    </view>
+    
+    <view class='info-bottom'>
+      <view class='info-price-box'>
+        <view class='info-price-box-left'>
+          <view class='info-price-box-left-text'>秒杀价</view>
+          <!-- <image src='/imgs/icon-flash-sale-price.png'></image> -->
+          <view class='price-new'>¥<text>{{productItem.our_price/100}}</text></view>
+        </view>
+        <view class='price-old'>¥<text>{{productItem.market_price/100}}</text></view>
+      </view>
+      <view class='btn-buy' wx:if="{{productItem.stock>0 && !endStatus && !featureStatus}}">马上抢</view>
+      <view class='btn-buy saled' wx:if="{{productItem.stock <= 0}}">已抢完</view>
+      <view class='btn-buy' wx:if="{{productItem.stock > 0 && featureStatus}}">去看看</view>
+    </view>
+  </view>
+</view>

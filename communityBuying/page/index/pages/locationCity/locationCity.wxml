@@ -1,0 +1,32 @@
+<!--page/index/pages/locationCity/locationCity.wxml-->
+<view class='P-location-city'>
+  <view class='city-select-container'>
+    <view class='current-city-item' wx:if="{{state.currentLocation}}">
+      <view class='current-city-left'>
+        <image src='/imgs/icon-location-red.png'></image>
+        <view class='current-city-taber' catchtap='onSelectCurrrentLocationCityHandler'>{{state.currentLocation.city}}<text>(当前位置)</text></view>
+      </view>
+      
+      <view class='current-city-btn' catchtap='onGetLocationHandler'>
+        <image src='/imgs/icon-location-tips-red.png'></image>
+        <view class='current-city-btn-text'>刷新</view>
+      </view>
+      
+    </view>
+
+    <view class='select-city-item' wx:if="{{state.locationObj}}">
+        <view class='select-city-taber'>当前选择城市</view>
+        <view class='select-city-lists'>
+          <view class='select-city-text' catchtap='onGoBackHandler'>{{state.locationObj.city}}</view>
+        </view>
+        
+    </view>
+    <view class='select-city-item' wx:if="{{data.citys}}">
+      <view class='select-city-taber'>已开放城市</view>
+      <view class='select-city-lists'>
+        <view class='select-city-text' wx:for="{{data.citys}}" wx:key="{{index}}" catchtap='onSelectCityHandler' data-index='{{index}}'>{{item.city}}</view>
+      </view>
+    </view>
+  </view>
+</view>
+

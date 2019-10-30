@@ -1,0 +1,8 @@
+{
+  "backgroundTextStyle": "dark",
+  "usingComponents": {
+    "loadMore": "../../../components/loadMore/loadMore",
+    "alertingTips": "../../../components/alertingTips/alertingTips"
+  },
+  "navigationBarBackgroundColor": "#fed402"
+}

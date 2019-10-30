@@ -1,0 +1,276 @@
+/* page/userCenter/pages/withdrawPage/withdrawPage.wxss */
+.P-withdraw{
+  min-height: 100vh;
+  overflow: hidden;
+}
+.withdraw-intro{
+  position: absolute;
+  padding: 20rpx 14rpx;
+  top: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  font-size: 28rpx;
+  color: #999;
+  z-index: 2;
+}
+.background{
+  background-color: #F7F7F7;
+}
+.withdraw-intro image{
+  width: 38rpx;
+  height: 38rpx;
+  margin-right: 4rpx;
+}
+.can-withdraw-title{
+  text-align: center;
+  margin-top: 80rpx;
+  font-family: PingFangSC-Medium;
+  font-size: 32rpx;
+  color: #333333;
+  line-height: 32rpx;
+}
+.can-withdraw-title text{
+  font-family: PingFangSC-Regular;
+  font-size: 24rpx;
+  color: #2A2A2A;
+  line-height: 32rpx;
+}
+.can-withdraw-money{
+  margin-top: 50rpx;
+  text-align: center;
+  font-family: PingFangSC-Semibold;
+  font-size: 70rpx;
+  color: #FF0600;
+  line-height: 70rpx;
+}
+.can-widthdraw-input-content{
+  display: flex;
+  align-items: center;
+  width: 670rpx;
+  height: 67rpx;
+  margin: 70rpx auto 0;
+  border-bottom: 1rpx solid #EAEAEA;
+  font-family: PingFangSC-Light;
+  font-size: 48rpx;
+  color: #333333;
+}
+.can-widthdraw-input{
+  flex: 1;
+  margin-left: 13rpx;
+  font-size: 32rpx;
+  font-family: PingFangSC-Regular;
+}
+.input-placeholder{
+  color: #999999;
+}
+.can-widthdraw-btn{
+  margin: 50rpx auto 0;
+  text-align: center;
+  width: 670rpx;
+  height: 88rpx;
+  line-height: 88rpx;
+  background: #ff5e53;
+  border-radius: 44rpx;
+  font-family: PingFangSC-Medium;
+  font-size: 28rpx;
+  color: #FFFFFF;
+}
+.can-widthdraw-btn.disabled{
+  background: #ccc;
+}
+.can-withdraw-tips{
+  margin-top: 20rpx;
+  text-align: center;
+  font-family: PingFangSC-Regular;
+  font-size: 22rpx;
+  color: #999999;
+  line-height: 22rpx;
+}
+.hot-tips-container{
+  padding:34rpx 40rpx 40rpx;
+  font-family: PingFangSC-Regular;
+  font-size: 26rpx;
+  line-height: 38rpx;
+}
+.hot-tips-title{
+  color: #333333;
+  padding-bottom: 10rpx;
+}
+.hot-tips-value{
+  color: #666666;
+}
+
+.bottom-line{
+  background-color: #F7F7F7;
+  height: 20rpx;
+}
+.widthdraw-history{
+  margin-top: 40rpx;
+  padding: 0 40rpx;
+}
+.widthdraw-history-items{
+  padding: 10rpx 0;
+}
+.widthdraw-history-item{
+  padding: 34rpx 0;
+  border-bottom: 1rpx solid #EAEAEA;
+  display: flex;
+  align-items: center;
+}
+.widthdraw-history-item-time{
+  font-family: PingFangSC-Regular;
+  font-size: 28rpx;
+  color: #999999;
+}
+.widthdraw-history-item-status{
+  font-family: PingFangSC-Regular;
+  font-size: 28rpx;
+  color: #666666; 
+}
+.widthdraw-history-item-status.checking{
+  color: #5CA452;
+}
+.widthdraw-history-item-money{
+  flex: 1;
+  width: 1rpx;
+  text-align: center;
+  font-family: PingFangSC-Medium;
+  font-size: 32rpx;
+  color: #666666;
+}
+.widthdraw-history-empty{
+  margin-top: 50rpx;
+  text-align: center;
+  font-size: 22rpx;
+  color: #666666;
+}
+
+.confirm-container{
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0,0,0,0.50);
+  z-index: 5;
+}
+.confirm-content{
+  width: 562rpx;
+  height: 381rpx;
+  background-color: #fff;
+  border-radius: 8rpx;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+.confirm-content-title{
+  font-family: PingFangSC-Medium;
+  font-size: 36rpx;
+  color: #333333;
+  text-align: center;
+  margin-top: 40rpx;
+}
+.confirm-content-desc{
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: PingFangSC-Regular;
+  font-size: 36rpx;
+  color: #333333;
+}
+.confirm-content-actions{
+  height: 112rpx;
+  border-top: 1rpx solid #EAEAEA;
+  display: flex;
+}
+.action-btn{
+  flex: 1;
+  height: 112rpx;
+  box-sizing: border-box;
+  font-family: PingFangSC-Regular;
+  font-size: 36rpx;
+  line-height: 112rpx;
+}
+.action-btn.cancel{
+  border-right: 1rpx solid #EAEAEA;
+  color: #999999;
+}
+.action-btn.submit{
+  color: #FF5E53;
+}
+
+.withdraw-success-container{
+  background-color: #fff;
+  padding: 98rpx 0 68rpx;
+}
+.withdraw-success-image-box{
+  text-align: center;
+  font-size: 0rpx;
+}
+.withdraw-success-image{
+  width: 128rpx;
+  height: 128rpx;
+}
+.withdraw-success-title{
+  margin-top: 50rpx;
+  text-align: center;
+  font-family: PingFangSC-Medium;
+  font-size: 28rpx;
+  color: #333333;
+  line-height: 28rpx;
+}
+.withdraw-success-items{
+  margin-top: 90rpx;
+}
+.withdraw-success-item{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 26rpx 50rpx;
+}
+.withdraw-success-item-text{
+  font-family: PingFangSC-Regular;
+  font-size: 32rpx;
+  color: #666666;
+  line-height: 32rpx;
+}
+.withdraw-success-item-value{
+  font-family: PingFangSC-Medium;
+  font-size: 28rpx;
+  color: #333333;
+  line-height: 28rpx;
+}
+.withdraw-success-btn{
+  margin: 110rpx auto 0;
+  width: 670rpx;
+  height: 88rpx;
+  line-height: 88rpx;
+  text-align: center;
+  font-family: PingFangSC-Medium;
+  font-size: 38rpx;
+  color: #FFFFFF;
+  background-color: #FF5E53;
+  border-radius: 44rpx;
+}
+.withdraw-success-tips{
+  font-family: PingFangSC-Regular;
+  font-size: 22rpx;
+  color: #999999;
+  display: flex ;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20rpx;
+}
+.icon-circle{
+  width: 16rpx;
+  height: 16rpx;
+  border-radius: 50%;
+  background-color: #ccc;
+  margin-right: 22rpx;
+}

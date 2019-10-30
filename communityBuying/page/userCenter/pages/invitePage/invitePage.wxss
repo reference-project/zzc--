@@ -1,0 +1,230 @@
+/* page/userCenter/pages/invitePage/invitePage.wxss */
+
+.P-invite{
+  font-family: PingFangSC-Regular;
+  min-height: 100vh;
+  background-color: rgba(248,248,248,0.75);
+}
+
+.group-buying-container{
+  text-align: center;
+  background-color: #fff;
+}
+.group-buying-time{
+  font-size: 22rpx;
+  color: #FF482E;
+  line-height: 22rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.group-buying-time text{
+  margin: 0 6rpx;
+  height: 40rpx;
+  width: 40rpx;
+  background-color: #FF482E;
+  font-size: 30rpx;
+  color: #fff;
+  line-height: 40rpx;
+  text-align: center;
+}
+.ground-buying-success{
+  font-size: 38rpx;
+  color: #000000;
+  line-height: 80rpx;
+  width: 270rpx;
+  height: 80rpx;
+  background-color: #d8d8d8;
+  margin: 0 auto;
+}
+.group-buying-status{
+  font-size: 28rpx;
+  color: #666666;
+  letter-spacing: 2rpx;
+  line-height: 32rpx;
+  margin-top: 25rpx;
+}
+.group-buying-status text{
+  color:  #FF482E;
+}
+.group-buying-avatar{
+  padding: 23rpx 85rpx 50rpx;
+  text-align: left;
+  font-size: 0rpx;
+}
+.group-buying-avatar-item{
+  display: inline-block;
+  position: relative;
+  margin-left: 60rpx;
+  margin-top: 30rpx;
+  height: 100rpx;
+  width: 100rpx;
+}
+.group-buying-avatar image{
+  height: 100%;
+  width: 100%;
+  border-radius: 50%;
+  background-color: #414141;
+}
+.group-buying-avatar-item:nth-child(4n+1){
+  margin-left: 0rpx;
+}
+.group-buying-grouper{
+  position: absolute;
+  left: 0;
+  top: 0;
+  background-color: #efefef;
+  border-radius: 100rpx;
+  color: #666;
+  font-size: 22rpx;
+  line-height: 22rpx;
+  padding: 4rpx 10rpx;
+}
+
+.group-btn{
+  width: 600rpx;
+  height: 100rpx;
+  border-radius: 100rpx;
+  background: linear-gradient(270deg, #FF0700 0%, #FF9363 100%);
+  color: #fff;
+  line-height: 100rpx;
+  font-size: 38rpx;
+  text-align: center;
+  margin: 0 auto;
+}
+
+.group-buying-pro{
+  padding: 0 20rpx;
+  margin-top: 70rpx;
+}
+.item-info-container{
+  display: flex;
+  align-items: center;
+  border-radius: 20rpx;
+  overflow: hidden;
+}
+.item-info-container image{
+  width: 240rpx;
+  height: 240rpx;
+  background-color: #909090;
+}
+.item-info-content{
+  flex: 1;
+  height: 240rpx;
+  background-color: #fafafa;
+  padding: 20rpx 20rpx 10rpx;
+  box-sizing: border-box;
+}
+.item-info-title{
+  font-size: 32rpx;
+  line-height: 32rpx;
+}
+.item-info-weight{
+  font-size: 22rpx;
+  color: #999999;
+  line-height: 22rpx;
+  margin-top: 20rpx;
+}
+.item-info-package{
+  margin-top: 10rpx;
+  font-size: 22rpx;
+  color: #999999;
+  line-height: 22rpx;
+}
+.item-price-container{
+  margin-top: 50rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.share-type-container{
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 20;
+}
+.share-type-content{
+  height: 300rpx;
+  background: #FFFFFF;
+  border-radius: 20rpx 20rpx 0 0;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  overflow: hidden;
+}
+.icon-share-close{
+  position: fixed;
+  bottom: 330rpx;
+  right: 30rpx;
+  width: 50rpx;
+  height: 50rpx;
+}
+.share-type-item{
+  display: inline-block;
+  width: 50%;
+  height: 100%;
+  font-size: 0rpx;
+  text-align: center;
+}
+.share-type-item image{
+  width: 90rpx;
+  height: 90rpx;
+  margin: 40rpx 0 30rpx;
+}
+.share-type-item-text{
+  font-size: 28rpx;
+  line-height: 28rpx;
+  color: #333333;
+}
+
+.invite-poster-container{
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+.invite-poster-content{
+  position: absolute;
+  bottom: 0;
+  width: 480rpx;
+  left: 50%;
+  transform: translateX(-50%);
+  padding-bottom: 46rpx;
+}
+.invite-poster-close{
+  text-align: right;
+}
+.invite-poster-close image{
+  width: 28rpx;
+  height: 28rpx;
+  margin-right: 20rpx;
+}
+.invite-poster{
+  width: 480rpx;
+  height: 720rpx;
+  font-size: 0rpx;
+  margin-top: 20rpx;
+}
+.invite-poster image{
+  height: 100%;
+  width: 100%;
+  background-color: #d8d8d8;
+}
+.invite-save-poster{
+  margin: 30rpx auto 0;
+  width: 170rpx;
+  height: 50rpx;
+  border-radius: 100rpx;
+  background-color: #d8d8d8;
+  font-size: 28rpx;
+  color: #333333;
+  line-height: 50rpx;
+  text-align: center;
+}

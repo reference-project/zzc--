@@ -1,0 +1,126 @@
+<!--page/userCenter/pages/saleOrder/saleOrderList.wxml-->
+<view class='P-oder-list' wx:if="{{data.saleDataOrders}}">
+  <!-- <scroll-view scroll-x="true" class='nav-bar' scroll-into-view="{{state.selectedLabel}}"> -->
+  <view class='user-sale-order-nav' wx:if="{{state.selectedLabel == 'detailList'}}">
+    <view class='user-sale-order-nav-item' wx:for="{{state.saleTypeFilters}}" wx:key="{{index}}" catchtap='onSelectSaleTypeHandler' data-type='{{item.type}}' data-index='{{index}}'>
+      <view class='user-sale-order-nav-item-text {{item.type == state.selectSaleType ? "active" : ""}}'>{{item.label}}</view>
+      <view class='user-nav-light' wx:if="{{item.type == state.selectSaleType}}"></view>
+    </view>
+  </view>
+
+  <view class='nav-bar' wx:if="{{state.selectedLabel == 'list'}}">
+    <view class="item {{index == state.selectSaleTimeIndex ? 'active' : ''}}" data-item="{{item}}" catchtap="onSelectSaleTimeHandler" wx:key="item-{{index}}" wx:for="{{state.saleTimeFilters}}" data-index="{{index}}" id='{{item.type}}' data-type='{{item.type}}'>
+      <view class='word'>{{item.label}}</view>
+      <view class='nav-active-bottom' wx:if="{{index == state.selectSaleTimeIndex}}"></view>
+      <text class='num' wx:if="{{item.num > 0}}">{{item.num}}</text>
+    </view>
+  </view>
+
+  <view class='order-items' wx:if="{{data.saleDataOrders.length > 0 }}">
+    <!-- <orderItem orderItem="{{item}}" wx:key="{{index}}" bindoncancel="onCancelOrder"  bindonpay="onNowPay" wx:for="{{data.saleDataOrders}}"></orderItem> -->
+    <view wx:for="{{data.saleDataOrders}}" wx:key="{{index}}" >
+      <view class='order-item-container' data-order-id="{{item.no}}">
+        <view class='order-item-status-box'>
+          <view class='order-item-time' wx:if="{{state.selectedLabel == 'list'}}">下单时间:
+            <text>{{item.create_time_util}}</text>
+          </view>
+          <view class='order-item-time' wx:if="{{state.selectedLabel == 'detailList'}}">订单编号:
+            <text>{{item.no}}</text>
+          </view>
+          <block wx:if="{{state.selectSaleTime=='all' && state.selectedLabel == 'list'}}">
+            <view class='order-item-status' wx:if='{{item.status===-1}}'>已取消</view>
+            <view class='order-item-status' wx:elif='{{item.status===0}}'>待付款</view>
+            <view class='order-item-status' wx:elif='{{item.status===2}}'>待发货</view>
+            <view class='order-item-status' wx:elif='{{item.status===3}}'>配送中</view>
+            <view class='order-item-status red' wx:elif='{{item.status == 4}}'>交易成功</view>
+            <view class='order-item-status red' wx:elif='{{item.status == 5}}'>已退款</view>
+          </block>
+          <block wx:if="{{state.selectSaleType=='all' && state.selectedLabel == 'detailList'}}">
+            <view class='order-item-status' wx:if='{{item.status===2}}'>已付款</view>
+            <view class='order-item-status' wx:elif='{{item.status===0}}'>待付款</view>
+            <view class='order-item-status' wx:elif="{{item.status == -1}}">已失效</view>
+            <view class='order-item-status' wx:elif='{{item.status===3}}'>配送中</view>
+            <view class='order-item-status red' wx:elif='{{item.status == 5}}'>已退款</view>
+            <view class='order-item-status red' wx:elif='{{item.status == 4 && item.settle_time ==0}}'>交易成功</view>
+            <view class='order-item-status red' wx:elif='{{item.settle_time >0 && item.status == 4}}'>已结算</view>
+          </block>
+        </view>
+        <view class='order-item-pros'>
+          <view class='order-item-info' wx:for="{{item.items}}" wx:for-item="itemObj" wx:key='goods'>
+            <image src='{{itemObj.goods_logo ? data.qiniuDomain+itemObj.goods_logo:""}}'></image>
+            <view class='order-item-info-desc'>
+              <view class='order-item-info-title-box'>
+                <view class='order-item-info-title'>{{itemObj.goods_name}}</view>
+                <view class='order-item-info-price'>¥{{itemObj.amount/100}}</view>
+              </view>
+              <view class='order-item-info-sku'>
+                <view class='order-item-info-sku-name'>{{itemObj.sku_name}}</view>
+                <view class='order-item-info-sku-num'>x{{itemObj.number}}</view>
+              </view>
+
+              <view class='order-type-content'>
+                <view class='pro-tips booking' wx:if="{{itemObj.activity_type==2}}">预售</view>
+                <view class='order-pro-item-status'>
+                  <view class='order-status active' wx:if="{{itemObj.refund_mark == 1}}">[已退款]</view>
+                  <!-- <view class='order-status active' wx:if="{{itemObj.refund_mark == 0 && itemObj.activity_type==2 && itemObj.arrive_time == 0 && itemObj.deliver_time==0}}">[待发货]</view>
+                  <view class='order-status active' wx:if="{{itemObj.refund_mark == 0 && itemObj.activity_type==2 && itemObj.arrive_time == 0 && itemObj.deliver_time > 0}}">[已发货]</view>
+                  <view class='order-status active' wx:if="{{itemObj.refund_mark == 0 && itemObj.activity_type==2 && itemObj.arrive_time > 0 && itemObj.deliver_time > 0}}">[已送达]</view> -->
+                </view>
+              </view>
+              
+            </view>
+          </view>
+        </view>
+        <view class='order-item-info-num-price'>
+          合计
+          <text>¥{{item.pay_price/100}}</text>
+        </view>
+        <view class='order-message-info'>
+          <view class='order-message-items'>
+            <view class='order-message-item' wx:if="{{state.selectedLabel == 'detailList'}}">
+              <view class='order-message-item-text'>创建</view>
+              <view class='order-message-item-value'>{{item.create_time_util}}</view>
+            </view>
+            <view class='order-message-item' wx:if="{{item.settle_time > 0 && state.selectedLabel == 'detailList'}}">
+              <view class='order-message-item-text'>结算</view>
+              <view class='order-message-item-value'>{{item.create_time_util}}</view>
+            </view>
+            <view class='order-message-item' wx:if="{{state.selectedLabel == 'list'}}">
+              <view class='order-message-item-text'>订单编号</view>
+              <view class='order-message-item-value'>{{item.no}}</view>
+              <view class='btn-copy' catchtap='onCopyHandler' data-no="{{item.no}}">复制</view>
+            </view>
+            <view class='order-message-item' wx:if="{{state.selectedLabel == 'list'}}">
+              <view class='order-message-item-text'>提货信息</view>
+              <view class='order-message-item-value'>{{item.receiver}}</view>
+              <view class='order-message-item-value'>{{item.mobile}}</view>
+            </view>
+            <view class='order-message-item' wx:if="{{item.remark && state.selectedLabel !== 'detailList'}}">
+              <view class='order-message-item-text'>备注</view>
+              <view class='order-message-item-value'>{{item.remark}}</view>
+            </view>
+          </view>
+          <view class='order-sale-price' wx:if="{{state.selectedLabel == 'detailList'}}">
+            <view class='order-sale-price-text'>预估收入</view>
+            <view class='order-sale-price-value'>¥  {{item.expected_income/100}}</view>
+          </view>
+        </view>
+        <view class='order-item-actions' wx:if="{{state.selectedLabel == 'list' && item.status == 3}}">
+          <view class='btn-active' data-order-id='{{item.no}}' catchtap='onSureReciveHandler' wx:if='{{item.status===3}}'>确认取货</view>
+        </view>
+      </view>
+      <view class='bottom-line' wx:if="{{index<data.saleDataOrders.length-1}}"></view>
+    </view>
+    
+    <loadMore loadMoreStatus="{{data.totalPage > state.page}}" loadingStatus="{{state.loading}}"></loadMore>
+
+  </view>
+  <view class='empty-tips' wx:else>
+    <image src='/imgs/icon-order-me-empty.png'></image>
+    <view class='tips'>您还没有相关订单~</view>
+  </view>
+
+  <alertingTips alertingStatus="{{state.alertingStatus}}" alertingWords="{{state.alertingWords}}"></alertingTips>
+
+  <comfirmTips actionObj="{{state.actionObj}}" bindonsure="{{state.actionObj.submitHandler}}" bindoncancel="{{state.actionObj.cancelHandler}}" wx:if="{{state.comfirmBoxStatus}}"></comfirmTips>
+</view>

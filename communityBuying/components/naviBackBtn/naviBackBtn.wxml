@@ -1,0 +1,7 @@
+<!--components/naviBackBtn/naviBackBtn.wxml-->
+<!-- 返回团长端按钮 -->
+<view class='merchant-back-content {{isIphoneX?"isIphoneX":""}}' catchtap='onGoBackMiniProgramHandler'>
+  <image src='/imgs/icon-arrow-white.png' class='icon-arrow-white'></image>
+  <view>返回</view>
+  <image src='/imgs/icon-merchant-logo.png' class='icon-merchant-logo'></image>
+</view>

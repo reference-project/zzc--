@@ -1,0 +1,130 @@
+/* page/index/pages/flashSaleList/flashSaleList.wxml.wxss */
+.P-flash-sale{
+  min-height: 100vh;
+  background-color: #f7f7f7;
+}
+
+.flash-sale-time-items{
+  /* height: 179rpx; */
+  height: 165rpx;
+  overflow-x: scroll;
+  white-space: nowrap;
+  /* background-color: #fff; */
+  background-color: #FFf7d3;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+}
+.flash-sale-time-item{
+  display: inline-block;
+  position: relative;
+  width: 188rpx;
+  height: 165rpx;
+  text-align: center;
+  font-family: PingFangSC-Semibold;
+  color: rgba(40,40,40,0.70);
+  padding-top: 44rpx;
+  box-sizing: border-box;
+  /* background-color: #FFEFA9; */
+  vertical-align: top;
+}
+.icon-trangle-bottom{
+  position: absolute;
+  bottom: -16rpx;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-width:16rpx 16rpx 0;
+  border-style:solid;
+  border-color:#FFCB05 transparent transparent;/*灰 透明 透明 */
+}
+.flash-sale-time-item-text{
+  font-size: 32rpx;
+  line-height: 45rpx;
+}
+.flash-sale-time-item-status{
+  font-size: 26rpx;
+  line-height: 37rpx;
+  margin-top: 3rpx;
+}
+.flash-sale-time-item.active{
+  background: linear-gradient(-150deg, #FEE601 0%, #FFCB05 100%);
+  color: #282828;
+}
+.flash-sale-time-item.active .flash-sale-time-item-text{
+  font-size: 34rpx;
+  line-height: 48rpx;
+}
+
+.flash-sale-show-content{
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  min-height: 100vh;
+  padding-top: 165rpx;
+  box-sizing: border-box;
+}
+.flash-sale-show-item{
+  overflow-y: scroll;
+}
+.flash-sale-time-content{
+  height: 104rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff;
+}
+.split-line{
+  width: 165rpx;
+  height: 2rpx;
+  background-color: #eee;
+}
+.flash-sale-time-box{
+  margin: 0 30rpx;
+  display: flex;
+  align-items: center;
+  font-size: 26rpx;
+  color: #666666;
+  font-family: PingFangSC-Medium;
+}
+.flash-sale-time-value{
+  margin-left: 20rpx;
+  display: flex;
+  align-items: center;
+  height: 42rpx;
+  line-height: 42rpx;
+}
+.flash-sale-time-value .timer{
+  font-family: PingFangSC-Semibold;
+  font-size: 30rpx;
+  color: #282828;
+  margin: 0 6rpx;
+}
+.flash-sale-pro-item{
+  margin-top: 20rpx;
+}
+.shadow-view{
+  margin-top: 20rpx;
+  height: 306rpx;
+}
+
+.need-location{
+  padding-top: 400rpx;
+  font-size: 30rpx;
+  text-align: center;
+  font-family: PingFangSC-Regular;
+}
+.return-home{
+  margin: 30rpx auto;
+  width: 260rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  font-size: 30rpx;
+  background-color: #FEE601;
+  color: #282828;
+}

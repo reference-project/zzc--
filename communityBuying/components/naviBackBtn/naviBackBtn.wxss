@@ -1,0 +1,29 @@
+/* components/naviBackBtn/naviBackBtn.wxss */
+/* 返回团长端 样式 */
+.merchant-back-content{
+  width:149rpx;
+  height:58rpx;
+  background:rgba(68,208,81,1);
+  border-radius:0rpx 100px 100px 0rpx;
+  position: fixed;
+  left: 0;
+  bottom: 180rpx;
+  font-size:24rpx;
+  color:rgba(255,255,255,1);
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+.merchant-back-content.isIphoneX{
+  bottom: 252rpx;
+}
+.icon-arrow-white{
+  margin-right: 6rpx;
+  width: 28rpx;
+  height: 28rpx;
+}
+.icon-merchant-logo{
+  margin-left: 9rpx;
+  width: 52rpx;
+  height: 52rpx;
+}

@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "productItem": "../../../../components/rushBuyingItem/rushBuyingItem",
+    "loadMore": "../../../../components/loadMore/loadMore",
+    "alertingTips": "../../../../components/alertingTips/alertingTips",
+    "guessLike": "../../../../components/guessLike/guessLike"
+  }
+}

@@ -1,0 +1,50 @@
+<!--page/index/pages/compareCommunity/compareCommunity.wxml-->
+<view class='P-com-comu'>
+
+  <view class='header-container'>
+    <view class='header-bg'>
+      <image src='/imgs/icon-index-top-bg.png'></image>
+    </view>
+
+    <view class='header-content'>
+      <view class='header-content-title'>是否切换社区</view>
+      <view class='header-content-reason'>“您访问的地址并非上次登录的社区”</view>
+      <view class='header-content-tips'>请选择更合适的团长哦～</view>
+    </view>
+  </view>
+
+  <view class='merchant-items'>
+
+    <view class='merchant-item' data-type='local' catchtap='onSelectComuHandler'>
+      <view class='merchant-item-cur'>
+        <view class='merchant-item-cur-icon'></view>
+        <view class='merchant-item-cur-text'>当前</view>
+      </view>
+      <view class='merchant-avator-box'>
+        <image src='{{data.communityObjLocal.avatar}}'></image>
+      </view>
+      <view class='merchant-nickname'>团长：{{data.communityObjLocal.contact}}</view>
+      <view class='merchant-name two-ellipsis'>{{data.communityObjLocal.community_name}}</view>
+      <view class='merchant-distance'>
+        <image src='/imgs/icon-location-oriange.png'></image>
+        <view class=''>距离您约{{data.communityObjLocal.distance}}km</view>
+      </view>
+      <view class='merchant-choose-btn'>选择他</view>
+    </view>
+
+    <view class='merchant-item' data-type='cur'  catchtap='onSelectComuHandler'>
+      <view class='merchant-avator-box'>
+        <image src='{{data.curCommunityObj.avatar}}'></image>
+      </view>
+      <view class='merchant-nickname'>团长：{{data.curCommunityObj.contact}}</view>
+      <view class='merchant-name two-ellipsis'>{{data.curCommunityObj.community_name}}</view>
+      <view class='merchant-distance'>
+        <image src='/imgs/icon-location-default.png'></image>
+        <view class=''>距离您约{{data.curCommunityObj.distance}}km</view>
+      </view>
+      <view class='merchant-choose-btn'>选择他</view>
+    </view>
+
+  </view>
+
+</view>

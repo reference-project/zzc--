@@ -1,0 +1,68 @@
+<!--components/packageItem/packageItem.wxml-->
+<view class='package-item {{packageItem.status == 1?"isUsed":""}}'>
+  <view class='top-border'></view>
+  <view class='package-content' catchtap='onGoToIndexHandler'>
+    <view class='half-circle-left'></view>
+    <view class='half-circle-right'></view>
+    <view class='package-content-left'>
+      <view class='package-num'>¥<text>{{packageItem.amountInt}}</text>{{packageItem.amountFloat?'.'+packageItem.amountFloat:""}}</view>
+      <view class='package-limit-num' wx:if="{{packageItem.min_consumption}}">满{{packageItem.min_consumption/100}}元可用</view>
+      <view class='package-limit-num' wx:else>无金额限制</view>
+    </view>
+    <view class='package-content-center'>
+      <view class='package-title'>{{packageItem.red_envelop_name}}</view>
+      <view class='package-desc-items'>
+        <view class='package-desc-item' wx:key="{{index}}">
+          <view class='circle-item'></view>
+          <view class='package-desc-item-text'>{{packageItem.instruction}}</view>
+        </view>
+        <view class='package-desc-item' wx:key="{{index}}">
+          <view class='circle-item'></view>
+          <view class='package-desc-item-text'>{{packageItem.deadlineUtil}}到期</view>
+        </view>
+      </view>
+    </view>
+    <view class='package-content-right'>
+      <view class='btn-use' wx:if="{{!packageItem.status == 1 && !packageItem.isTimeOut}}">去使用</view>
+      <view class='btn-package-timeout' wx:if='{{!packageItem.status == 1 && packageItem.isTimeOut}}'>已过期</view>
+      <image src='/imgs/icon-red-package-active.png' class='icon-package-active' wx:if="{{!packageItem.status == 1}}"></image>
+      <image src='/imgs/icon-red-package-used.png' class='icon-package-used' wx:else></image>
+    </view>
+  </view>
+  <view class='limit-content'>
+    <view class='limit-content-top' catchtap='onChangeLimitBoxStausHandler' wx:if="{{packageItem.city_restricts.length || packageItem.store_restricts.length || packageItem.goods_restricts.length}}">
+      <view class='limit-content-top-text'>
+        红包满足以下条件可用
+      </view>
+      <view class='limit-content-top-icon'>
+        <image src='/imgs/icon-arrow-top.png' class='{{!showLimitBoxStatus?"bottom":""}}'></image>
+      </view>
+    </view>
+    <view class='limit-content-top' wx:else>
+      <view class='limit-content-top-text'>全场所有品类通用</view>
+    </view>
+    <view class='limit-items-content' wx:if="{{showLimitBoxStatus}}">
+      <view class='limit-item-content'>
+        <view class='limit-item-title'>地区限制:</view>
+        <view class='limit-item-values' wx:if="{{packageItem.city_restricts.length}}">
+          <text wx:for="{{packageItem.city_restricts}}"  wx:key="{{index}}">{{item.city_name}}{{index+1<packageItem.city_restricts.length?"、":""}}</text>
+        </view>
+        <view class='limit-item-values' wx:else>无限制</view>
+      </view>
+      <view class='limit-item-content'>
+        <view class='limit-item-title'>门店限制:</view>
+        <view class='limit-item-values' wx:if="{{packageItem.store_restricts.length}}">
+          <text wx:for="{{packageItem.store_restricts}}" wx:key="{{index}}">{{item.store_name}}{{index+1<packageItem.store_restricts.length?"、":""}}</text>
+        </view>
+        <view class='limit-item-values' wx:else>无限制</view>
+      </view>
+      <view class='limit-item-content'>
+        <view class='limit-item-title'>品类限制:</view>
+        <view class='limit-item-values' wx:if="{{packageItem.goods_restricts.length}}">
+          <text wx:for="{{packageItem.goods_restricts}}" wx:key="{{index}}">{{item.category_name}}{{index+1<packageItem.goods_restricts.length?"、":""}}</text>
+        </view>
+        <view class='limit-item-values' wx:else>无限制</view>
+      </view>
+    </view>
+  </view>
+</view>

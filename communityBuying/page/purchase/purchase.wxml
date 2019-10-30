@@ -1,0 +1,281 @@
+<!--page/purchase/purchase.wxml-->
+<view class='P-purchase {{state.isIphoneX?"isIphoneX":""}} {{state.choosePackageStatus || state.onComfirmBoxStatus?"limit-scroll":""}}'>
+
+  <!-- <view class='header-top-tips'>
+    <view class=''>选择小区门店，可享受免费代收服务</view>
+  </view> -->
+
+  <view class='header-top-tips highLight'>
+    <view class=''>已享受免费代收服务，到货后请到店自提</view>
+  </view>
+  <view class='card-content'>
+    <view class='card-content-title-box'>
+      <view class='card-content-title-icon'></view>
+      <view class='card-content-title'>自提地址</view>
+    </view>
+
+    <view class='address-container'>
+
+      <!-- <view class='address-info' wx:if="{{state.address}}" catchtap='onSelectAddress'>
+        <view class='address-info-desc'>
+          <view class='user-info-content'>
+            <view>收货人：{{state.address.userName}}</view>
+            <view>{{state.address.telNumber}}</view>
+          </view>
+          <view class='user-info-content'>
+            收货地址：{{state.address.provinceName}}{{state.address.cityName}}{{state.address.countyName}}{{state.address.detailInfo}}
+          </view>
+        </view>
+        <image class='address-info-arrow'></image>
+      </view>
+      <view class='address-info-empty' wx:if="{{!state.address && !state.needOpenSettingBtn}}" catchtap='onSelectAddress'>
+        添加收货地址（点击添加）
+      </view>
+      <button open-type='openSetting' wx:if="{{!state.address && state.needOpenSettingBtn}}" class='address-info-empty' bindopensetting="openSettingHandler">
+        添加收货地址（点击添加）
+      </button>  -->
+
+      <view class='address-info' wx:if="{{state.address}}">
+        <view class='address-info-desc'>
+          <view class='location-detail-content two-ellipsis'>
+            <!-- <text class='location-detail-tips'>[提货地址]</text> -->
+            <text>{{state.address.name}}(团长: {{state.address.contact}})</text>
+          </view>
+          <view class='user-info-content'>
+            <view>{{state.address.address}}</view>
+            <!-- <view class='location-concat-phone'>{{state.address.canSeedMobile}}</view> -->
+          </view>
+        </view>
+        <!-- <image class='address-info-arrow' src='/imgs/icon-arrow-address-right.png'></image> -->
+      </view>
+      <view class='address-info-empty' wx:if="{{!state.address}}" catchtap='onGotoLocationListHandler'>
+        <view>选择提货地址（点击选择）</view>
+        <image class='address-info-arrow' src='/imgs/icon-arrow-address-right.png'></image>
+      </view>
+
+    </view>
+  </view>
+
+  <view class='card-content'>
+    <view class='card-content-title-box'>
+      <view class='card-content-title-icon'></view>
+      <view class='card-content-title'>提货人信息</view>
+    </view>
+    <view class='buyer-info'>
+      <view class='buyer-info-item'>
+        <!-- <image src='/imgs/icon-buyer-address-tips.png'></image> -->
+        <view class='buyer-info-item-text'>提货人</view>
+        <input class='buyer-info-item-value' bindinput='onInputBuyerNameHandler' placeholder-class='buyer-info-item-value-holder' placeholder='请填写姓名' value='{{data.buyerName}}' wx:if="{{!state.onComfirmBoxStatus}}"></input>
+        <view class='buyer-info-item-value' wx:else>{{data.buyerName}}</view>
+      </view>
+      <view class='buyer-info-item'>
+        <!-- <image src='/imgs/icon-buyer-address-tips.png'></image> -->
+        <view class='buyer-info-item-text'>手机号</view>
+        <input class='buyer-info-item-value' bindinput='onInputBuyerPhoneHandler' placeholder-class='buyer-info-item-value-holder' placeholder='请填写手机号码' value='{{data.buyerPhone}}' wx:if="{{!state.onComfirmBoxStatus}}"></input>
+        <view class='buyer-info-item-value' wx:else>{{data.buyerPhone}}</view>
+      </view>
+      <view class='buyer-info-item'>
+        <!-- <image></image> -->
+        <view class='buyer-info-item-text others'>备注</view>
+        <input class='buyer-info-item-value' bindinput='onInputBuyerTextHandler' placeholder-class='buyer-info-item-value-holder' placeholder='请填写门牌号，例1栋308室' value='{{data.buyerText}}' wx:if="{{!state.onComfirmBoxStatus}}"></input>
+        <view class='buyer-info-item-value' wx:else>{{data.buyerText?data.buyerText:"请填写门牌号，例1栋308室"}}</view>
+    </view>
+  </view>
+
+  </view>
+  
+  <view class='card-content card-content-except'>
+    <view class='order-pro-container' wx:for="{{data.productsRecom}}" wx:key="{{index}}" wx:for-item="itemName">
+      <view class='order-pro-title-box'>
+       <!--本订单由小区店主为您代收配送-->
+        <view class='order-pro-title'>
+          预计{{itemName[0].expected_reach_time}}可提货
+        </view>
+        <!-- <view wx:for="{{itemName}}">{{data.productsAllNum}}件商品</view> -->
+      </view>
+      <view class='order-pro-lists'>
+
+        <view class='order-pro-lists-contentet {{state.switchHeight==false&&itemName.length>3?"order-pro-lists-hidden":""}}'> 
+
+        <view class='order-pro-item half-border-top' wx:for="{{itemName}}" wx:key="{{index}}" wx:if="{{itemName.length>0}}">
+          <view class='item-info-container'>
+            <image src='{{item.picture ? data.qiniuDomain+item.picture:""}}'></image>
+            <view class='item-info-content'>
+
+              <view class='order-item-info-title-box'>
+                <view class='order-item-info-title'>{{item.goods_name}}</view>
+                <view class='order-item-info-price'>¥  {{item.our_price/100}}</view>
+              </view>
+              <view class='order-item-info-sku'>
+                <view class='order-item-info-sku-name'>{{item.sku_name}}</view>
+                <view class='order-item-info-sku-num'>x{{item.num}}</view>
+              </view>
+
+              <!-- <view class='item-info-title'>{{item.goods_name}}</view>
+              <view class='item-info-weight'>{{item.sku_name}}</view>
+              <view class='item-price-container'>
+                <view class='pro-price'>¥ {{item.our_price/100}}</view>
+              </view> -->
+            </view>
+          </view>
+          <!-- <view class='item-info-num'>
+            <view class='pro-num-text'>购买数量</view>
+            <view class='pro-num-actions'>
+              <view class='action-desc' data-index="{{index}}" catchtap='onNumDescHandler' wx:if="{{item.num > 1}}">-</view>
+              <view class='action-num'>{{item.num}}</view>
+              <view class='action-add' data-index="{{index}}" catchtap='onNumAddHandler'>+</view>
+            </view>
+          </view> -->
+          
+        </view>
+       </view>
+
+         <view class="more-products {{state.switchHeight==false?'more-products-style':''}}" catchtap='onSwitchHeightHandler' wx:if="{{itemName.length>3}}">
+          <view class="products-length"> 共{{itemName.length}}件商品</view>
+           <image class="arrow-icon {{state.switchHeight==true?'up-arrow-icon':''}}" src="/imgs/arrow_up.svg"></image>
+         </view>
+      </view>
+    </view>
+  </view>
+
+  <view class='card-content'>
+    <view class='order-extra-items'>
+      <view class='order-extra-item'>
+        <view class='order-extra-item-text'>商品金额</view>
+        <view class='order-extra-item-value'>
+          <text>¥</text>{{state.goodsPrice/100}}
+        </view>
+      </view>
+      <view class='order-extra-item'>
+        <view class='order-extra-item-left'>
+          <image src='/imgs/icon-red-package.png' class='icon-red-package'></image>
+          <view class='order-extra-item-text'>红包</view>
+        </view>
+        <view class='order-extra-item-right' catchtap='onChangePackageBoxStatusHandler'>
+          <block wx:if="{{state.address}}">
+            <view class='order-extra-item-value black' wx:if="{{data.canUsePackageNum == 0}}">暂无可用红包</view>
+            <view class='order-extra-item-value red' wx:if="{{data.canUsePackageNum && data.selectPackageItem == ''}}">{{data.canUsePackageNum}}个可用</view>
+            <view class='order-extra-item-value red' wx:if="{{data.canUsePackageNum && data.selectPackageItem !== ''}}">-  ¥{{data.selectPackageItem.amount/100}}</view>
+          </block>
+          <block wx:else>
+            <view class='order-extra-item-value black'>请先选择提货地址</view>
+          </block>
+          <image src='/imgs/icon-arrow-default.png' class='icon-arrow-default'></image>
+        </view>
+        
+      </view>
+      <view class='order-extra-item'>
+        <view></view>
+        <view class='order-extra-item-right'>
+          <view class='order-extra-item-value-total'>共{{data.products.length}}件商品</view>
+          <view class='order-extra-item-value-total'>小计：<text>￥{{data.selectPackageItem?state.totalPrice/100:state.goodsPrice/100}}</text></view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- <view class='bottom-line'></view> -->
+
+  
+
+    
+
+  
+  
+
+  
+
+  <!-- <view class='pay-type-container'>
+    <view class='pay-type-title'>
+      <view class='text'>支付方式</view>
+      <view class='text'>在线支付</view>
+    </view>
+    <view class='pay-type-content'>
+      <view class='pay-type-item'>
+        <image src='/imgs/icon-pay-wechat.png'></image>
+        <view class='pay-type-item-info'>
+          <view class='pay-type-item-title'>
+            <view class='pay-word'>微信支付</view>
+            <view class='pay-word-recommend'>推荐</view>
+          </view>
+          <view class='pay-type-item-desc'>
+            亿万用户的选择，更快更安全
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class='pay-type-title'>
+      <view class='text'>运费</view>
+      <view class='text'>¥{{data.fee/100}}</view>
+    </view>
+  </view> -->
+
+  <view class='footer-container {{state.isIphoneX?"isIphoneX":""}}'>
+    <view class='total-price'>合计<text>¥{{data.selectPackageItem?state.totalPrice/100:state.goodsPrice/100}}</text></view>
+    <form report-submit bindsubmit="formSubmit">
+      <button form-type='submit' class='btn-buy'>立即付款</button>
+    </form>
+  </view>
+
+  <view class='comfirm-order-container' wx:if="{{state.onComfirmBoxStatus}}">
+    <view class='comfirm-order-content'>
+      <view class='comfirm-order-title-box'>
+        <view class='comfirm-order-title'>
+          此商品需要您到店自提，请确认提货信息
+        </view>
+        <!-- <view class='comfirm-order-tips'>
+          <image src='/imgs/icon-arrive-time-oclock.png'></image>
+          <view>预计提货时间：2018-11-25 17:00</view>
+        </view> -->
+      </view>
+      <view class='comfirm-order-info-content'>
+        <view class='comfirm-order-info-item'>
+          <view class='comfirm-order-info-item-text'>团长:</view>
+          <view class='comfirm-order-info-item-value'>
+            {{state.address.contact}}
+          </view>
+        </view>
+        <view class='comfirm-order-info-item'>
+          <view class='comfirm-order-info-item-text'>门店:</view>
+          <view class='comfirm-order-info-item-value'>
+            {{state.address.name}}
+          </view>
+        </view>
+        <view class='comfirm-order-info-item'>
+          <view class='comfirm-order-info-item-text'>地址:</view>
+          <view class='comfirm-order-info-item-value'>
+            {{state.address.address}}
+          </view>
+        </view>
+      </view>
+      <view class='comfirm-order-actions'>
+        <view class='comfirm-order-action cancel' catchtap='onCloseOrderComfirmHandler'>取消</view>
+        <view class='comfirm-order-action sure' catchtap='onSureOrderComfirmHandler'>确认</view>
+      </view>
+    </view>
+    
+  </view>
+
+  <view class='choose-package-container' wx:if="{{state.choosePackageStatus}}">
+    <view class='choose-package-content {{state.isIphoneX?"isIphoneX":""}}'>
+      <view class='choose-package-title'>使用红包</view>
+      <scroll-view class='choose-package-lists' scroll-y wx:if="{{data.packageList.length>0}}">
+        <view class='package-item' catchtap='onCancelUsePackageHandler'>
+          <view class='package-item-text'>不使用红包</view>
+          <view>
+            <image src='/imgs/icon-check-default.png' wx:if="{{data.selectPackageItem !==''}}"></image>
+            <image src='/imgs/icon-check-active.png' wx:else></image>
+          </view>
+        </view>
+        <packageItem wx:for="{{data.packageList}}" wx:key="{{index}}" packageType="choose" packageItem="{{item}}" selectPackageId="{{data.selectPackageItem.id}}" bind:onchooseevent="onChoosePackageItemHandler"></packageItem>
+      </scroll-view>
+      <view class='choose-package-empty' wx:else>
+        <emptyTips emptyIcon="{{state.emptyIcon}}" emptyTips="{{state.emptyTips}}"></emptyTips>
+      </view>
+      <view class='btn-package-close' catchtap='onChangePackageBoxStatusHandler'>返回</view>
+    </view>
+  </view>
+
+  <alertingTips alertingStatus="{{state.alertingStatus}}" alertingWords="{{state.alertingWords}}"></alertingTips>
+
+</view>

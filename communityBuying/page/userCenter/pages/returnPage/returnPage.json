@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "alertingTips": "../../../../components/alertingTips/alertingTips",
+    "orderItem": "../../../../components/orderItem/orderItem"
+  }
+}

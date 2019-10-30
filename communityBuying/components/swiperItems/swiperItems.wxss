@@ -1,0 +1,90 @@
+/* components/swiperItems/swiperItems.wxss */
+/* .user-dots{
+  text-align: center;
+  margin-top: 8rpx;
+  height: 12rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.user-dots text{
+  width: 24rpx;
+  height: 24rpx;
+  background-color: #E8E8E8;
+  margin: 0 10rpx;
+  display: inline-block;
+  border-radius: 50%;
+  zoom: 0.5;
+}
+.user-dots text.active{
+  background-color: #FFE849;
+} */
+.swiper-container{
+   
+}
+.C-swiper-content{
+  font-size: 0rpx;
+  width: auto;
+  margin-left: -30rpx;
+}
+swiper{
+  overflow: hidden;
+}
+/* #custom-swiper{
+   -moz-border-radius: 10rpx !important;
+   -webkit-border-radius: 10rpx !important;
+   border-radius: 10rpx !important;
+} */
+.slide-image{
+    -moz-border-radius: 10rpx !important;
+   -webkit-border-radius: 10rpx !important;
+   border-radius: 10rpx !important;
+}
+.slide{
+  margin-left: 30rpx;
+}
+.user-dots-num{
+  position: absolute;
+  right: 40rpx;
+  bottom: 10rpx;
+  font-family: PingFangSC-Medium;
+  font-size: 20rpx;
+  color: #EEEEEE;
+  z-index: 5;
+}
+
+.user-dots-pro{
+  position: absolute;
+  right: 30rpx;
+  bottom: 138rpx;
+  width: 62rpx;
+  height: 40rpx;
+  line-height: 40rpx;
+  background: rgba(51, 51, 51, 0.3);
+  border-radius: 20rpx;
+  font-family: PingFangSC-Medium;
+  font-size: 20rpx;
+  color: #FFFFFF;
+  text-align: center;
+}
+
+.user-dots-tab{
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 10rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.user-dots-tab-item{
+  margin: 0 6rpx;
+  width: 8rpx;
+  height: 8rpx;
+  border-radius: 50%;
+  background-color: #fff;
+}
+.user-dots-tab-item.active{
+  width: 30rpx;
+  border-radius: 6rpx;
+}

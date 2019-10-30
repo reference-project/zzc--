@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "comfirmTips": "../../../../components/comfirmTips/comfirmTips",
+    "alertingTips": "../../../../components/alertingTips/alertingTips"
+  }
+}

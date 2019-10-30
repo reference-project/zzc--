@@ -1,0 +1,10 @@
+<!--components/comfirmTips/comfirmTips.wxml-->
+<view class='confirm-delete-container' catchtap='onCancelDeleteHandler'>
+  <view class='comfirm-delete-content'>
+    <view class='comfirm-delete-text'>{{actionObj.submitWord}}?</view>
+    <view class='comfirm-delete-btns'>
+      <view class='delete-confirm' catchtap='onConfirmDeleteHandler'>{{actionObj.submitWord}}</view>
+      <view class='delete-hesitate' catchtap='onCancelDeleteHandler'>{{actionObj.cancelWord}}</view>
+    </view>
+  </view>
+</view>

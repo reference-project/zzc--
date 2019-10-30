@@ -1,0 +1,15 @@
+{
+  "enablePullDownRefresh": true,
+  "backgroundTextStyle":"dark",
+  "usingComponents": {
+    "swiperItems": "../../../components/swiperItems/swiperItems",
+    "loadMore": "../../../components/loadMore/loadMore",
+    "authorize":"../../../components/authorize/authorize",
+    "rushBuyingItem": "../../../components/rushBuyingItem/rushBuyingItem",
+    "skeletonScreen":"../../../components/skeletonScreen/skeletonScreen",
+    "alertingTips": "../../../components/alertingTips/alertingTips",
+    "packageItem": "../../../components/packageItem/packageItem",
+    "naviBackBtn": "../../../components/naviBackBtn/naviBackBtn"
+  },
+  "navigationBarBackgroundColor": "#fed402"
+}

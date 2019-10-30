@@ -1,0 +1,107 @@
+<!--page/userCenter/pages/applyIntroducePage/applyIntroducePage.wxml-->
+<view class='P-apply-introduce {{state.isIphoneX?"isIphoneX":""}}'>
+
+  <view class='intro-items'>
+    <view class='intro-item'>
+      <view class='intro-item-title'>
+        <image src='/imgs/icon-apply-intro-title-bg.png'></image>
+        <view>关于壹手仓鲜品</view>
+      </view>
+      <view class='intro-item-value'>壹手仓鲜品是迎合当下社群经济，创新“线下门店+社群+团购”
+模式的电商平台，精选优质厂地直供商品，通快捷的物流和贴
+心服务，帮助店主零成本、零风险轻松赚钱。</view>
+    </view>
+    <view class='intro-item'>
+      <view class='intro-item-title'>
+        <image src='/imgs/icon-apply-intro-title-bg.png'></image>
+        <view>小区店主的日常工作</view>
+      </view>
+      <view class='intro-item-lists'>
+        <view class='intro-item-item'>
+          <view class='circle-blue'></view>
+          <view class='intro-item-item-value'>参加公司组织的实操技能培训</view>
+        </view>
+        <view class='intro-item-item'>
+          <view class='circle-blue'></view>
+          <view class='intro-item-item-value'>在公司指导下建立社区导购群，拓展新客户</view>
+        </view>
+        <view class='intro-item-item'>
+          <view class='circle-blue'></view>
+          <view class='intro-item-item-value'>复制公司产品推广素材，传达抢购信息到社群，促成销售</view>
+        </view>
+        <view class='intro-item-item'>
+          <view class='circle-blue'></view>
+          <view class='intro-item-item-value'>通知邻居拿货或送货上门，做好服务与售后工作</view>
+        </view>
+      </view>
+    </view>
+    <view class='intro-item'>
+      <view class='intro-item-title'>
+        <image src='/imgs/icon-apply-intro-title-bg.png'></image>
+        <view>做小区店主的好处</view>
+      </view>
+      <view class='intro-item-lists'>
+        <view class='intro-item-item'>
+          <view class='circle-blue'></view>
+          <view class='intro-item-item-value'>为小区用户提供便捷的购物方式</view>
+        </view>
+        <view class='intro-item-item'>
+          <view class='circle-blue'></view>
+          <view class='intro-item-item-value'>拉近小区邻里关系，助力温馨和谐社区的打造</view>
+        </view>
+        <view class='intro-item-item'>
+          <view class='circle-blue'></view>
+          <view class='intro-item-item-value'>提升自我收入和能力，打造个人影响力</view>
+        </view>
+      </view>
+    </view>
+    <view class='intro-item'>
+      <view class='intro-item-title'>
+        <image src='/imgs/icon-apply-intro-title-bg.png'></image>
+        <view>申请小区店主的条件</view>
+      </view>
+      <view class='intro-item-lists'>
+        <view class='intro-item-item'>
+          <view class='circle-blue'></view>
+          <view class='intro-item-item-value'>属于该小区业主，有线下实体门店的优选</view>
+        </view>
+        <view class='intro-item-item'>
+          <view class='circle-blue'></view>
+          <view class='intro-item-item-value'>拥有小区性质的200人以上微信群</view>
+        </view>
+        <view class='intro-item-item'>
+          <view class='circle-blue'></view>
+          <view class='intro-item-item-value'>愿意努力付出，有创业者心态</view>
+        </view>
+        <view class='intro-item-item'>
+          <view class='circle-blue'></view>
+          <view class='intro-item-item-value'>全心全意为小区用户服务，有良好的服务意识</view>
+        </view>
+        <view class='intro-item-item'>
+          <view class='circle-blue'></view>
+          <view class='intro-item-item-value'>维护公司形象，有能力、有态度和实干者</view>
+        </view>
+        <view class='intro-item-item'>
+          <view class='circle-blue'></view>
+          <view class='intro-item-item-value'>可提供一处小区统一收货点</view>
+        </view>
+        <view class='intro-item-item more-line'>
+          <view class='circle-blue'></view>
+          <view class='intro-item-item-value'>活动期限时免费加盟（后续加盟需购买1500元壹手仓礼包
+（1000元押金+500元加盟费））</view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class='intro-logo-container'>
+    <image src='/imgs/icon-logo-big.png' mode='widthFix'></image>
+    <view class='chat-tips'>与我们联系，壹手仓鲜品大家族欢迎您</view>
+  </view>
+
+  <view class='footer-container {{state.isIphoneX?"isIphoneX":""}}'>
+    <button  open-type="getUserInfo" bindgetuserinfo="userInfoHandler">
+    <view class='btn-apply'>立即申请加盟</view>
+    </button>
+  </view>
+</view>

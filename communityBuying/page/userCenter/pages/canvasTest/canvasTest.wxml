@@ -1,0 +1,3 @@
+<!--pages/canvasTest/canvasTest.wxml-->
+<button type="primary" bindtap="save">保存当前绘图</button>
+<canvas canvas-id="myCanvas" class='canvas'/> 

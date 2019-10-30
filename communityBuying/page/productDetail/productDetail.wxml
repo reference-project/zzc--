@@ -1,0 +1,581 @@
+<!--page/productDetail/productDetail.wxml-->
+<scroll-view scroll-y="{{!state.shopCartBoxStatus}}" class='product-detail-scroll'>
+  <view class='product-detail-page'>
+    <view class='big-pic-container'>
+      <swiperItems imgsList="{{data.productDetail.images}}" domain="{{data.qiniuDomain}}" widthSize="750" userDots="proDetail" heightSize="{{750}}" ></swiperItems>
+      <!-- <view class='black-tips-shadow' wx:if="{{state.activityEnd && data.productDetail.stock > 0}}">
+        <view class=''>结束</view>
+        <view class=''>Close</view>
+      </view>
+      <view class='black-tips-shadow' wx:if="{{data.productDetail.stock == 0}}">
+        <view class=''>售罄</view>
+        <view class=''>Sell out</view>
+      </view> -->
+
+      <!-- <view class='pro-tips-box {{data.productDetail.images.length >1 ?"bottom":""}}'>
+        <view class='pro-sell-count' wx:if="{{data.productDetail.sell_count > 0 && !state.featureActivity}}">已售{{data.productDetail.sell_count}}件</view>
+        <view wx:else></view>
+        <view catchtap='onChangeShareBoxHandler' class='btn-pro-share'>
+          <image src='/imgs/icon-share-active.png'></image>
+        </view>
+      </view> -->
+    </view>
+
+    <view class='pro-nav-container'>
+      <view class='pro-nav-left {{state.activityEnd ? "shadow":""}}'>
+        <view class='pro-nav-price'>
+          <view class='pro-nav-price-new'>¥<text>{{data.productDetail.our_price?data.productDetail.our_price/100:""}}</text></view>
+          <!-- <view class='pro-nav-others'>
+            <view class='pro-nav-labels' wx:if="{{data.type == 1 || data.type == 2}}">
+              <view class='pro-nav-label num' wx:if="{{data.type == 1}}">团购价</view>
+              <view class='pro-nav-label num' wx:if="{{data.type == 2}}">预售价</view>
+              
+              <view class='pro-nav-label limit' wx:if="{{data.productDetail.limit_buy>0}}">限购{{data.productDetail.limit_buy}}件</view>
+            </view>
+          </view> -->
+          <view class='pro-nav-label num' wx:if="{{data.type == 1}}">团购价</view>
+          <view class='pro-nav-label num' wx:if="{{data.type == 2}}">预售价</view>
+          <view class='pro-nav-label flash' wx:if="{{data.type == 3}}">限时秒杀</view>
+        </view>
+        <view class='pro-nav-price-old'>¥<text>{{data.productDetail.market_price?data.productDetail.market_price/100:""}}</text></view>
+        
+      </view>
+      <view class='pro-nav-right' wx:if="{{!state.activityEnd && data.productDetail.stock>0 && !data.productDetail.isUnderStatus}}">
+
+        <image src='/imgs/icon-trangle-left-black.png'  class='pro-nav-right-inner'>
+        </image>
+        
+        <view class='pro-nav-right-content'>
+          <view class='pro-nav-time-text' wx:if="{{state.featureActivity}}">距离开始</view>
+          <block wx:if="{{data.type==2 && !state.featureActivity}}">
+            <view class='pro-nav-time-text' wx:if="{{!state.featureActivity && state.startStatus}}">距离结束时间</view>
+            <view class='pro-nav-time-text' wx:if="{{!state.featureActivity && state.endStatus}}">距离<text>发货</text>还剩</view>
+            <view class='pro-nav-time-text' wx:if="{{!state.featureActivity && state.deliverStatus}}">距离<text>送达</text>还剩</view>
+          </block>
+          <block wx:if="{{data.type==1 && !state.featureActivity}}">
+            <view class='pro-nav-time-text' wx:if="{{!state.featureActivity}}">剩余时间</view>
+          </block>
+          <block wx:if="{{data.type==3 && !state.featureActivity}}">
+            <view class='pro-nav-time-text' wx:if="{{!state.featureActivity}}">距离结束还剩</view>
+          </block>
+          
+          <view class='pro-nav-time'>
+            <text wx:if="{{state.countDownDay>0}}" class="time-day">{{state.countDownDay}}天</text><text>{{state.countDownHour}}</text>:<text>{{state.countDownMinute}}</text>:<text>{{state.countDownSecond}}</text>
+          </view>
+        </view>
+        
+      </view>
+      <view class='pro-nav-right end' wx:if="{{state.activityEnd || data.productDetail.stock <= 0 || data.productDetail.isUnderStatus}}">
+        <image src='/imgs/icon-trangle-left-black.png'  class='pro-nav-right-inner'>
+        </image>
+        <view class='pro-status-end' wx:if="{{state.activityEnd && data.productDetail.stock>0}}">
+          <view class='pro-status-end-text-eng'>finished</view>
+          <view class='pro-status-end-text-ch'>已结束</view>
+        </view>
+        <view class='pro-status-end' wx:if="{{data.productDetail.stock <= 0}}">
+          <view class='pro-status-end-text-eng'>sold out</view>
+          <view class='pro-status-end-text-ch'>已抢完</view>
+        </view>
+        <view class='pro-status-end' wx:if="{{data.productDetail.isUnderStatus && data.productDetail.stock>0}}">
+          <view class='pro-status-end-text-eng'>invalid</view>
+          <view class='pro-status-end-text-ch'>已下架</view>
+        </view>
+      </view>
+    </view>
+
+
+    <view class='card-content'>
+      <view class='pro-desc-container'>
+        <view class='pro-desc-title-box'>
+          <view class='pro-desc-title two-ellipsis'>{{data.productDetail.goods_name}}</view>
+          <view class='pro-desc-share-box' catchtap='onChangeShareBoxHandler'>
+            <image src='/imgs/icon-share-new.png'></image>
+            <view class='pro-desc-share-text'>分享</view>
+          </view>
+        </view>
+        
+        <!-- <view class='pro-desc-desc' wx:if="{{data.productDetail.sellpoint !== null}}">{{data.productDetail.sellpoint}}</view> -->
+        <!-- <view class='pro-desc-member' wx:if="{{data.productDetail.invented_sell > 0 }}">已售{{data.productDetail.invented_sell}}件</view> -->
+
+        <view class='pro-desc-tags' wx:if="{{data.productDetail.tags}}">
+          <view class='pro-desc-tag {{item.actived==1?"active":""}}' wx:for="{{data.productDetail.tags}}" wx:key="{{index}}">{{item.value}}</view>
+        </view>
+
+        
+
+        <!-- 预售时间 -->
+        <view class='time-arrive-content booking' wx:if="{{data.type==2}}">
+          <view class='time-arrive-left booking'>预售</view>
+          <view class='time-arrive-right'>
+            <view class='booking-time-content'>
+              <view class='booking-time-inner'>
+                <view class='booking-time-items'>
+
+                  <view class='booking-time-item'>
+                    <image src='/imgs/icon-booking-start-active.png'></image>
+                    <view class='booking-time-item-text'>{{data.productDetail.start_time_util}}开始</view>
+                  </view>
+                  <view class='booking-time-line-content'>
+                    <view class='booking-time-line-active' style="width:{{state.activityEnd || state.deliverStatus || state.endStatus?97:state.startStatus?(state.hasDuringHours/state.allDuringHours)*97:0}}rpx;"></view>
+                  </view>
+
+                  <view class='booking-time-item'>
+                    <image src='/imgs/icon-booking-end-active.png' wx:if="{{state.endStatus || state.deliverStatus || state.activityEnd}}"></image>
+                    <image src='/imgs/icon-booking-end-default.png' wx:else></image>
+                    <view class='booking-time-item-text'>{{data.productDetail.end_time_util}}结束</view>
+                  </view>
+                  <view class='booking-time-line-content'>
+                    <view class='booking-time-line-active' style="width:{{state.activityEnd || state.deliverStatus ?97:state.endStatus?(state.hasDuringHours/state.allDuringHours)*97:0}}rpx;"></view>
+                  </view>
+
+                  <view class='booking-time-item'>
+                    <image src='/imgs/icon-booking-deliver-active.png' wx:if="{{state.deliverStatus || state.activityEnd}}"></image>
+                    <image src='/imgs/icon-booking-deliver-default.png' wx:else></image>
+                    <view class='booking-time-item-text'>{{data.productDetail.deliver_time_util}}发货</view>
+                  </view>
+                  <view class='booking-time-line-content'>
+                    <view class='booking-time-line-active' style="width:{{(state.activityEnd)?97:state.deliverStatus?(state.hasDuringHours/state.allDuringHours)*97:0}}rpx;"></view>
+                  </view>
+
+                  <view class='booking-time-item'>
+                    <image src='/imgs/icon-booking-arrive-active.png' wx:if="{{state.activityEnd}}"></image>
+                    <image src='/imgs/icon-booking-arrive-default.png' wx:else></image>
+                    <view class='booking-time-item-text'>{{data.productDetail.arrive_time_util}}前送达</view>
+                  </view>
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+        
+
+        <view class='time-arrive-content tomorrow' wx:if="{{data.type==3 || data.type==1}}">
+          <view class='time-arrive-left'>次日达</view>
+          <view class='time-arrive-right tomorrow'>
+            <view class='time-arrive-tomorrow-text'>{{data.afterTomorrowStatus?"22点后下单":"22点前下单"}}，预计{{data.afterTomorrowStatus?"后天":"明天"}}（{{data.arriveMonth}}月{{data.arriveDay}}日）可自提</view>
+            <view class='time-arrive-tomorrow-tips'>同城次日配送到自提点</view>
+          </view>
+        </view>
+        <view class='pro-desc-item-box' wx:if="{{data.productDetail.sell_count > 0 }}">
+          <view class='pro-desc-item-text'>销量</view>
+          <view class='pro-desc-item-value'>已售{{data.productDetail.sell_count}}件，仅剩<text>{{data.productDetail.stock}}</text>件</view>
+        </view>
+        <view class='pro-desc-item-box' wx:if="{{data.productDetail.limit_buy > 0 }}">
+          <view class='pro-desc-item-text'>限购</view>
+          <view class='pro-desc-item-value'>每人限购{{data.productDetail.limit_buy}}件</view>
+        </view>
+        <view class='pro-desc-item-box' wx:if="{{data.productDetail.sku_name}}">
+          <view class='pro-desc-item-text'>已选</view>
+          <view class='pro-desc-item-value'>{{data.productDetail.sku_name}}，{{state.totalBuyNum}}件</view>
+        </view>
+        <!-- <view class='pro-sale-stock'>
+          <view class='pro-sale-stock-circle'></view>
+          <view class='pro-sale-stock-num'>商品库存  {{data.productDetail.stock}}件</view>
+        </view> -->
+        
+      </view>
+    </view>
+
+    
+    <view class='card-content buyers' wx:if="{{data.productDetail.buyers && data.productDetail.buyers.length}}">
+      <view class='buyers-content'>
+        <view class='buyers-title'>
+          <view class='buyers-text'>购买记录</view>
+          <!-- <view class='buyers-all-num'>已有<text>102</text>人购买</view> -->
+        </view>
+        <view class='buyer-items'>
+          <image src='{{item.avatar}}' wx:for="{{data.productDetail.buyers}}" wx:key="{{index}}" wx:if="{{index <=8}}"></image>
+          <image src='/imgs/icon-pro-buyer-more.png'></image>
+        </view>
+      </view>
+      <!-- <view class='pro-buyer-container' wx:if="{{data.productDetail.buyers && data.productDetail.buyers.length}}">
+        <view class='pro-buyer-items'>
+          <view class='pro-buyer-item' wx:for="{{data.productDetail.buyers}}" wx:key="{{index}}">
+            <image src='{{item.avatar}}' class='pro-buyer-avatar'></image>
+            <view class='pro-buyer-nickname'>{{item.nickname}}</view>
+          </view>
+        </view>
+        <view class='pro-buyer-text'>等刚刚购买了此商品</view>
+      </view> -->
+    </view>
+    
+
+    
+
+    
+
+    <!-- 当开团产品有推荐拼团时，显示 -->
+    <view class='recommend-ground' wx:if="{{data.groups && data.groups.length > 0 && data.isGroupBuyStatus}}">
+      <view class='recommend-title'>
+        <view>以下小伙伴正在发起拼团，可直接参与</view>
+        <view class='recommend-load-more' catchtap='onChangeGroupsBoxStatus'>查看更多<image src='/imgs/icon-arrow-default.png' ></image></view>
+      </view>
+      <view class='scroll-view-box'>
+        <view class='scroll-view' style='transition:{{state.returnBack?"":"top 0.5s"}};top:-{{state.scrollTop}}px'>
+
+          <view class='recommend-item' wx:for="{{data.groups}}" wx:key="{{index}}">
+            <view class='recommend-avatar'>
+              <image src='{{item.avatar}}'></image>
+            </view>
+            <view class='recommend-desc'>
+              <view class='recommend-name'>{{item.user_nickname}}</view>
+              <view class='recommend-tips-content'>
+                <view class='recommend-tips'>还差<text class='num'>{{item.member_count - item.participated_count}}</text>人</view>
+                <view class='recommend-timer'>剩余<text class='timer'>{{item.countDownDay}}1天</text> <text class='timer'>2{{item.countDownHour}}:</text><text class='timer'>3{{item.countDownMinute}}:</text><text class='timer'>4{{item.countDownSecond}}</text> 结束
+                </view>
+              </view>
+              
+            </view>
+            <view class='recommend-button {{!item.activityEnd ? "":"disabled"}}' catchtap='{{!item.activityEnd ? "onChangeGroupBuyingStatus":""}}' data-item="{{item}}" wx:if="{{!item.activityEnd}}">{{!item.activityEnd ? "去凑团":"已结束"}}</view>
+          </view>
+
+          <view class='recommend-item' wx:for="{{data.groups}}" wx:key="{{index}}" wx:if="{{index < 2}}">
+            <view class='recommend-avatar'>
+              <image src='{{item.avatar}}'></image>
+            </view>
+            <view class='recommend-desc'>
+              <view class='recommend-name'>{{item.user_nickname}}</view>
+              <view class='recommend-tips-content'>
+                <view class='recommend-tips'>还差<text class='num'>{{item.member_count - item.participated_count}}</text>人</view>
+                <view class='recommend-timer'>剩余<text class='timer'>{{item.countDownDay}}1天</text> <text class='timer'>2{{item.countDownHour}}:</text><text class='timer'>3{{item.countDownMinute}}:</text><text class='timer'>4{{item.countDownSecond}}</text> 结束
+                </view>
+              </view>
+              
+            </view>
+            <view class='recommend-button {{!item.activityEnd ? "":"disabled"}}' catchtap='{{!item.activityEnd ? "onGoToJoin":""}}' data-item="{{item}}" wx:if="{{!item.activityEnd}}">{{!item.activityEnd ? "去凑团":"已结束"}}</view>
+          </view>
+        </view>
+        <!-- <view class='scroll-view-mask'></view> -->
+      </view>
+
+      <!-- <view class='recommend-introduce-box'>
+        <view class='recommend-introduce-word'>
+          支付开团邀请1人参团，人数不足自动退款
+        </view>
+        <view class='recommend-introduce-arrow' catchtap='onGoToGroundBuyingIntrodce'>
+          <text>玩法介绍</text>
+          <image src='../../imgs/icon-right-arrow.png'></image>
+        </view>
+      </view> -->
+    </view>
+
+    <view class='group-users-box' wx:if="{{state.groupsBoxStatus}}" >
+      <view class='group-users-content'>
+        <view class='group-users-scroll-box'>
+          <view class='group-users-title'>正在开团</view>
+          <scroll-view class='scroll-view-all' scroll-with-animation  scroll-y>
+            <view class='recommend-item' wx:for="{{data.groups}}" wx:key="{{index}}">
+              <view class='recommend-avatar'>
+                <image src='{{item.avatar}}'></image>
+              </view>
+              <view class='recommend-desc'>
+                <view class='recommend-name'>{{item.user_nickname}}</view>
+                <view class='recommend-tips'>还差<text class='num'>{{item.member_count - item.participated_count}}</text>人，剩余
+                <text class='timer'>{{item.countDownDay}}天</text> 
+                <text class='timer'>{{item.countDownHour}}:</text>
+                <text class='timer'>{{item.countDownMinute}}:</text>
+                <text class='timer'>{{item.countDownSecond}}</text> 结束
+                </view>
+              </view>
+              <view class='recommend-button {{!item.activityEnd ? "":"disabled"}}' catchtap='{{!item.activityEnd ? "onChangeGroupBuyingStatus":""}}' data-item="{{item}}" wx:if="{{!item.activityEnd}}">{{!item.activityEnd ? "去凑团":"已结束"}}
+              </view>
+            </view>
+          </scroll-view>
+          <view class='group-users-tips'>最多显示8个团</view>
+        </view>
+        <view class='group-users-close' catchtap='onChangeGroupsBoxStatus'>
+          <image src='../../imgs/icon-close-white.png'></image>
+        </view>
+      </view>
+    </view>
+
+    <view class='group-buying-status-container' wx:if="{{state.groupBuyingStatus}}">
+      <view class='group-buying-status-content'>
+        <view class='group-buying-status-info'>
+          <view class='group-buying-status-info-title'>参与天河区气到昏过去的拼单</view>
+          <view class='group-buying-status-info-tips'>
+            仅剩<text>1</text>个名额，<text>24:59:59</text>后结束
+          </view>
+          <view class='group-buying-status-info-pics'>
+            <view class='group-buying-status-info-pic-box'>
+              <image></image>
+              <view class='group-buying-status-info-pic-box-tips'>拼主</view>
+            </view>
+            <view class='group-buying-status-info-pic-box'>
+              <image></image>
+            </view>
+            <view class='group-buying-status-info-pic-box'>
+              <image></image>
+            </view>
+            <view class='group-buying-status-info-pic-box'>
+              <image></image>
+            </view>
+          </view>
+          <view class='group-buying-status-info-btn'>
+            参与拼团
+          </view>
+        </view>
+        <view class='group-buying-status-close' catchtap='onChangeGroupBuyingStatus'>
+          <image src='../../imgs/icon-close-white.png'></image>
+        </view>
+      </view>
+    </view>
+
+    <!-- <view class='pro-others-container'>
+      <view class='pro-service-content' wx:if="{{data.productDetail.service && data.productDetail.service !== null}}">
+        <view class='pro-service-text'>服务</view>
+        <view class='pro-service-desc'>{{data.productDetail.service}}</view>
+      </view>
+      <view class='pro-service-content'>
+        <view class='pro-service-text'>规格</view>
+        <view class='pro-service-desc'>{{state.selectSkuItem.sku_name?state.selectSkuItem.sku_name:"未选择"}}</view>
+      </view>
+    </view> -->
+
+   <!--猜你喜欢组件-->
+   <guessLike likeStyle="{{2}}" likePageStyle="{{'productDetail'}}" likeProData2="{{data.likeProData}}" likeProStaus="{{state.likeProStaus}}" bind:parentEventOther='onParentEvent'></guessLike>
+
+    <view class='pro-pic-container'>
+      <view class='pro-pic-title-box'>
+        <view class='pro-pic-title'>商品详情</view>
+        <view class='pro-pic-title-border'></view>
+      </view>
+      
+      <view class='pro-pic-desc-content'>
+
+        <view class='pro-pic-desc-top' wx:if="{{data.productDetail.sellpoint}}">
+          <view class='pro-pic-desc-top-intro'>商品特色</view>
+          <view class='pro-pic-desc-maohao'>
+            <image src='/imgs/icon-pro-maohao.png'></image>
+          </view>
+          <view class='pro-pic-desc-text'>{{data.productDetail.sellpoint}}</view>
+        </view>
+        
+        <view class='pro-pic-desc-items'>
+          <view class='pro-pic-desc-item' wx:if="{{data.productDetail.brand_name}}">
+            <text>品牌:</text>
+            <text>{{data.productDetail.brand_name}}</text>
+          </view>
+          <view class='pro-pic-desc-item' wx:if="{{data.productDetail.area}}">
+            <text>产地:</text>
+            <text>{{data.productDetail.area}}</text>
+          </view>
+          <view class='pro-pic-desc-item' wx:if="{{data.productDetail.net_weight}}">
+            <text>净含量:</text>
+            <text>{{data.productDetail.net_weight}}</text>
+          </view>
+          <view class='pro-pic-desc-item' wx:if="{{data.productDetail.unit}}">
+            <text>单位:</text>
+            <text>{{data.productDetail.unit}}</text>
+          </view>
+          <view class='pro-pic-desc-item' wx:if="{{data.productDetail.reserve}}">
+            <text>贮存方法:</text>
+            <text wx:if="{{data.productDetail.reserve == 1}}">常温</text>
+            <text  wx:if="{{data.productDetail.reserve == 2}}">冷藏</text>
+            <text  wx:if="{{data.productDetail.reserve == 3}}">冷冻</text>
+            <!-- <text  wx:if="{{data.productDetail.reserve == undefined}}">见包装</text> -->
+          </view>
+          <view class='pro-pic-desc-item' wx:if="{{data.productDetail.others}}">
+            <text>其他:</text>
+            <text>{{data.productDetail.others}}</text>
+          </view>
+        </view>
+
+        
+      </view>
+
+
+      <view class='pro-pic-lists'>
+        <image src='{{data.qiniuDomain + item}}' wx:for="{{data.productDetail.des_images}}" wx:key="{{index}}" mode='widthFix' lazy-load='{{true}}'></image>
+      </view>
+    </view>
+
+    <!-- 商品状态提示  即将开始 活动已结束 商品已抢完 -->
+    <view class='pro-status-text-content {{state.isIphoneX?"isIphoneX":""}} {{state.featureActivity?"feature":""}}' wx:if="{{data.productDetail.stock <= 0 || state.activityEnd || state.featureActivity || data.productDetail.isUnderStatus}}">
+      <text wx:if="{{state.featureActivity && data.productDetail.stock>0}}">即将开始</text>
+      <text wx:if="{{state.activityEnd && data.productDetail.stock>0}}">活动已结束</text>
+      <text wx:if="{{data.productDetail.stock <= 0}}">商品已抢完</text>
+      <text wx:if="{{data.productDetail.isUnderStatus && data.productDetail.stock>0}}">商品已下架</text>
+    </view>
+    
+    <!-- 返回团长端按钮 -->
+    <naviBackBtn wx:if="{{data.isFormMerchant}}" isIphoneX="{{state.isIphoneX}}"></naviBackBtn>
+
+    <!-- 底部按钮footer container-->
+    <view class='pro-footer-container {{state.isIphoneX?"isIphoneX-nav-footer":""}}'>
+      <block wx:if="{{false}}">
+        <view class='btn-home' catchtap='onGoToHomePageHandler'>
+          <image class='btn-home-icon' src='/imgs/icon-home-default.png'></image>
+          <view class='btn-home-text'>首页</view>
+        </view>
+        <view class='btn-buy-self' catchtap='onNowBuyHandler'>单价购买</view>
+        <view class='btn-buy-group' catchtap='onGroupBuyHandler'>
+          ¥<text class='btn-buy-group-price'>56</text><text class='btn-buy-group-text'>拼团</text>
+        </view>
+      </block>
+      <block wx:else>
+        <view class='btn-home' catchtap='onGoToHomePageHandler'>
+          <image class='btn-home-icon' src='/imgs/icon-home-default.png'></image>
+          <view class='btn-home-text'>首页</view>
+        </view>
+        <view class='btn-home' catchtap='onGoToCartPageHandler'>
+          <view class='cart-icon-box'>
+            <image class='btn-home-icon' src='/imgs/icon-cart-default.png'></image>
+            <view class='cart-tips-circle' wx:if="{{state.cartItemNumber>0}}">
+              {{state.cartItemNumber}}
+            </view>
+          </view>
+          <view class='btn-home-text'>购物车</view>
+        </view>
+        
+        <!-- 团购商品，库存大于0，活动未结束，活动已开始 -->
+        <block wx:if="{{(data.type ==1 || data.type ==3) && data.productDetail.stock>0 && !state.activityEnd && !state.featureActivity && !data.productDetail.isUnderStatus}}">
+          <view class='btn-add-cart' catchtap='onOpenShopCartBoxStatusHandler'>加入购物车</view>
+          <view class='btn-buy-now' catchtap='onNowBuyHandler' >
+            立即购买
+          </view>
+        </block>
+
+        <!-- 预售商品，库存大于0，活动未结束，活动已开始 -->
+        <block wx:if="{{data.type==2 && data.productDetail.stock>0 && !state.activityEnd && !state.featureActivity && !data.productDetail.isUnderStatus}}">
+          <view class='btn-add-cart {{!state.startStatus?"mask":""}}' catchtap='{{state.startStatus?"onOpenShopCartBoxStatusHandler":""}}'>加入购物车</view>
+          <view class='btn-buy-now {{!state.startStatus?"mask":""}}' catchtap='{{state.startStatus?"onNowBuyHandler":""}}' >
+            立即购买
+          </view>
+        </block>
+
+        <!-- 商品，库存 <= 0，活动已结束，活动未开始 -->
+        <block wx:if="{{state.activityEnd || state.featureActivity ||  data.productDetail.stock <= 0 || data.productDetail.isUnderStatus}}">
+          <view class='btn-add-cart mask'>加入购物车</view>
+          <view class='btn-buy-now mask'>
+            立即购买
+          </view>
+        </block>
+
+        <!-- <view class='btn-sale out' wx:if="{{data.productDetail.stock==0}}">已抢光</view> -->
+        <!-- <view class='btn-sale end' wx:if="{{state.activityEnd && data.productDetail.stock > 0}}">已结束</view> -->
+        <!-- <view class='btn-sale start' wx:if="{{state.featureActivity && data.productDetail.stock > 0}}">即将开抢</view> -->
+      </block>
+      
+    </view>
+
+    <view class='pro-shop-car-container' wx:if="{{state.shopCartBoxStatus}}">
+      <view class='pro-shop-car-content'>
+        <image class='pro-shop-car-close' src='/imgs/icon-close-new.png' catchtap='onCloseShopCartBoxStatusHandler'></image>
+
+        <!-- <view class='pro-shop-info'>
+          <image src='{{state.selectSkuItem.picture ? data.qiniuDomain+state.selectSkuItem.picture:data.qiniuDomain+data.productDetail.logo}}' alt="暂无缩略图"></image>
+          <view class='pro-shop-desc'>
+            <view class='pro-shop-desc-price'>{{state.selectSkuItem.our_price?"¥"+state.selectSkuItem.our_price/100:"价格"}}</view>
+            <view class='pro-shop-desc-tips'>{{state.selectSkuItem.sku_name?state.selectSkuItem.sku_name:"请选择"}}</view>
+          </view>
+        </view>
+
+        <view class='sku-items-container'>
+          <view class='sku-item-container' wx:for="{{data.productDetail.plans}}" wx:key="{{index}}" wx:for-item="itemPlan" wx:for-index="indexPlan">
+            <view class='sku-item-title'>{{itemPlan.attr_name}}</view>
+            <view class='sku-item-lists'>
+              <view class='sku-item {{item.attr_val_id == state.selectIds[indexPlan]?"active":""}} {{!item.canSelect ? "disabled" : ""}}' wx:for="{{itemPlan.values}}" data-attr-val-id="{{item.attr_val_id}}" wx:key="{{index}}" data-attr-id='{{itemPlan.attr_id}}' catchtap='{{item.canSelect ?"onSelectSkuItemHandler" : ""}}' data-index-plan='{{indexPlan}}'>{{item.attr_val_name}}</view>
+            </view>
+          </view>
+        </view> -->
+        <view class='pro-shop-info'>
+          <image src='{{data.productDetail.sku_logo?data.qiniuDomain+data.productDetail.sku_logo:data.qiniuDomain+data.productDetail.goods_logo}}' alt="暂无缩略图"></image>
+          <view class='pro-shop-desc'>
+            <view class='pro-shop-desc-price'><text>¥</text><text class='pro-shop-desc-price-big'>{{data.productDetail.our_price/100}}</text></view>
+            <!-- <view class='pro-shop-sku-name'>{{data.productDetail.sku_name}}</view> -->
+            <view class='pro-shop-sku-name'>库存：{{data.productDetail.stock}}件</view>
+            <!-- <view class='pro-sell-count margin' wx:if="{{data.productDetail.sell_count > 0 }}">已售{{data.productDetail.sell_count}}件</view> -->
+          </view>
+        </view>
+
+        <view class='pro-shop-new-shu-content'>
+          <view class='pro-shop-new-shu-title'>商品规格</view>
+          <view class='pro-shop-new-shu-items'>
+            <view class='pro-shop-new-shu-item active'>{{data.productDetail.sku_name}}</view>
+          </view>
+        </view>
+
+        <view class='pro-shop-buy-num'>
+          <view class='pro-shop-buy-num-text'>购买数量
+            <!-- <text>{{"库存"+data.productDetail.stock}}</text> -->
+          </view>
+          <view class='pro-shop-buy-tips'>
+            <view class='limit-buy-text' wx:if="{{data.productDetail.limit_buy==state.totalBuyNum}}">每人限购{{data.productDetail.limit_buy}}件</view>
+            <view class='pro-shop-buy-actions'>
+              <view class='action-desc-box' data-index="{{index}}" catchtap='onNumDescHandler'>
+                <view class='action-desc'>-</view>
+              </view>
+              <view class='action-num'>{{state.totalBuyNum}}</view>
+              <view class='action-add-box' data-index="{{index}}" catchtap='{{data.productDetail.limit_buy==state.totalBuyNum?"":"onNumAddHandler"}}'>
+                <view class='action-add {{data.productDetail.limit_buy==state.totalBuyNum?"disabled":""}}'>+</view>
+              </view>
+              
+            </view>
+          </view>
+          
+        </view>
+
+
+        <!-- <view class='pro-shop-total-price'>
+          <view class='pro-shop-buy-num-text'>商品金额
+            <text>{{state.totalPrice}}</text>
+          </view>
+        </view> -->
+
+        <view class='pro-shop-buy-btn {{state.isIphoneX?"isIphoneX":""}}' catchtap='onSubmitHandler'>
+          确定
+        </view>
+
+      </view>
+    </view>
+
+    <!-- 分享选择框 -->
+    <view class='share-type-container' wx:if="{{state.shareBoxStatus}}">
+      <image class='icon-share-close' src='/imgs/icon-close-default.png' catchtap='onChangeShareBoxHandler'></image>
+      <view class='share-type-content'>
+        <button class='share-type-item' open-type='share'>
+          <image src='/imgs/icon-wechat-active.png'></image>
+          <view class='share-type-item-text'>分享给微信好友</view>
+        </button>
+        <button class='share-type-item' id="QRCODE" catchtap='onOpenSavePicStatus'>
+          <image src='/imgs/icon-moment-active.png'></image>
+          <view class='share-type-item-text'>生成海报</view>
+        </button>
+      </view>
+    </view>
+
+    <!-- 海报展示框 -->
+    <view class='invite-poster-container' hidden="{{!state.savePicBoxStatus}}" catchtap='onCloseSavePicStatus'>
+      <view class='invite-poster-content'>
+        <view class='invite-poster-close'>
+          <image  src='/imgs/icon-close-default.png'></image>
+        </view>
+        <canvas canvas-id="{{state.posterId}}" class='invite-poster' catchtap='onPreventHandler'>
+        
+          <!-- <image src=''></image> -->
+        </canvas>
+        
+        <button open-type='openSetting' bindopensetting="openSettingHandler" class='invite-save-poster' wx:if="{{state.needOpenSettingBtn}}">
+          保存到手机
+        </button>
+        <view class='invite-save-poster' wx:else catchtap='saveWeChatPicHandler'>
+          保存到手机
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 需要选择社区弹窗 在获取活动前判断-->
+  <view class='need-community-content' wx:if="{{state.needCommunityStatus}}">
+    <view class='need-community-inner'>
+      <view class='need-community-title'>温馨提示</view>
+      <view class='need-community-tips'>需要您先选择社区哦～</view>
+      <view class='need-communit-btn' catchtap='onGotoLocationPageHandler'>立即选择</view>
+    </view>
+  </view>
+
+  <alertingTips alertingStatus="{{state.alertingStatus}}" alertingWords="{{state.alertingWords}}"></alertingTips>
+  
+  <view class='bottom-line {{state.isIphoneX?"isIphoneX":""}}'></view>
+</scroll-view>

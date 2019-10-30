@@ -1,0 +1,347 @@
+<!--page/tabBar/index/index.wxml-->
+<view class='P-index {{state.isNewUserStatus?"limitHeight":""}}'>
+
+  
+  <!-- 地址定位&&搜索 -->
+  <view class='header-container'>
+    <view class='header-bg'>
+      <image src='/imgs/icon-index-top-bg.png'></image>
+    </view>
+    <view class='header-content'>
+      <view class='header-content-left'>
+        <view class='location-content' catchtap='onGotoLocationPageHandler'>
+          <image src='{{state.communityObj.avatar}}'></image>
+          <!-- <view>{{state.locationObj && state.locationObj.city?(state.locationObj.com?state.locationObj.com.name:state.locationObj.city):"请选择城市"}}</view> -->
+          <view>{{state.communityObj.contact}}-{{state.communityObj.community_name}}</view>
+        </view>
+        <image src='/imgs/icon-arrow-bottom-black.png' class='icon-arrow-bottom'></image>
+      </view>
+      
+      <!-- <view class='chat-container'>
+        <button open-type='contact' class='chat-btn'>
+          <image src='/imgs/icon-customer-active.png'></image>
+          联系客服
+        </button>
+      </view> -->
+      <view class='btn-search' catchtap='onGoToSearchPageHandler'>
+        <image src='/imgs/icon-search-black.png'></image>
+        <view class='btn-search-text'>搜索</view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 需要选择社区弹窗 在获取活动前判断-->
+  <view class='need-community-content' wx:if="{{state.needLocation == false && state.needCommunityStatus}}">
+    <view class='need-community-inner'>
+      <view class='need-community-title'>温馨提示</view>
+      <view class='need-community-tips'>需要您先选择社区哦～</view>
+      <view class='need-communit-btn' catchtap='onGotoLocationPageHandler'>立即选择</view>
+    </view>
+  </view>
+  <!-- 已经定位&&有活动 state.needLocation==false&&data.is_open==1-->
+  <view class='' wx:if="{{state.needLocation==false&&data.is_open==1}}">
+    <!-- 轮播图 -->
+    <view class='swiper-container'>
+      <swiperItems domain="{{data.qiniuDomain}}" imgsList="{{data.rotations}}" widthSize="700" userDots="index" radiusSize="{{20}}" heightSize="{{240}}" wx:if="{{state.loading == false || !state.firstLoading}}" autoplay="{{true}}"></swiperItems>
+      <skeletonScreen wx:if="{{state.loading && state.firstLoading}}"></skeletonScreen>
+    </view>
+
+    <!-- 首页秒杀列表 -->
+    <view class='flash-sale-container' wx:if="{{data.flashSaleList.length>0}}">
+      <view class='flash-sale-title-box' catchtap='onGoToFlashSaleListPageHandler'>
+          <view class='flash-sale-title-left'>
+            <view class='flash-sale-title'>限时秒杀</view>
+            <view class='flash-sale-tab'>
+                  <image class='icon-flash-sale' src='/imgs/Shotgun-icon.png'></image>
+            </view>
+            <!-- <image class='icon-flash-sale' src='/imgs/icon-flash-sale.png'></image> -->
+            
+          </view>
+          <view class='flash-sale-title-right' >
+            <view class='flash-sale-title-right-more'>查看更多</view>
+            <image class='icon-arrow-right-default' src='/imgs/icon-arrow-default-bg.png'></image>
+          </view>
+        </view>
+      <view class='flash-sale-content'>
+
+        <!-- <view class='flash-sale-nav'>
+          <view class='flash-sale-nav-item {{index == data.selectFilterTimeIndex?"active":""}}' wx:for="{{data.timeFilters}}" wx:key="{{index}}" data-index='{{index}}' catchtap='onSelectTimeFilterHandler'>
+            <view class='flash-sale-nav-item-time'>{{item.start_time_desc}}</view>
+            <view class='flash-sale-nav-item-status' wx:if="{{item.startStatus && !item.isNearTimeFilter}}">已开抢</view>
+            <view class='flash-sale-nav-item-status' wx:if="{{item.startStatus && item.isNearTimeFilter}}">抢购中</view>
+            <view class='flash-sale-nav-item-status' wx:if="{{!item.startStatus && item.featureStatus}}">即将开抢</view>
+          </view>
+        </view> -->
+        <view class='flash-sale-one' wx:if="{{data.flashSaleList.length == 1}}">
+          <view class='flash-sale-one-item' wx:for="{{data.flashSaleList}}" wx:key="{{index}}" catchtap='onGotoProductDetailHandler' data-item='{{item}}'>
+            <view class='flash-sale-one-item-tips'>
+              <image src='/imgs/icon-flash-item-one-tips.png'></image>
+              <view class='flash-sale-one-item-tips-text' wx:if="{{item.startStatus}}">
+                <view>正在</view>
+                <view>抢购</view>
+              </view>
+              <view class='flash-sale-one-item-tips-text' wx:if="{{item.featureStatus && item.tomorrowStatus}}">
+                <view>明天</view>
+                <view>{{item.timeText}}</view>
+              </view>
+              <view class='flash-sale-one-item-tips-text' wx:if="{{item.featureStatus && !item.tomorrowStatus}}">
+                <view>{{item.timeText}}</view>
+                <view>开抢</view>
+              </view>
+            </view>
+            <view class='flash-sale-one-item-left'>
+              <view class='flash-sale-one-item-name two-ellipsis'>{{item.goods_name}}</view>
+              <view class='flash-sale-one-item-tags' wx:if="{{item.sellpoint}}">{{item.sellpoint}}</view>
+              <view class='flash-sale-one-item-prices'>
+                <view class='flash-sale-one-item-price-new'>¥{{item.our_price/100}}</view>
+                <view class='flash-sale-one-item-price-old'>¥{{item.market_price/100}}</view>
+              </view>
+              <view class='flash-sale-one-item-sku'>仅剩{{item.stock}}件</view>
+            </view>
+            <view class='flash-sale-one-item-right'>
+               <view class="sale-out" wx:if="{{item.stock==0}}">
+                  <view>已抢完</view>
+               </view>
+              <image src='{{data.qiniuDomain+item.goods_logo}}' class=''></image>
+            </view>
+          </view>
+        </view>
+        <scroll-view scroll-x class='flash-sale-items' wx:else>
+          <view class='flash-sale-item' wx:for="{{data.flashSaleList}}" wx:key="{{index}}" catchtap='onGotoProductDetailHandler' data-item='{{item}}'>
+            <view class='flash-sale-item-image-box'>
+              <image src='{{data.qiniuDomain+item.goods_logo}}' class='sale-pic'></image>
+              <view class='flash-sale-item-tips' wx:if="{{item.startStatus&&item.stock>0}}">正在抢购</view>
+              <view class='flash-sale-item-tips sale-over' wx:if="{{item.stock==0}}">已抢完</view>
+              <view class='flash-sale-item-tips' wx:if="{{item.featureStatus && item.tomorrowStatus}}">明天{{item.timeText}}</view>
+              <view class='flash-sale-item-tips' wx:if="{{item.featureStatus && !item.tomorrowStatus}}">{{item.timeText}}开抢</view>
+            </view>
+            <view class='flash-sale-price-box'>
+              <view class='flash-sale-price new'>¥<text>{{item.our_price/100}}</text></view>
+              <view class='flash-sale-price old'>¥<text>{{item.market_price/100}}</text></view>
+            </view>
+             <view class='flash-sale-item-sku' wx:if="{{item.featureStatus && item.tomorrowStatus}}">限量{{item.stock}}件</view>
+              <view class='flash-sale-item-sku' wx:elif="{{item.featureStatus && !item.tomorrowStatus}}">限量{{item.stock}}件</view>
+            <view class='flash-sale-item-sku' wx:else>仅剩{{item.stock}}件</view>
+
+          </view>
+          <view class='flash-sale-item'catchtap='onGoToFlashSaleListPageHandler'>
+            <view class='flash-sale-item-look-more'>查看更多</view>
+            <image src='/imgs/icon-arrow-circle-default.png' class='icon-arrow-circle-default'></image>
+          </view>
+        </scroll-view>
+      </view>
+    </view>
+    
+    
+    <!-- <scroll-view scroll-x class='filter-bar-container {{state.filterBarFixStatus?"fixed":""}}' wx:if="{{state.filters.length>0}}">
+      <view class='filter-item {{item.id == state.selectFilterId?"active":""}}' catchtap='onSelectFilterHandler' wx:for="{{state.filters}}" wx:key="{{index}}" data-id='{{item.id}}'>{{item.kindname}}</view>
+    </scroll-view> -->
+
+    <view class='now-buying-content' >
+      <!-- <view class='triangle-bottom black'></view> -->
+      <view class='now-buying-title'>正在抢购</view>
+      <view class='now-buying-time-box' wx:if="{{(data.activity && data.activity.goods && data.activity.goods.data.length>0)}}">
+        <view class='now-buying-time-text'>距结束</view>
+        <view class='now-buying-time-values {{state.activityEnd?"end":""}}'>
+          <view class='timer-value'>{{state.countDownHour}}</view><view class='timer-circle'>:</view><view class='timer-value'>{{state.countDownMinute}}</view><view class='timer-circle'>:</view><view class='timer-value'>{{state.countDownSecond}}</view>
+        </view>
+      </view>
+    </view>
+
+    <!-- 商品分类导航栏 最外层固定高度，防止高度塌陷 -->
+    <view class='filter-bar-container'>
+      <!-- 这里需要来回切换absolute/fixed 状态 -->
+      <!-- 没有秒杀活动，没有次日达活动需要给个固定top值 -->
+      <!-- 没有秒杀活动，有次日达活动需要给个固定top值 -->
+      <!-- 有秒杀活动，没有次日达活动需要给个固定top值 -->
+      <!-- 有秒杀活动，有次日达活动需要给个固定top值 -->
+      <!-- 秒杀内容总高度 标题88rpx +nav90rpx + 332内容框总共510rpx -->
+      <!-- 正在抢购时间倒计时内容框 margin-top 20rpx 内容80rpx总共100rpx-->
+      <!-- 轮播图加上头部 总高度332rpx -->
+      <!-- 好像不需要设置top值，则不会根据最近的定位不为static的父元素定位
+      {{state.flashSaleLoading == false && data.flashSaleList.length == 0 && (data.activity && data.activity.goods && data.activity.goods.data.length == 0)?"oneTop":""}} {{state.flashSaleLoading == false && data.flashSaleList.length == 0 && (data.activity && data.activity.goods && data.activity.goods.data.length > 0)?"twoTop":""}} {{state.flashSaleLoading == false && data.flashSaleList.length > 0 && (data.activity && data.activity.goods && data.activity.goods.data.length == 0)?"thirdTop":""}} {{state.flashSaleLoading == false && data.flashSaleList.length > 0 && (data.activity && data.activity.goods && data.activity.goods.data.length > 0)?"fourTop":""}} -->
+      <view class='scroll-bar-view {{state.filterBarFixStatus?"active":""}}' wx:if="{{state.filters.length>0}}">
+        <scroll-view scroll-x class='filter-bar-container' scroll-with-animation scroll-left="{{data.scrollLeft}}">
+          <view class='filter-item {{index == 0?"short":""}} {{item.id == state.selectFilterId?"active":""}}' catchtap='onSelectFilterHandler' wx:for="{{state.filters}}" wx:key="{{index}}" data-id='{{item.id}}' data-index='{{index}}'>
+            <view class='filter-item-text'>{{item.kindname}}</view>
+            <view class='filter-item-bottom' wx:if="{{item.id == state.selectFilterId}}"></view>
+          </view>
+        </scroll-view>
+      </view>
+    </view>
+
+    <view class='pro-all-content {{(data.activity && data.activity.goods && data.activity.goods.data.length>0) || (data.presale_goods && data.presale_goods.length)?"min-height":""}}'>
+      
+    
+      <!-- 商品列表 -->
+      <view class='recommend-lists-container' wx:if="{{(data.activity && data.activity.goods && data.activity.goods.data.length>0) || (data.presale_goods && data.presale_goods.length)}}">
+        <view class='recommend-lists-content' wx:if="{{state.loading == false}}">
+
+          <!-- 2019-1-3改版，没有这一期，下一期活动区分 -->
+          <!-- 这里为何这样处理？
+            因为从正在抢购切换到下期预告
+            会有缓存，会先导致本期活动商品变成即将开抢状态，然后再被新数据渲染
+            所以处理方案有两种
+            1、使用同数据，不同组件
+            2、使用同组件，用不同数据渲染 
+          -->
+          <!-- <block wx:if="{{state.selectTabType == 'now'}}">
+            <rushBuyingItem wx:for="{{data.activity.nowArr}}" wx:key="{{index}}" domain="{{data.qiniuDomain}}" productItem="{{item}}" proType="{{state.selectTabType}}" activityEnd="{{state.activityEnd}}"></rushBuyingItem>
+          </block>
+          <block wx:if="{{state.selectTabType == 'next'}}">
+            <rushBuyingItem wx:for="{{data.activity.nextArr}}" wx:key="{{index}}" domain="{{data.qiniuDomain}}" productItem="{{item}}" proType="{{state.selectTabType}}" activityEnd="{{state.activityEnd}}"></rushBuyingItem>
+          </block> -->
+          <!-- <loadMore loadMoreStatus="{{data.totalPage > state.page}}" wx:if="{{state.selectTabType == 'now' && data.activity.nowArr.length>=3 || state.selectTabType == 'next' && data.activity.nextArr.length>=3}}"></loadMore> -->
+
+          <rushBuyingItem wx:for="{{data.presale_goods}}" wx:key="{{index}}" domain="{{data.qiniuDomain}}" productItem="{{item}}" proType="{{state.selectTabType}}" activityEnd="{{state.activityEnd}}" bind:cartevent="onFetchCarListNumHandler" pageUrl="{{others.pageUrl}}"></rushBuyingItem>
+
+          <rushBuyingItem wx:for="{{data.activity.goods.data}}" wx:key="{{index}}" domain="{{data.qiniuDomain}}" productItem="{{item}}" proType="{{state.selectTabType}}" activityEnd="{{state.activityEnd}}" bind:cartevent="onFetchCarListNumHandler" pageUrl="{{others.pageUrl}}"></rushBuyingItem>
+
+          <block wx:if="{{data.totalPage == state.page }}">
+            <!-- 商家入驻内容 在商品最后一页显示-->
+            <view class='shopper-in-content'>
+              <view class='shopper-in-top'>
+                <image src='/imgs/icon-shopper-in-tips.png'></image>
+              </view>
+
+              <view class='shopper-in-items'>
+                <view class='shopper-in-item' catchtap='onCallHandler' data-number='18522541356'>
+                  <view class='shopper-in-item-left'>
+                    <view class='shopper-in-item-title'>壹手仓小区团长免费加盟</view>
+                    <view class='shopper-in-item-phone-box'>
+                      <image src='/imgs/icon-call-yellow.png'></image>
+                      <view class='shopper-in-item-phone'>18522541356</view>
+                    </view>
+                  </view>
+                  <view class='shopper-in-item-right'>加盟</view>
+                </view>
+                <view class='shopper-in-item' catchtap='onCallHandler' data-number='18522541356'>
+                  <view class='shopper-in-item-left'>
+                    <view class='shopper-in-item-title'>壹手仓优质供应商入驻</view>
+                    <view class='shopper-in-item-phone-box'>
+                      <image src='/imgs/icon-call-yellow.png'></image>
+                      <view class='shopper-in-item-phone'>18522541356</view>
+                    </view>
+                  </view>
+                  <view class='shopper-in-item-right'>入驻</view>
+                </view>
+              </view>
+            </view>
+            <!-- 给商家入驻内容 填充margin-bottom -->
+            <!-- <view class='shopper-in-content-bottom'></view> -->
+          </block>
+
+           <!--更多加载---->
+          <loadMore loadMoreStatus="{{data.totalPage > state.page}}" wx:if="{{data.activity.goods.data.length?(data.activity.goods.data.length+data.presale_goods.length > 3):(data.presale_goods.length>3) }}" pagaUrl="index"></loadMore>
+
+        </view>
+        <view wx:if="{{state.loading}}" >
+          <view class='shadow-view' wx:for="{{3}}" wx:key="{{index}}">
+            <skeletonScreen ></skeletonScreen>
+          </view>
+        </view>
+      </view>
+      
+      <!-- 这里已经判断预售商品跟次日达商品均不存在了 -->
+      <block wx:else>
+        <view class='empty-tips-container'>
+          <image class='empty-pic'></image>
+          <view class='empty-tips'>精选商品正在准备中哦，敬请期待~</view>
+        </view>
+        <!-- （无商品 && 无秒杀商品时）或者有秒杀商品不是全部分类时，第一页显示 并fixed定位到底部-->
+        <view class='shopper-in-content {{data.flashSaleList.length?"":"fixed"}}'>
+          <view class='shopper-in-top'>
+            <image src='/imgs/icon-shopper-in-tips.png'></image>
+          </view>
+
+          <view class='shopper-in-items'>
+            <view class='shopper-in-item' catchtap='onCallHandler' data-number='18522541356'>
+              <view class='shopper-in-item-left'>
+                <view class='shopper-in-item-title'>壹手仓小区团长免费加盟</view>
+                <view class='shopper-in-item-phone-box'>
+                  <image src='/imgs/icon-call-yellow.png'></image>
+                  <view class='shopper-in-item-phone'>18522541356</view>
+                </view>
+              </view>
+              <view class='shopper-in-item-right'>加盟</view>
+            </view>
+            <view class='shopper-in-item' catchtap='onCallHandler' data-number='18522541356'>
+              <view class='shopper-in-item-left'>
+                <view class='shopper-in-item-title'>壹手仓优质供应商入驻</view>
+                <view class='shopper-in-item-phone-box'>
+                  <image src='/imgs/icon-call-yellow.png'></image>
+                  <view class='shopper-in-item-phone'>18522541356</view>
+                </view>
+              </view>
+              <view class='shopper-in-item-right'>入驻</view>
+            </view>
+          </view>
+        </view>
+        <!-- 给商家入驻内容 填充margin-bottom -->
+        <!-- <view class='shopper-in-content-bottom'></view> -->
+      </block>
+    </view>
+
+    <!-- 需要授权个人信息 -->
+    <!-- <authorize wx:if="{{state.needAuthorize}}" bindgetuserinfo="onGetUserInfoHandler" imgUrl="{{state.authorizePic}}"></authorize> -->
+
+    <!-- 关注公众号提示 -->
+    <official-account wx:if="{{state.officialAccount}}"></official-account>
+
+  </view>
+ 
+
+  <!-- 返回团长端按钮 -->
+  <naviBackBtn wx:if="{{data.isFormMerchant}}"></naviBackBtn>
+  
+  <!-- 已开通定位，但是当前城市没有活动 -->
+  <view class='empty-tips-container' wx:if="{{state.needLocation == false && data.is_open==0}}">
+    <image class='empty-pic' src='/imgs/icon-location-empty.png'></image>
+    <view class='empty-tips'>当前城市暂未开通服务，请更换城市</view>
+    <view class='empty-tips'>申请加盟热线：400-0585-825</view>
+  </view>
+
+  <!-- 未开通定位，需要被定位提示 -->
+  <view wx:if="{{state.needLocation}}" class='need-loaction'>
+    <image src='/imgs/icon-location-not-allow.png' class='icon-need-location'></image>
+    <view class='need-location-tips'>定位失败，请选择城市或开启定位授权</view>
+    <view class='need-open-setting' wx:if="{{!state.needOpenSettingBtn}}" catchtap='onAgreeLocation'>开通定位</view>
+    <button open-type='openSetting' wx:if="{{state.needOpenSettingBtn}}" class='need-open-setting' bindopensetting="openSettingHandler">
+      开通定位
+    </button>
+  </view>
+
+
+  <!-- 提示框 -->
+  <alertingTips alertingStatus="{{state.alertingStatus}}" alertingWords="{{state.alertingWords}}"></alertingTips>
+
+
+  <!-- 新人红包领取提示框 -->
+  <view class='new-user-package-container' wx:if="{{state.isNewUserStatus && data.packages.length}}">
+    <view class='new-user-package-content'>
+      <view class='new-user-package-inner'>
+        <view class='new-user-package-inner-header'>
+          <image src='/imgs/icon-new-user-shadow.png' mode='widthFix'></image>
+        </view>
+        <scroll-view scroll-y class='new-user-package-lists'>
+          <packageItem wx:for="{{data.packages}}" wx:key="{{index}}" packageType="newUser" bind:oncloseevent="onClosePackageBoxHandler" packageItem="{{item}}"></packageItem>
+        </scroll-view>
+      </view>
+      <view class='close-content' catchtap='onClosePackageBoxHandler'>
+        <image src='/imgs/icon-close-package-shadow.png' class='icon-close-package-shadow'></image>
+      </view>
+    </view>  
+  </view>
+
+  <view class='barrage-content transfer' wx:if="{{state.barrageItem}}">
+    <image src='{{state.barrageItem.avatar}}'></image>
+    <view class='barrage-text'>买了{{state.barrageItem.goods_name}}</view>
+  </view>
+
+  <!-- 右下角，有红包即将到期提示 -->
+  <view class='has-package-out-content' catchtap='onGotoPackageListPageHandler' wx:if="{{state.hasRedPackageStatus}}">
+    <view>有红包即将到期</view>
+    <view class='triangle-bottom red'></view>  
+  </view>
+  
+</view>

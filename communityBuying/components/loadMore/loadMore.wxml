@@ -1,0 +1,13 @@
+<!--components/loadMore/loadMore.wxml-->
+<view class='load-more' style="background-color:{{backgroundColor ? backgroundColor: 'transparent'}};color:{{backgroundColor ? '#fff' : '#999'}}" wx:if='{{ (!loadMoreStatus && pagaUrl !== "index") || loadMoreStatus}}'>
+  <!-- <view class='' wx:if="{{loadingStatus}}">加载中...</view>
+  <view wx:else> -->
+    <view class='' wx:if="{{loadMoreStatus}}">加载中...</view>
+    <view class='bottom-tips-content' wx:else>
+      <view class='bottom-tips-line'></view>
+      <view class='bottom-tips-text'>我是有底线的</view>
+      <view class='bottom-tips-line'></view>
+    </view>
+  <!-- </view> -->
+  
+</view>

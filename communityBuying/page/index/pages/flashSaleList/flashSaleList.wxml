@@ -1,0 +1,95 @@
+<!--page/index/pages/flashSaleList/flashSaleList.wxml-->
+<view class='P-flash-sale' wx:if="{{!state.needLocation}}">
+
+  <view class='flash-sale-content' wx:if="{{data.filters && data.filters.length >0 }}">
+
+    <scroll-view scroll-x scroll-with-animation scroll-left="{{data.scrollLeft}}"  class='flash-sale-time-items'>
+      <view class='flash-sale-time-item {{index==data.selectFilterIndex?"active":""}}' wx:for="{{data.filters}}" wx:key="{{index}}" catchtap='onSelectFilterHandler' data-index='{{index}}'>
+        <view class='flash-sale-time-item-text'>{{item.start_time_desc}}</view>
+        <!-- <view class='flash-sale-time-item-status' wx:if="{{item.endStatus}}">已结束</view> -->
+        <view class='flash-sale-time-item-status' wx:if="{{!item.endStatus && item.featureStatus && !item.startStatus}}">即将开始</view>
+        <view class='flash-sale-time-item-status' wx:if="{{!item.endStatus && !item.featureStatus && item.startStatus && !item.timeDescStatus}}">已开抢</view>
+        <view class='flash-sale-time-item-status' wx:if="{{!item.endStatus && !item.featureStatus && item.startStatus && item.timeDescStatus}}">抢购中</view>
+        <!-- <view class='icon-trangle-bottom' wx:if="{{index==data.selectFilterIndex}}"></view> -->
+      </view>
+    </scroll-view> 
+
+    <swiper  class='flash-sale-show-content' current="{{data.selectFilterIndex}}" bindchange="onSwiperScrollHandler" duration="500">
+      <swiper-item wx:for="{{data.filters.length}}" wx:key="{{index}}" class="flash-sale-show-item">
+        
+        <view class='flash-sale-time-content'>
+          <view class='split-line'></view>
+          <!-- 抢购中的时间段倒计时 -->
+          <view class='flash-sale-time-box' wx:if="{{data.filters[data.selectFilterIndex].startStatus && data.filters[data.selectFilterIndex].timeDescStatus}}">
+            <view class='flash-sale-time-text'>本场还剩</view>
+            <view class='flash-sale-time-value'>
+              <view class='timer'>{{data.filters[data.selectFilterIndex].countDownHour}}</view>
+              <view>:</view>
+              <view class='timer'>{{data.filters[data.selectFilterIndex].countDownMinute}}</view>
+              <view>:</view>
+              <view class='timer'>{{data.filters[data.selectFilterIndex].countDownSecond}}</view>
+            </view>
+          </view>
+          <!-- 只有一个时间段，并且即将开始的倒计时 -->
+          <view class='flash-sale-time-box' wx:if="{{data.filters[data.selectFilterIndex].featureStatus && data.filters[data.selectFilterIndex].timeDescStatus}}">
+            <view class='flash-sale-time-text'>距离开始</view>
+            <view class='flash-sale-time-value'>
+              <view class='timer'>{{data.filters[data.selectFilterIndex].countDownHour}}</view>
+              <view>:</view>
+              <view class='timer'>{{data.filters[data.selectFilterIndex].countDownMinute}}</view>
+              <view>:</view>
+              <view class='timer'>{{data.filters[data.selectFilterIndex].countDownSecond}}</view>
+            </view>
+          </view>
+          <!-- 多个时间段，即将开始的提示 -->
+          <view class='flash-sale-time-box' wx:if="{{data.filters[data.selectFilterIndex].featureStatus && !data.filters[data.selectFilterIndex].timeDescStatus}}">
+            <view class='flash-sale-time-text'>去看看 好货不错过</view>
+          </view>
+          <!-- 已经结束的时间段，|| 已经开抢的时间段，不是最接近抢购的时间段 -->
+          <view class='flash-sale-time-box' wx:if="{{data.filters[data.selectFilterIndex].endStatus || (data.filters[data.selectFilterIndex].startStatus && !data.filters[data.selectFilterIndex].timeDescStatus)}}">
+            <view class='flash-sale-time-text'>限时限量  先到先得</view>
+          </view>
+          <view class='split-line'></view>
+        </view>
+
+        <view class='flash-sale-pro-items' wx:if="{{data.flashSaleList.length && !state.loading}}">
+          <view class='flash-sale-pro-item' wx:for="{{data.flashSaleList}}" wx:key="{{index}}">
+            <flashSaleItem domain="{{data.qiniuDomain}}" productItem="{{item}}" endStatus="{{data.filters[data.selectFilterIndex].endStatus}}"  featureStatus="{{data.filters[data.selectFilterIndex].featureStatus}}"></flashSaleItem>
+          </view>
+          <loadMore loadMoreStatus="{{data.totalPage > state.page}}"></loadMore>
+        </view>
+
+        <view wx:if="{{state.loading}}" >
+          <view class='shadow-view' wx:for="{{3}}" wx:key="{{index}}">
+            <skeletonScreen ></skeletonScreen>
+          </view>
+        </view>
+
+        <!-- <view class='flash-sale-pro-items' wx:if="{{data.flashSaleList.length}}">
+          <view class='flash-sale-pro-item' wx:for="{{data.flashSaleList}}" wx:key="{{index}}">
+            <flashSaleItem domain="{{data.qiniuDomain}}" productItem="{{item}}" endStatus="{{data.filters[data.selectFilterIndex].endStatus}}"  featureStatus="{{data.filters[data.selectFilterIndex].featureStatus}}"></flashSaleItem>
+          </view>
+          <loadMore loadMoreStatus="{{data.totalPage > state.page}}"></loadMore>
+        </view> -->
+
+        <emptyTips emptyIcon="{{state.emptyIcon}}" emptyTips="{{state.emptyTips}}" wx:if="{{ data.flashSaleList.length == 0 && state.loading == false}}" ></emptyTips>
+
+      </swiper-item>
+    </swiper>
+
+    
+  </view>
+
+  <view class='need-location' wx:if="{{data.filters && data.filters.length ==0 }}">
+    <view>暂无秒杀活动</view>
+    <view class='return-home' catchtap='onGoToHomeHandler'>返回首页</view>
+  </view>
+
+  
+  
+  
+</view>
+<view class='need-location' wx:else>
+  <view>您需要提供定位信息～</view>
+  <view class='return-home' catchtap='onGoToHomeHandler'>返回首页</view>
+</view>

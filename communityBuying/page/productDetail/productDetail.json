@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "alertingTips": "../../components/alertingTips/alertingTips",
+    "swiperItems": "../../../components/swiperItems/swiperItems",
+    "naviBackBtn": "../../../components/naviBackBtn/naviBackBtn",
+    "guessLike": "../../components/guessLike/guessLike"
+  }
+}

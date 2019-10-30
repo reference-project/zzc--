@@ -1,0 +1,265 @@
+/* page/user/pages/orderList/orderList.wxss */
+.P-oder-list{
+  height: 100vh;
+  padding-bottom: 3rpx;
+  background-color: rgba(248, 248, 248, 0.75);
+  padding-top: 100rpx;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+}
+.order-items{
+  flex: 1;
+  height: 1;
+  /* 避免被无限增大 */
+}
+.order-items-wraper{
+   padding: 21rpx 20rpx 0rpx 20rpx;
+   background: #F7F7F7;
+}
+.nav-bar {
+  position: fixed;
+  top: 0;
+  left: 0; 
+  width: 100%;
+  white-space:nowrap;
+  font-size: 32rpx;
+  height: 100rpx;
+  /* border-bottom: solid 1rpx #efefef; */
+  background-color: #fff;
+  z-index: 100;
+  line-height: 100rpx;
+}
+.nav-bar .item {
+  display: inline-block;
+  padding: 0 35rpx;
+  /* background-color: white;   */
+  position: relative; 
+}
+.nav-bar .item .word{
+  font-size: 28rpx;
+  line-height: 28rpx;
+  color: #282828;
+  font-weight:400;
+}
+.nav-bar .item.active .word{
+  color: #333333;
+  font-weight:600;
+  /* border-bottom: 2px solid #ff0600; */
+  font-size: 28rpx;
+}
+.nav-active-bottom{
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  z-index: -1;
+  transform: translateX(-50%);
+  width:75rpx;
+  height:20rpx;
+  background:linear-gradient(147deg,rgba(254,227,53,1) 0%,rgba(254,219,2,1) 100%);
+}
+/* .nav-bar .num{
+  position:absolute;
+  min-width: 8px;
+  height:28rpx;
+  background-color:#ff0600;
+  color:#fff;
+  text-align:center;
+  line-height:28rpx;
+  border-radius:7px;
+  font-size:20rpx;
+  top:8px;
+  right:0;
+  padding:0 3px;
+} */
+
+.order-item-container{
+  margin-top: 20rpx;
+  background-color: #fff;
+  padding: 12rpx 20rpx;
+  border-radius:16rpx;
+  box-shadow:0rpx 3rpx 20rpx 0rpx rgba(128,128,128,0.1);
+}
+.order-item-container:first-child{
+  margin-top: 0rpx;
+}
+.order-item-pros{
+  border-sizing:border-box;
+  background: rgba(250,250,250,1);
+  border-radius:10rpx;
+  padding: 18rpx 20rpx 18rpx 19rpx;
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+}
+.order-item-product-left{
+   display: flex;
+  justify-content: flex-start;
+}
+.order-item-product-right text{
+    font-size: 24rpx;
+    color: #AEAEAE;
+}
+.order-item-product{
+    width: 150rpx;
+    height: 150rpx;
+    margin-right: 13rpx;
+}
+.order-item-product image{
+    width: 150rpx;
+    height: 150rpx;
+    border-radius: 10rpx;
+}
+.order-item-status-box{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 22rpx;
+  height: 50rpx;
+  line-height: 50rpx;
+  padding: 20rpx 0rpx;
+  font-family: PingFangSC-Regular;
+}
+.order-item-status{
+  color:rgba(40,40,40,1);
+  font-size: 26rpx;
+  font-weight:500;
+}
+.order-item-status.red{
+  color: #FF5E53;
+}
+.order-item-time{
+  color: #666666;
+  font-size: 26rpx;
+}
+.order-item-status.cancel-font{
+    color:rgba(204,204,204,1);
+}
+
+.order-item-status.check-detail-font{
+   color:rgba(153,153,153,1);
+}
+.order-item-time text{
+}
+.order-item-info{
+  display: flex;
+  align-items: center;
+  padding: 30rpx 10rpx;
+  border-bottom: 1rpx solid #eaeaea;
+}
+.order-item-info image{
+  width: 160rpx;
+  height: 160rpx;
+  border-radius: 20rpx;
+  background-color: #FAFAFA;
+}
+.order-item-info-desc{
+  flex: 1;
+  height: 160rpx;
+  margin-left: 20rpx;
+  padding: 8rpx 0;
+  box-sizing: border-box;
+}
+.order-item-info-title-box{
+  display: flex;
+  align-items: center;
+  font-family: PingFangSC-Medium;
+  font-size: 30rpx;
+  color: #333333;
+  line-height: 40rpx;
+}
+.order-item-info-title{
+  flex: 1;
+  width: 1rpx;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-right: 10rpx;
+}
+.order-item-info-sku{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 20rpx;
+  font-size: 22rpx;
+  line-height: 22rpx;
+  color: #999;
+  font-family: PingFangSC-Regular;
+}
+.order-clum-bottom{
+  height: 100rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between; 
+}
+.order-item-info-num-price{
+  font-size: 26rpx;
+  font-weight:400;
+  color:rgba(40,40,40,1);
+   line-height:30rpx;
+   font-family: PingFangSC-Medium;
+}
+.order-item-info-num-price text{
+
+}
+.order-item-actions{
+  /* padding: 30rpx 10rpx;
+  display: flex;
+  justify-content: flex-end; */
+}
+.btn-active{
+  width:152rpx;
+  height:56rpx;
+  text-align: center;
+  background:linear-gradient(146deg,rgba(254,227,53,1) 0%,rgba(255,191,58,1) 100%);
+  border-radius:30rpx;
+  margin-left: 30rpx;
+  font-size:26rpx;
+  font-family:PingFangSC-Medium;
+  font-weight:500;
+  color:rgba(40,40,40,1);
+  line-height:56rpx;
+  flex-shrink:1;
+}
+.btn-default{
+  width: 170rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  text-align: center;
+  border-radius: 100rpx;
+  font-family: PingFangSC-Regular;
+  border: 2rpx solid #979797;
+  color: #979797;
+  font-size: 28rpx;
+  flex-shrink:1;
+  box-sizing: border-box;
+}
+.order-item-actions view{
+  margin-left: 30rpx;
+}
+.order-item-actions view:first-child{
+  margin-left: 0rpx;
+}
+
+.empty-tips{
+  /* position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%); */
+  margin-top: 180rpx;
+  font-size: 0px;
+  text-align: center;
+}
+.empty-tips image{
+  height: 260rpx;
+  width: 260rpx;
+}
+.empty-tips .tips{
+  font-size: 28rpx;
+  color: #aeaeae;
+  margin-top: 6rpx;
+}
+.load-more-container{
+  margin-top:30rpx;
+  background-color: #fff;
+}
